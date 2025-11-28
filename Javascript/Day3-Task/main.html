@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-3-Javascript</title>
+</head>
+
+<body>
+    <script>
+        //  Task- 1.Write an if condition to check if a number is positive. 
+        document.write("<b>Task- 1.Write an if condition to check if a number is positive.</b><br><br>");
+        let num = 5;
+        if (num > 0) {
+            document.write("Number is Positive <br><br>");
+        } else {
+            document.write("Number is Negative");
+        }
+
+
+        //Task-2.Use if-else to check if a person is an adult.  
+        document.write("<b>Task-2.Use if-else to check if a person is an adult.</b>")
+        let age = 16;
+        if (age >= 18) {
+            document.write("Adult<br>");
+        }
+        else {
+            document.write("<br><br>No Adult<br><br>");
+        }
+
+
+        //Task-3.Check if a number is even or odd using if-else.  
+        document.write("<b>Task-3.Check if a number is even or odd using if-else.</b><br><br>");
+        let number = 24;
+        if (num % 2 === 0) {
+            document.write(num + "  Is Even<br><br>");
+        } else {
+            document.write(num + "  Is Odd<br><br>");
+        }
+
+
+
+        //Task-4.Use if-else if-else to check grade categories.  
+        document.write("<b>Task-4.Use if-else if-else to check grade categories. </b><br><br>");
+
+        let marks = 85;   // change value to test
+
+        if (marks >= 90) {
+            document.write("Grade: A");
+        }
+        else if (marks >= 75) {
+            document.write("Grade: B<br><br>");
+        }
+        else if (marks >= 50) {
+            document.write("Grade: C");
+        }
+        else if (marks >= 35) {
+            document.write("Grade: D");
+        }
+        else {
+            document.write("Grade: Fail");
+        }
+
+
+
+        //Task-5.Check if a person is eligible for a driver's license. 
+        document.write("<b>Task-5.Check if a person is eligible for a driver's license. </b><br><br>");
+        let ages = 18;   // change age and test
+        if (ages >= 18) {
+            document.write("Eligible for Driver's License<br><br>");
+        } else {
+            document.write("<br><br>Not Eligible for Driver's License<br><br>");
+        }
+
+
+
+        //6.Create a nested if condition to check both login and admin status.
+        document.write("<b>Task-6.Create a nested if condition to check both login and admin status. </b><br><br>");
+        let isLoggedIn = true;   // change to false to test
+        let isAdmin = true;      // change to false to test
+        if (isLoggedIn) {
+            if (isAdmin) {
+                document.write("Welcome Admin!<br><br>");
+            } else {
+                document.write("Welcome User (Not Admin)");
+            }
+        } else {
+            document.write("Please log in first.");
+        }
+
+
+        //7.Use a switch statement to print messages for different days. 
+        document.write("<b>Task-7.Use a switch statement to print messages for different days.</b><br><br>");
+        let day = "Monday";   // change value to test
+        switch (day) {
+            case "Monday":
+                document.write("Start of the week!<br><br>");
+                break;
+
+            case "Tuesday":
+                document.write("Keep going!");
+                break;
+
+            case "Wednesday":
+                document.write("Midweek day!");
+                break;
+
+            case "Thursday":
+                document.write("Almost weekend!");
+                break;
+
+            case "Friday":
+                document.write("Weekend starts soon!");
+                break;
+
+            case "Saturday":
+                document.write("Enjoy your weekend!");
+                break;
+
+            case "Sunday":
+                document.write("Relax and recharge!");
+                break;
+
+            default:
+                document.write("Invalid day");
+        }
+
+
+
+        //8.Use a ternary operator to check if a person is eligible for a senior citizen discount.  
+        document.write("<b>Task-8.Use a ternary operator to check if a person is eligible for a senior citizen discount. </b><br><br>");
+        let aged = 65;   // change value to test
+        let message = (aged >= 60)
+            ? "Eligible for Senior Citizen Discount<br><br>"
+            : "Not Eligible for Senior Citizen Discount<br><br>";
+
+        document.write(message);
+
+
+        //9.Check if a user is logged in using &&
+        document.write("<b>Task-9.Check if a user is logged in using &&</b><br><br>");
+        let loggedIn = true;
+        let hasToken = true;
+        if (loggedIn && hasToken) {
+            document.write("User is logged in<br><br>");
+        } else {
+            document.write("User is NOT logged in");
+        }
+
+
+        // 10.Use || to check if a username or email is provided. 
+        document.write("<b>10.Use || to check if a username or email is provided.</b><br><br>");
+        let username = "";
+        let email = "test@mail.com";
+
+        if (username || email) {
+            document.write("Input provided<br><br>");
+        } else {
+            document.write("No input");
+        }
+
+
+        // 11.Use ! to negate a boolean variable.
+        document.write("<b> 11.Use ! to negate a boolean variable.</b><br><br>");
+        let isOnline = false;
+
+        if (!isOnline) {
+            document.write("User is offline<br><br>");
+        } else {
+            document.write("User is online");
+        }
+
+
+        // 12.Check if the current year is a leap year.
+        document.write("<b> 12.Check if the current year is a leap year.</b><br><br>");
+        let year = new Date().getFullYear();
+        if (year % 4 === 0) {
+            document.write(year + " is a Leap Year");
+        } else {
+            document.write(year + " is NOT a Leap Year<br><br>");
+        }
+
+
+
+        // 13.Validate a password length using an if statement.
+        document.write("<b> 13.Validate a password length using an if statement.</b><br><br>");
+        let password = "hello123";
+        if (password.length >= 8) {
+            document.write("Password is valid<br><br>");
+        } else {
+            document.write("Password is too short");
+        }
+
+
+        // 14.Check if a number is divisible by 3 and 5.
+        document.write("<b> 14.Check if a number is divisible by 3 and 5.</b><br><br>");
+        let numb = 30;
+        if (numb % 3 === 0 && numb % 5 === 0) {
+            document.write(numb + " is divisible by both 3 and 5<br><br>");
+        } else {
+            document.write(numb + " is NOT divisible by both<br><br>");
+        }
+
+
+        // 15.Use nested if to check if a student passed and scored distinction (marks > 75).
+        document.write("<b> 15.Use nested if to check if a student passed and scored distinction (marks > 75).</b><br><br>");
+        let mark = 80;
+        if (mark >= 35) {
+            if (mark > 75) {
+                document.write("Passed with Distinction");
+            } else {
+                document.write("Passed");
+            }
+        } else {
+            document.write("Failed");
+        }
+
+
+    </script>
+
+</body>
+</html>

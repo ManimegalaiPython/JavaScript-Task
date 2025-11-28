@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2-(Task-1 to 15)</title>
+</head>
+
+<body>
+    <script>
+        //Task-1-Calculate Total price of 3 product
+        let p1 = 10, p2 = 20, p3 = 30;
+        let totalprice = p1 + p2 + p3;
+        document.write(totalprice + "<br><br><br>");
+
+
+        //Task-2:Create a script that checks if a number is even or odd using the modulus operator.
+
+        let num = 25;
+        if (num % 2 === 0) {
+            document.write(num + "  Is Even<br>");
+        }
+        else {
+            document.write(num + "  Is Odd<br><br>");
+        }
+
+
+        // 3. Print 1 to 10
+        document.write("3. Numbers 1 to 10: <br><br>");
+        for (let i = 1; i <= 10; i++) {
+            document.write(i + " ");
+        }
+        document.write("<br><br>");
+
+
+        // 4. Vote eligibility
+        let age = 18;
+        document.write("4. Can Vote: " + (age >= 18) + "<br><br>");
+
+        // 5. Compare strings
+        let a = "hello";
+        let b = "hello";
+
+        document.write("a == b : " + (a == b) + "<br>");
+        document.write("a === b : " + (a === b) + "<br><br>");
+
+        //6.login
+        let email = "user@gmail.com";
+        let password = "12345";
+
+        if (email === "user@gmail.com" && password === "12345") {
+            document.write("Login Successful <br><br>");
+        } else {
+            document.write("Invalid Email or Password<br><br>");
+        }
+
+        //7.Wallet Balance
+        let wallet = 100; // starting balance
+
+        wallet += 50;  // add money
+        wallet -= 20;  // spend money
+        wallet *= 2;   // double the money
+        wallet /= 4;   // divide the money
+
+        document.write("Final Wallet Balance: " + wallet);
+
+        //8.Ternary Operator
+        let stock = 5; // product quantity
+
+        let message = (stock > 0) ? "<br><br>Product Available" : "Out of Stock";
+
+        document.write(message);
+
+        //9.compare two number
+        let A = 10;
+        let B = 5;
+
+        if (A > B) {
+            document.write("<br><br>A is greater than B");
+        } else {
+            document.write("<br><br>B is greater or equal to A");
+        }
+
+        //10.Write a JavaScript program to apply discounts if a cart total exceeds $50.
+
+        let cartTotal = 60;  // example amount
+        let discount = 0;
+
+        if (cartTotal > 50) {
+            discount = 10; // $10 discount
+        }
+
+        let finalAmount = cartTotal - discount;
+
+        document.write("<br><br>Cart Total: $" + cartTotal + "<br>");
+        document.write("Discount: $" + discount + "<br>");
+        document.write("Final Amount: $" + finalAmount);
+
+        //11.Use || to allow login using email or phone number.
+        var userEmail = "user@gmail.com";
+        var userPhone = "9876543210";
+
+        if (userEmail === "user@gmail.com" || userPhone === "9876543210") {
+            document.write("<br><br>Login Successful");
+        } else {
+            document.write("Login Failed");
+        }
+
+        //12.Buy One Get One Offer
+        let quantity = 1;
+        let offer = true;
+
+        if (quantity >= 1 && offer === true) {
+            document.write("<br><br>You get 1 item free<br><br>");
+        } else {
+            document.write("No offer available");
+        }
+
+
+        //13.leap Year
+        let year = 2024;
+
+        if (year % 4 === 0) {
+            document.write(year + " is a Leap Year");
+        } else {
+            document.write(year + " is NOT a Leap Year");
+        }
+
+
+        //14.Area Of Reactangle
+         let length = 10;
+    let width = 5;
+
+    let area = length * width;  // arithmetic operator *
+
+    document.write("Area of Rectangle: " + area);
+
+        //15.Check if a year is a leap year using logical and comparison operators.
+        let leapyear = 2024;
+        if (leapyear % 4 === 0 && leapyear % 100 !== 0) {
+            document.write("<br><br>Leap Year");
+        } else {
+            document.write("Not a Leap Year");
+        }
+    </script>
+</body>
+
+</html>
