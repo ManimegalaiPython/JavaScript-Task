@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All JavaScript Tasks</title>
+</head>
+<body>
+
+<script>
+
+// 1. Print Hello World
+document.write("<h3>Task 1: Print Hello World</h3>");
+function sayHello() {
+    document.write("Hello, World!<br><br>");
+}
+sayHello();
+
+// 2. Cube of a number
+document.write("<h3>Task 2: Cube of a Number</h3>");
+function cube(num) {
+    return num * num * num;
+}
+document.write("Cube of 3 = " + cube(3) + "<br><br>");
+
+// 3. Check Even or Odd
+document.write("<h3>Task 3: Check Even or Odd</h3>");
+function checkEvenOdd(num) {
+    return num % 2 === 0 ? "Even" : "Odd";
+}
+document.write("7 is " + checkEvenOdd(7) + "<br><br>");
+
+// 4. Factorial
+document.write("<h3>Task 4: Factorial of a Number</h3>");
+function factorial(n) {
+    let f = 1;
+    for (let i = 1; i <= n; i++) {
+        f *= i;
+    }
+    return f;
+}
+document.write("Factorial of 5 = " + factorial(5) + "<br><br>");
+
+// 5. Sum of two numbers
+document.write("<h3>Task 5: Sum of Two Numbers</h3>");
+function sum(a, b) {
+    return a + b;
+}
+document.write("Sum (5, 6) = " + sum(5, 6) + "<br><br>");
+
+// 6. Largest of three numbers
+document.write("<h3>Task 6: Largest of Three Numbers</h3>");
+function largest(a, b, c) {
+    return Math.max(a, b, c);
+}
+document.write("Largest (4, 9, 2) = " + largest(4, 9, 2) + "<br><br>");
+
+// 7. Palindrome check
+document.write("<h3>Task 7: Palindrome Check (String)</h3>");
+function isPalindrome(str) {
+    return str === str.split("").reverse().join("");
+}
+document.write("'madam' Palindrome? " + isPalindrome("madam") + "<br><br>");
+
+// 8. Celsius to Fahrenheit
+document.write("<h3>Task 8: Celsius to Fahrenheit</h3>");
+function cToF(c) {
+    return (c * 9/5) + 32;
+}
+document.write("30°C = " + cToF(30) + "°F<br><br>");
+
+// 9. Simple Interest
+document.write("<h3>Task 9: Simple Interest</h3>");
+function simpleInterest(p, r, t) {
+    return (p * r * t) / 100;
+}
+document.write("Simple Interest (1000,5,2) = " + simpleInterest(1000, 5, 2) + "<br><br>");
+
+// 10. Reverse an array
+document.write("<h3>Task 10: Reverse an Array</h3>");
+function reverseArray(arr) {
+    return arr.reverse();
+}
+document.write("Reverse [1,2,3,4] = " + reverseArray([1,2,3,4]) + "<br><br>");
+
+// 11. Count vowels
+document.write("<h3>Task 11: Count Vowels in a String</h3>");
+function countVowels(str) {
+    let vowels = "aeiouAEIOU";
+    let count = 0;
+    for (let ch of str) {
+        if (vowels.includes(ch)) count++;
+    }
+    return count;
+}
+document.write("Vowels in 'education' = " + countVowels("education") + "<br><br>");
+
+// 12. Arrow function - double each number
+document.write("<h3>Task 12: Arrow Function to Double Array Numbers</h3>");
+const doubleNumbers = arr => arr.map(num => num * 2);
+document.write("Double [2,4,6] = " + doubleNumbers([2,4,6]) + "<br><br>");
+
+// 13. Callback function
+document.write("<h3>Task 13: Callback Function</h3>");
+function callCallback(callback) {
+    callback();
+}
+callCallback(() => document.write("Callback Function Called!<br><br>"));
+
+// 14. Maximum of three numbers
+document.write("<h3>Task 14: Maximum of Three Numbers</h3>");
+function maxOfThree(a, b, c) {
+    return Math.max(a, b, c);
+}
+document.write("Max of (10, 25, 7) = " + maxOfThree(10, 25, 7) + "<br><br>");
+
+// 15. Palindrome check (again)
+document.write("<h3>Task 15: Palindrome Check Again</h3>");
+function palindromeCheck(str) {
+    return str === str.split("").reverse().join("");
+}
+document.write("'level' Palindrome? " + palindromeCheck("level") + "<br><br>");
+
+// 16. Area of a circle
+document.write("<h3>Task 16: Area of a Circle</h3>");
+function circleArea(r) {
+    return Math.PI * r * r;
+}
+document.write("Area of circle radius 5 = " + circleArea(5) + "<br><br>");
+
+// 17. Capitalize first letter of each word
+document.write("<h3>Task 17: Capitalize First Letter of Each Word</h3>");
+function capitalizeWords(sentence) {
+    return sentence.split(" ")
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+}
+document.write(capitalizeWords("javascript is fun") + "<br><br>");
+
+// 18. Reverse a string
+document.write("<h3>Task 18: Reverse a String</h3>");
+function reverseString(str) {
+    return str.split("").reverse().join("");
+}
+document.write("Reverse of 'hello' = " + reverseString("hello") + "<br><br>");
+
+// 19. Count vowels & consonants
+document.write("<h3>Task 19: Count Vowels & Consonants</h3>");
+function countVC(str) {
+    let vowels = "aeiouAEIOU";
+    let v = 0, c = 0;
+
+    for (let ch of str) {
+        if (/[a-zA-Z]/.test(ch)) {
+            if (vowels.includes(ch)) v++;
+            else c++;
+        }
+    }
+    return { vowels: v, consonants: c };
+}
+let vc = countVC("hello world");
+document.write("Vowels: " + vc.vowels + ", Consonants: " + vc.consonants + "<br><br>");
+
+// 20. Prime number check
+document.write("<h3>Task 20: Check Prime Number</h3>");
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+document.write("Is 13 Prime? " + isPrime(13) + "<br><br>");
+
+</script>
+
+</body>
+</html>

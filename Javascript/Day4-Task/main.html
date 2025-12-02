@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Loops Output</title>
+</head>
+<body>
+
+<script>
+
+// 1. Print numbers from 1 to 10
+document.write("<h3>1. Numbers 1 to 10:</h3>");
+for (let i = 1; i <= 10; i++) {
+    document.write(i + " ");
+}
+
+
+// 2. Print even numbers from 2 to 20
+document.write("<h3>2. Even numbers 2 to 20:</h3>");
+for (let i = 2; i <= 20; i += 2) {
+    document.write(i + " ");
+}
+
+
+// 3. Print numbers from 10 to 1 using while loop
+document.write("<h3>3. Numbers 10 to 1:</h3>");
+let a = 10;
+while (a >= 1) {
+    document.write(a + " ");
+    a--;
+}
+
+
+// 4. Print Hello World 5 times (do-while)
+document.write("<h3>4. Hello World 5 times:</h3>");
+let b = 1;
+do {
+    document.write("Hello World! <br>");
+    b++;
+} while (b <= 5);
+
+
+// 5. Print array elements (for...of)
+document.write("<h3>5. Array elements:</h3>");
+let fruits = ["apple", "banana", "mango", "orange"];
+for (let item of fruits) {
+    document.write(item + "<br>");
+}
+
+
+// 6. Print object properties (for...in)
+document.write("<h3>6. Object properties:</h3>");
+let person = { name: "Mani", age: 20, city: "Chennai" };
+for (let key in person) {
+    document.write(key + " : " + person[key] + "<br>");
+}
+
+
+// 7. Sum numbers 1 to 10
+document.write("<h3>7. Sum of 1 to 10:</h3>");
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+    sum += i;
+}
+document.write("Sum = " + sum);
+
+
+// 8. First number > 50
+document.write("<h3>8. First number greater than 50:</h3>");
+let nums = [12, 25, 48, 51, 66];
+for (let n of nums) {
+    if (n > 50) {
+        document.write(n);
+        break;
+    }
+}
+
+
+// 9. Skip numbers divisible by 3
+document.write("<h3>9. Numbers 1–20 skipping divisible by 3:</h3>");
+for (let i = 1; i <= 20; i++) {
+    if (i % 3 === 0) continue;
+    document.write(i + " ");
+}
+
+
+// 10. Multiplication table of 5
+document.write("<h3>10. Multiplication Table of 5:</h3>");
+for (let i = 1; i <= 10; i++) {
+    document.write(`5 x ${i} = ${5 * i} <br>`);
+}
+
+
+// 11. Reverse a string
+document.write("<h3>11. Reverse a string:</h3>");
+let str = "javascript";
+let reversed = "";
+for (let i = str.length - 1; i >= 0; i--) {
+    reversed += str[i];
+}
+document.write("Original: " + str + "<br>");
+document.write("Reversed: " + reversed);
+
+
+// 12. Count vowels in a string
+document.write("<h3>12. Count vowels:</h3>");
+let text = "Hello JavaScript World";
+let vowels = "aeiouAEIOU";
+let count = 0;
+for (let ch of text) {
+    if (vowels.includes(ch)) {
+        count++;
+    }
+}
+document.write(`String: ${text}<br>Vowels: ${count}`);
+
+
+// 13. Largest number in an array
+document.write("<h3>13. Largest number in array:</h3>");
+let arr = [10, 55, 22, 90, 45];
+let max = arr[0];
+for (let n of arr) {
+    if (n > max) max = n;
+}
+document.write("Largest = " + max);
+
+
+// 14. Odd numbers 1–50
+document.write("<h3>14. Odd numbers 1–50:</h3>");
+for (let i = 1; i <= 50; i++) {
+    if (i % 2 !== 0) document.write(i + " ");
+}
+
+
+// 15. Sum of even numbers 1–100
+document.write("<h3>15. Sum of even numbers 1–100:</h3>");
+let total = 0;
+for (let i = 2; i <= 100; i += 2) {
+    total += i;
+}
+document.write("Sum = " + total);
+
+</script>
+
+</body>
+</html>
