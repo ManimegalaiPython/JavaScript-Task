@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tasks</title>
+</head>
+<body>
+<script>
+
+// 1. Create an array of 5 student names
+document.write("<h3>Task 1: Create an array of 5 student names</h3>");
+let students=["Mani","Ananya","Neha","Praveen","poovi"];
+document.write(students + "<br><br>")
+
+
+// 2. Add a new student name using push()
+document.write("<h3>Task 2: Add a new student using push()</h3>");
+let stud=["Mani","Ananya","Neha","Praveen","poovi"];
+stud.push("Pavi");
+document.write(stud + "<br><br>");
+
+
+// 3. Remove the last student using pop()
+document.write("<h3>Task 3: Remove last student using pop()</h3>");
+let stud1=["Mani","Ananya","Neha","Praveen","poovi"];
+stud1.pop();
+document.write(stud1 + "<br><br>");
+
+
+
+// 4. map() → convert all names to uppercase
+document.write("<h3>Task 4: Convert names to uppercase using map()</h3>");
+let stud2=["Mani","Ananya","Neha","Praveen","Poovi"];
+let upperNames = stud2.map(n => n.toUpperCase());
+document.write(upperNames + "<br><br>");
+
+
+// 5. filter() → names starting with A
+document.write("<h3>Task 5: Filter names starting with 'A'</h3>");
+let stud3=["Mani","Ananya","Neha","Praveen","Poovi"];
+let startA=stud3.filter(n=>n.startsWith("A"));
+document.write(startA+ "<br><br>");
+
+
+// 6. forEach() → print each name
+document.write("<h3>Task 6: Print each student using forEach()</h3>");
+let stud4=["Mani","Ananya","Neha","Praveen","Poovi"]
+let std=stud4.forEach(function(n){
+    document.write(n + "<br>");
+});
+document.write("<br>");
+
+
+// 7. Create a book object
+document.write("<h3>Task 7: Create a book object</h3>");
+let book = { title: "JavaScript Basics",
+             author: "John Doe",
+             price: 450 };
+document.write("Title:"+ book.title + "<br><br>");
+document.write("author:"+ book.author + "<br><br>");
+document.write("price:"+ book.price + "<br><br>");
+
+
+// 8. Object.keys()
+document.write("<h3>Task 8: Object.keys()</h3>");
+let books = { title: "JavaScript Basics",
+             author: "John Doe",
+             price: 450 };
+document.write(Object.keys(books) + "<br><br>");
+
+// 9. Object.values()
+document.write("<h3>Task 9: Object.values()</h3>");
+let books1 = { title: "JavaScript Basics",
+             author: "John Doe",
+             price: 450 };
+document.write(Object.values(books) + "<br><br>");
+
+// 10. Add new property genre
+document.write("<h3>Task 10: Add genre property</h3>");
+let books2 = { title: "JavaScript Basics",
+             author: "John Doe",
+             price: 450 };
+books2.genre = "Programming";
+document.write("<b>After Adding Genre:</b><br>");
+document.write("Title: " + books2.title + "<br>");
+document.write("Author: " + books2.author + "<br>");
+document.write("Price: " + books2.price + "<br>");
+document.write("Genre: " + books2.genre + "<br>");
+
+
+// 11. Delete price
+document.write("<h3>Task 11: Delete price property</h3>");
+let books3 = { title: "JavaScript Basics",
+             author: "John Doe",
+             price: 450 };
+delete books3.price;
+document.write("Title: " + books3.title + "<br>");
+document.write("Author: " + books3.author + "<br>");
+document.write("Price: " + books3.price + "<br>"); 
+
+
+// 12. Merge publisher object
+document.write("<h3>Task 12: Merge publisher object</h3>");
+let book1 = {
+    title: "HTML Guide",
+    author: "Sara"
+};
+
+let publisher = {
+    company: "TechBooks",
+    location: "Chennai"
+};
+let mrgbook=Object.assign(book1, publisher);
+document.write(
+    "Title: " + mrgbook.title + "<br>" +
+    "Author: " + mrgbook.author + "<br>" +
+    "Company: " + mrgbook.company + "<br>" +
+    "Location: " + mrgbook.location + "<br><br>"
+);
+
+
+// 13. Convert book object to entries
+document.write("<h3>Task 13: Convert book to entries</h3>");
+
+let book5 = {
+    title: "JS Book",
+    author: "Alex"
+};
+
+let entries = Object.entries(book5);
+
+document.write(entries); 
+
+
+// 14. Odd numbers using filter()
+document.write("<h3>Task 14: Print odd numbers</h3>");
+let numbers = [10, 21, 33, 40, 55, 62, 77, 88, 91, 100];
+let oddNumbers = numbers.filter(n => n % 2 !== 0);
+document.write(oddNumbers + "<br><br>");
+
+
+// 15. Sort scores in descending order
+document.write("<h3>Task 15: Sort scores in descending order</h3>");
+let scores = [45, 78, 12, 99, 63, 54, 88];
+scores.sort((a, b) => b - a);
+document.write(scores + "<br><br>");
+
+</script>
+</body>
+</html>
