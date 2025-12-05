@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task</title>
+</head>
+
+<body>
+    <script>
+        ///uppercase
+        document.write("<h3>1.Convert javascript to uppercase.</h3>");
+        let text = "javascript";
+        let upper = text.toUpperCase();
+        document.write(upper);
+
+        //lowecase
+        document.write("<h3>2.Convert HELLO WORLD to lowercase.</h3>");
+        let text1 = "HELLO WORLD";
+        let lower = text1.toLowerCase();
+        document.write(lower);
+
+        //Extracting a sentence from a paragraph → take a part.
+        document.write("<h3>3.Extract Script from JavaScript using slice </h3>");
+        let text2 = "JavaScript";
+        let part = text2.slice(4);
+        document.write(part);
+
+        //replacing the word
+        document.write("<h3>4.Replace bad  with good in This is a bad day</h3>");
+        let sentence = "This is a bad day";
+        let change = sentence.replace("bad", "good");
+        document.write(change);
+
+        //checking words
+        document.write("<h3>5.Check if Coding is present in I love Coding!</h3>");
+        let text3 = " I Love Coding";
+        let check = text3.includes("Coding");
+        document.write(check);
+
+        //position finding
+        document.write("<h3>6.Find the position of world in Hello world!</h3>");
+        let text4 = "Hello World";
+        let pos = text4.indexOf("world");
+        document.write(pos);
+
+        //remove spaces
+        document.write("<h3>7.Remove spaces from  Trim me </h3>");
+        let text5 = "Trim me";
+        let space = text5.replaceAll(" ", "");
+        document.write(space);
+
+
+        //count words
+        document.write("<h3>8.Count the number of characters in Programming</h3>"); 4
+        let word = "programming";
+        let count = word.length;
+        document.write(count);
+
+        //checking startwith
+        document.write("<h3>9.Check if apple starts with a</h3>");
+        let fruit = "apple";
+        let chck = fruit.startsWith("a");
+        document.write(chck);
+
+        //splitting
+        document.write("<h3>10.Split banana,apple,orange into an array</h3>");
+        let fruits = "banana,apple,orange";
+        let arr = fruits.split();
+        document.write(arr);
+        console.log(arr);
+
+        //repeating
+        document.write("<h3>11.Repeat JS  three times</h3>");
+        let text6 = "JS";
+        let result = text6.repeat("3");
+        document.write(result);
+
+        //concatenate
+        document.write("<h3>12.Concatenate Web and Development</h3>");
+        let a = "Web";
+        let b = "Developement";
+        let c = (a + b);
+        document.write(c);
+
+        //validate
+        document.write("<h3>13.Validate if user123 has at least 5 characters</h3>");
+
+        let username = "user123"
+        document.write(username.length >= 5);
+
+        //startswith
+        document.write("<h3>14.Check if a string starts with a specific substring using .startsWith()</h3>");
+        let word1 = "JavaScript";
+        document.write(word1.startsWith("Java"));
+
+
+        //starswith
+        document.write("<h3>15.Check if a string starts with a specific substring using .endsWith()</h3>");
+        let word2 = "JavaScript";
+        document.write(word2.endsWith("pt"));
+
+        //checking words
+        document.write("<h3>16.Check if Coding is present in I love Coding!</h3>");
+        let text7 = " I Love Coding";
+        let check1 = text7.includes("Coding");
+        document.write(check);
+
+        //initial task
+        document.write("<h3>17.Convert a full name to initials (e.g., John Doe→ J.D)</h3>");
+
+        let name = "Manimegalai Praveen";
+        let parts = name.split(" ");// split name into separate words
+        let initials = parts[0][0] + "." + parts[1][0] + ".";// take first letter from each word
+        document.write(initials);// print result
+
+
+        // 18. Count how many times a letter appears in a string
+        document.write("<h3>18.Count how many times a letter appears in a string</h3>");
+        let sentence1 = "Learning JavaScript is fun";
+        let letter1 = "i";
+        let count1 = 0;
+        for (let ch of sentence1) {
+            if (ch === letter1) count1++;
+        }
+        document.write("Letter '" + letter1 + "' appears " + count1 + " times.<br>");
+
+
+        // 19. Find the longest word in the sentence
+        document.write("<h3>19.Find the longest word in the sentence</h3>");
+        let words1 = sentence1.split(" ");
+        let longest = "";
+        for (let w of words1) {
+            if (w.length > longest.length) longest = w;
+        }
+        document.write("Longest word: " + longest + "<br>");
+
+
+        // 20. Capitalize the first letter of each word
+        document.write("<h3>20.Capitalize the first letter of each word in the sentence</h3>");
+        let capitalized = words1.map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+        document.write("Capitalized: " + capitalized + "<br>");
+
+
+    </script>
+</body>
+</html>
