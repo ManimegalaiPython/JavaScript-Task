@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 JavaScript Event Tasks</title>
+</head>
+<body>
+
+<!-- Task 1 -->
+<h2>1. Change the text of a button when clicked.</h2>
+<button id="btn1" onclick="changeButtonText()">Click Me</button>
+
+<!-- Task 2 -->
+<h2>2. Show an alert when the mouse enters a specific area.</h2>
+<div id="alertBox" style="width:200px;height:80px;background:lightblue;">Hover me</div>
+
+<!-- Task 3 -->
+<h2>3. Detect when the user presses the "Enter" key.</h2>
+<input type="text" id="enterKey" placeholder="Press Enter">
+
+<!-- Task 4 -->
+<h2>4. Change background color when button is clicked.</h2>
+<button onclick="changeBG()">Change Background</button>
+
+<!-- Task 5 -->
+<h2>5. Toggle password field between text and password.</h2>
+<input type="password" id="pwd">
+<button onclick="togglePwd()">Show / Hide</button>
+
+<!-- Task 6 -->
+<h2>6. Display mouse coordinates when moved.</h2>
+<p id="coords">Move your mouse...</p>
+
+<!-- Task 7 -->
+<h2>7. Prevent form submission.</h2>
+<form id="myForm">
+    <input type="text" placeholder="Name">
+    <button>Submit</button>
+</form>
+
+<!-- Task 8 -->
+<h2>8. Count button clicks.</h2>
+<button onclick="countClicks()">Click Me</button>
+<p id="clickCount">0</p>
+
+<!-- Task 9 -->
+<h2>9. Button disappears when clicked.</h2>
+<button id="hideBtn" onclick="hideMe()">Disappear</button>
+
+<!-- Task 10 -->
+<h2>10. Toggle element visibility.</h2>
+<button onclick="toggleElement()">Toggle Text</button>
+<p id="togglePara">I may hide or show</p>
+
+<!-- Task 11 -->
+<h2>11. Play a sound when button is clicked.</h2>
+<!-- Button -->
+<button id="playButton">Play Sound</button>
+<!-- Audio (You can use any mp3 or wav file) -->
+<audio id="myAudio" src="click-sound.mp3"></audio>
+
+<!-- Task 12 -->
+<h2>12. Show loading animation when page loads.</h2>
+<div id="loader" style="display:none;">⏳ Loading...</div>
+
+<!-- Task 13 -->
+<h2>13. Change image when button clicked.</h2>
+<img id="img" src="https://via.placeholder.com/150" width="150">
+<button onclick="changeImage()">Change Image</button>
+
+<!-- Task 14 -->
+<h2>14. Double-click to change background color.</h2>
+<button ondblclick="doubleClickBG()">Double Click Me</button>
+
+<!-- Task 15 -->
+<h2>15. Detect Enter key in input field.</h2>
+<input type="text" id="enterDetect" placeholder="Press Enter here">
+
+<!-- Task 16 -->
+<h2>16. Message when mouse enters and leaves box.</h2>
+<div id="hoverBox" style="width:200px;height:80px;background:lightpink;"></div>
+<p id="hoverMsg"></p>
+
+<!-- Task 17 -->
+<h2>17. Keylogger (prints keys pressed).</h2>
+<p id="keylog"></p>
+
+<!-- Task 18 -->
+<h2>18. Alert on right-click.</h2>
+<p>Right-click anywhere on the page.</p>
+
+<!-- Task 19 -->
+<h2>19. Disable form submission using preventDefault.</h2>
+<form id="noSubmitForm">
+    <input type="text" placeholder="Type something">
+    <button>Submit</button>
+</form>
+
+<!-- Task 20 -->
+<h2>20. Validate input when field loses focus (blur).</h2>
+<input type="text" id="blurInput" placeholder="Enter at least 3 letters">
+<p id="blurMsg"></p>
+
+
+<script>
+
+// Task 1
+function changeButtonText() {
+    document.getElementById("btn1").innerText = "Clicked!";
+}
+
+// Task 2
+document.getElementById("alertBox").onmouseenter = function () {
+    alert("Mouse entered!");
+}
+
+// Task 3
+document.getElementById("enterKey").addEventListener("keydown", function(e){
+    if (e.key === "Enter") {
+        alert("Enter Key Pressed!");
+    }
+});
+
+// Task 4
+function changeBG() {
+    document.body.style.background = "lightyellow";
+}
+
+// Task 5
+function togglePwd() {
+    let pwd = document.getElementById("pwd");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+}
+
+// Task 6
+document.onmousemove = function (e) {
+    document.getElementById("coords").innerText =
+        "X: " + e.clientX + " Y: " + e.clientY;
+};
+
+// Task 7
+document.getElementById("myForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Form submission prevented!");
+});
+
+// Task 8
+let count = 0;
+function countClicks() {
+    count++;
+    document.getElementById("clickCount").innerText = count;
+}
+
+// Task 9
+function hideMe() {
+    document.getElementById("hideBtn").style.display = "none";
+}
+
+// Task 10
+function toggleElement() {
+    let el = document.getElementById("togglePara");
+    el.style.display = (el.style.display === "none") ? "block" : "none";
+}
+
+// Task 11
+const button = document.getElementById('playButton');
+  const audio = document.getElementById('myAudio');
+
+  // Add click event to play the sound
+  button.addEventListener('click', () => {
+    audio.play();
+  });
+
+// Task 12
+window.onload = function() {
+    document.write("⏳ Loading...");
+    setTimeout(() => {
+        document.write("<br>Page Loaded!");
+    }, 1500);
+};
+
+// Task 13
+function changeImage() {
+    document.getElementById("img").src =
+        "images.jpg";
+}
+
+// Task 14
+function doubleClickBG() {
+    document.body.style.background = "lightgreen";
+}
+
+// Task 15
+document.getElementById("enterDetect").addEventListener("keyup", function(e){
+    if (e.key === "Enter") {
+        alert("Enter detected in second input!");
+    }
+});
+
+// Task 16
+let box = document.getElementById("hoverBox");
+box.onmouseenter = () => document.getElementById("hoverMsg").innerText = "Mouse Entered Box";
+box.onmouseleave = () => document.getElementById("hoverMsg").innerText = "Mouse Left Box";
+
+// Task 17
+document.addEventListener("keydown", function(e) {
+    const log = document.getElementById("keylog");
+    log.innerText += e.key + " ";
+});
+
+
+// Task 18
+document.oncontextmenu = function(e){
+    e.preventDefault();
+    alert("Right-click detected!");
+};
+
+// Task 19
+document.getElementById("noSubmitForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Form disabled!");
+});
+
+// Task 20
+document.getElementById("blurInput").onblur = function(){
+    let value = this.value;
+    if (value.length < 3) {
+        document.getElementById("blurMsg").innerText = "Must be at least 3 characters!";
+        document.getElementById("blurMsg").style.color = "red";
+    } else {
+        document.getElementById("blurMsg").innerText = "Valid input!";
+        document.getElementById("blurMsg").style.color = "green";
+    }
+}
+
+</script>
+
+</body>
+</html>
