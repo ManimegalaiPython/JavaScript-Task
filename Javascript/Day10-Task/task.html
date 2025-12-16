@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Tasks with Output</title>
+</head>
+<body>
+
+<script>
+document.write("<h2>JavaScript Array & Object Tasks</h2>");
+
+/* ---------------- TASK 1 ---------------- */
+document.write("<h3>Task 1: Create an array of employees</h3>");
+let employees = [
+  { name: "Arun", age: 25, position: "Developer" },
+  { name: "Priya", age: 22, position: "Designer" },
+  { name: "Ravi", age: 28, position: "Manager" }
+];
+document.write(JSON.stringify(employees), "<br><br>");
+
+/* ---------------- TASK 2 ---------------- */
+document.write("<h3>Task 2: Display list of products</h3>");
+let products = [
+  { name: "Laptop", price: 50000, stock: 5 },
+  { name: "Mobile", price: 20000, stock: 10 },
+  { name: "Tablet", price: 15000, stock: 3 }
+];
+document.write(JSON.stringify(products), "<br><br>");
+
+/* ---------------- TASK 3 ---------------- */
+document.write("<h3>Task 3: Sort employees by age (Ascending)</h3>");
+let sortedEmployees = [...employees].sort((a, b) => a.age - b.age);
+document.write(JSON.stringify(sortedEmployees), "<br><br>");
+
+/* ---------------- TASK 4 ---------------- */
+document.write("<h3>Task 4: Filter students with Grade A</h3>");
+let students = [
+  { name: "Kiran", grade: "A" },
+  { name: "Meena", grade: "B" },
+  { name: "Suresh", grade: "A" }
+];
+let gradeAStudents = students.filter(s => s.grade === "A");
+document.write(JSON.stringify(gradeAStudents), "<br><br>");
+
+/* ---------------- TASK 5 ---------------- */
+document.write("<h3>Task 5: Find a product by name</h3>");
+let foundProduct = products.find(p => p.name === "Mobile");
+document.write(JSON.stringify(foundProduct), "<br><br>");
+
+/* ---------------- TASK 6 ---------------- */
+document.write("<h3>Task 6: Convert array of objects to array of names</h3>");
+let employeeNames = employees.map(emp => emp.name);
+document.write(employeeNames, "<br><br>");
+
+/* ---------------- TASK 7 ---------------- */
+document.write("<h3>Task 7: Modify an object inside an array</h3>");
+employees[0].position = "Senior Developer";
+document.write(JSON.stringify(employees), "<br><br>");
+
+/* ---------------- TASK 8 ---------------- */
+document.write("<h3>Task 8: Count objects meeting a condition</h3>");
+let stockCount = products.filter(p => p.stock > 5).length;
+document.write("Products with stock > 5: " + stockCount, "<br><br>");
+
+/* ---------------- TASK 9 ---------------- */
+document.write("<h3>Task 9: Search function to find objects</h3>");
+function searchEmployee(name) {
+  return employees.find(e => e.name === name);
+}
+document.write(JSON.stringify(searchEmployee("Priya")), "<br><br>");
+
+/* ---------------- TASK 10 ---------------- */
+document.write("<h3>Task 10: Group objects by property</h3>");
+let groupedByGrade = students.reduce((group, student) => {
+  group[student.grade] = group[student.grade] || [];
+  group[student.grade].push(student);
+  return group;
+}, {});
+document.write(JSON.stringify(groupedByGrade), "<br><br>");
+
+/* ---------------- TASK 11 ---------------- */
+document.write("<h3>Task 11: Remove object by property</h3>");
+let filteredProducts = products.filter(p => p.name !== "Tablet");
+document.write(JSON.stringify(filteredProducts), "<br><br>");
+
+/* ---------------- TASK 12 ---------------- */
+document.write("<h3>Task 12: Add new object dynamically</h3>");
+products.push({ name: "Headphones", price: 3000, stock: 8 });
+document.write(JSON.stringify(products), "<br><br>");
+
+/* ---------------- TASK 13 ---------------- */
+document.write("<h3>Task 13: Merge two arrays of objects</h3>");
+let moreProducts = [
+  { name: "Mouse", price: 800, stock: 15 }
+];
+let mergedProducts = products.concat(moreProducts);
+document.write(JSON.stringify(mergedProducts), "<br><br>");
+
+/* ---------------- TASK 14 ---------------- */
+document.write("<h3>Task 14: Clone array of objects</h3>");
+let clonedEmployees = JSON.parse(JSON.stringify(employees));
+document.write(JSON.stringify(clonedEmployees), "<br><br>");
+
+/* ---------------- TASK 15 ---------------- */
+document.write("<h3>Task 15: Calculate total stock</h3>");
+function totalStock(items) {
+  return items.reduce((sum, item) => sum + item.stock, 0);
+}
+document.write("Total Stock: " + totalStock(products));
+
+</script>
+
+</body>
+</html>
