@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript – 35 Tasks One Program</title>
+</head>
+<body>
+
+<script>
+document.write("<h1>JavaScript – 35 Tasks (One Program)</h1><hr>");
+
+/* 1 */
+document.write("<h2>1. Add Two Numbers</h2>");
+function add(a, b) {
+    return a + b;
+}
+document.write(add(5, 3));
+
+/* 2 */
+document.write("<h2>2. Check Positive, Negative or Zero</h2>");
+let n = -5;
+if (n > 0) document.write("Positive");
+else if (n < 0) document.write("Negative");
+else document.write("Zero");
+
+/* 3 */
+document.write("<h2>3. Print 1 to 10 using for loop</h2>");
+for (let i = 1; i <= 10; i++) document.write(i + " ");
+
+/* 4 */
+document.write("<h2>4. Countdown using while loop</h2>");
+let i = 5;
+while (i >= 1) {
+    document.write(i + " ");
+    i--;
+}
+
+/* 5 */
+document.write("<h2>5. Car Object</h2>");
+let car = { model: "Swift", year: 2022, color: "Red" };
+document.write(car.model + " " + car.year + " " + car.color);
+
+/* 6 */
+document.write("<h2>6. Add and Remove Array Elements</h2>");
+let fruits = ["Apple", "Banana"];
+fruits.push("Orange");
+fruits.pop();
+document.write(fruits);
+
+/* 7 */
+document.write("<h2>7. Check Prime Number</h2>");
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+document.write(isPrime(7));
+
+/* 8 */
+document.write("<h2>8. Factorial of Number</h2>");
+function factorial(n) {
+    let f = 1;
+    for (let i = 1; i <= n; i++) f *= i;
+    return f;
+}
+document.write(factorial(5));
+
+/* 9 */
+document.write("<h2>9. Largest Number in Array</h2>");
+document.write(Math.max(2, 9, 4));
+
+/* 10 */
+document.write("<h2>10. Nested Object</h2>");
+let student = { name: "Mani", address: { city: "Chennai" } };
+document.write(student.address.city);
+
+/* 11 */
+document.write("<h2>11. Day of Week using Switch</h2>");
+let day = 3;
+switch (day) {
+    case 1: document.write("Monday"); break;
+    case 2: document.write("Tuesday"); break;
+    case 3: document.write("Wednesday"); break;
+    default: document.write("Invalid");
+}
+
+/* 12 */
+document.write("<h2>12. Dice Roll</h2>");
+document.write(Math.floor(Math.random() * 6) + 1);
+
+/* 13 */
+document.write("<h2>13. Reverse a String</h2>");
+document.write("Hello".split("").reverse().join(""));
+
+/* 14 */
+document.write("<h2>14. Increment and Decrement</h2>");
+let x = 5;
+x++; x--;
+document.write(x);
+
+/* 15 */
+document.write("<h2>15. Swap Two Numbers</h2>");
+let a = 10, b = 20, temp;
+temp = a; a = b; b = temp;
+document.write(a + " " + b);
+
+/* 16 */
+document.write("<h2>16. Largest of Three Numbers</h2>");
+let p = 5, q = 9, r = 3;
+document.write(p > q && p > r ? p : (q > r ? q : r));
+
+/* 17 */
+document.write("<h2>17. Calculator using if-else</h2>");
+let op = "+", n1 = 4, n2 = 2;
+if (op == "+") document.write(n1 + n2);
+
+/* 18 */
+document.write("<h2>18. Even or Odd</h2>");
+document.write(7 % 2 == 0 ? "Even" : "Odd");
+
+/* 19 */
+document.write("<h2>19. Voting Eligibility</h2>");
+document.write(20 >= 18 ? "Eligible" : "Not Eligible");
+
+/* 20 */
+document.write("<h2>20. Difference between == and ===</h2>");
+document.write((5 == "5") + " , " + (5 === "5"));
+
+/* 21 */
+document.write("<h2>21. Divisible by 3 and 5</h2>");
+document.write(15 % 3 == 0 && 15 % 5 == 0);
+
+/* 22 */
+document.write("<h2>22. Assignment Operators</h2>");
+let val = 10;
+val += 5; val -= 3;
+document.write(val);
+
+/* 23 */
+document.write("<h2>23. Square and Cube</h2>");
+document.write(3**2 + " " + 3**3);
+
+/* 24 */
+document.write("<h2>24. Century Year</h2>");
+document.write(2000 % 400 == 0);
+
+/* 25 */
+document.write("<h2>25. Vowel or Consonant</h2>");
+document.write("aeiou".includes("a") ? "Vowel" : "Consonant");
+
+/* 26 */
+document.write("<h2>26. Multiple of 10</h2>");
+document.write(40 % 10 == 0);
+
+/* 27 */
+document.write("<h2>27. Greater of Two Numbers</h2>");
+document.write(8 > 5 ? 8 : 5);
+
+/* 28 */
+document.write("<h2>28. Calculator using Switch</h2>");
+switch ("*") { case "*": document.write(4 * 5); }
+
+/* 29 */
+document.write("<h2>29. Negative or Not</h2>");
+document.write(-2 < 0 ? "Negative" : "Not Negative");
+
+/* 30 */
+document.write("<h2>30. Age Category</h2>");
+let ag = 25;
+document.write(ag < 13 ? "Child" : ag <= 19 ? "Teen" : ag <= 59 ? "Adult" : "Senior");
+
+/* 31 */
+document.write("<h2>31. Empty String Check</h2>");
+document.write("" === "" ? "Empty" : "Not Empty");
+
+/* 32 */
+document.write("<h2>32. Days in Month</h2>");
+switch ("February") { case "February": document.write("28 Days"); }
+
+/* 33 */
+document.write("<h2>33. Valid Triangle</h2>");
+document.write(60 + 60 + 60 == 180);
+
+/* 34 */
+document.write("<h2>34. First 10 Multiples of 3</h2>");
+for (let i = 1; i <= 10; i++) document.write(3 * i + " ");
+
+/* 35 */
+document.write("<h2>35. Countdown Timer</h2>");
+let t = 10;
+while (t >= 1) { document.write(t + " "); t--; }
+
+</script>
+
+</body>
+</html>
