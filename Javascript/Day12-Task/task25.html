@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-25</title>
+</head>
+<body>
+
+<h2>Task-25: Fetch GitHub users</h2>
+
+<div id="users"></div>
+
+<script>
+fetch("https://api.github.com/users?per_page=5")
+.then(res => res.json())
+.then(data => {
+    data.forEach(user => {
+        document.getElementById("users").innerHTML += 
+        user.login + " - <a href='" + user.html_url + "' target='_blank'>Profile</a><br>";
+    });
+});
+</script>
+
+</body>
+</html>

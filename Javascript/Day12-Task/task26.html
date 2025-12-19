@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-26</title>
+</head>
+<body>
+
+<h2>Task-26: Image gallery using Fetch API</h2>
+
+<div id="gallery"></div>
+
+<script>
+fetch("https://jsonplaceholder.typicode.com/photos?_limit=5")
+.then(res => res.json())
+.then(data => {
+    data.forEach(photo => {
+        document.getElementById("gallery").innerHTML += 
+        "<img src='" + photo.thumbnailUrl + "' alt='" + photo.title + "'><br>";
+    });
+});
+</script>
+
+</body>
+</html>

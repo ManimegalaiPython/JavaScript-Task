@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-32</title>
+</head>
+<body>
+
+<h2>Task-32: Search users using Fetch API</h2>
+
+<input type="text" id="search" placeholder="Enter name">
+<button id="btn">Search</button>
+<div id="output"></div>
+
+<script>
+document.getElementById("btn").addEventListener("click", () => {
+    let term = document.getElementById("search").value.toLowerCase();
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then(data => {
+        let filtered = data.filter(u => u.name.toLowerCase().includes(term));
+        document.getElementById("output").innerHTML = "";
+        filtered.forEach(u => {
+            document.getElementById("output").innerHTML += u.name + "<br>";
+        });
+    });
+});
+</script>
+
+</body>
+</html>

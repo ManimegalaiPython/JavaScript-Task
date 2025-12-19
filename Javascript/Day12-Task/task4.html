@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-4</title>
+</head>
+<body>
+
+<h2>Task-4: Store an array of objects in LocalStorage as JSON and retrieve it</h2>
+
+<div id="output"></div>
+
+<script>
+    var students = [
+        { name: "Mani", age: 21 },
+        { name: "Arun", age: 22 }
+    ];
+
+    localStorage.setItem("students", JSON.stringify(students));
+
+    var data = JSON.parse(localStorage.getItem("students"));
+
+    data.forEach(s => {
+        document.getElementById("output").innerHTML += s.name + " - " + s.age + "<br>";
+    });
+</script>
+
+</body>
+</html>

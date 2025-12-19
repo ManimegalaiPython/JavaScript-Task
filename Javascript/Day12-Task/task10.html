@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-10</title>
+</head>
+<body>
+
+<h2>Task-10: Add new object to JSON array</h2>
+
+<script>
+    var students = [
+        { name: "Mani", age: 21 },
+        { name: "Arun", age: 22 }
+    ];
+
+    function addStudent(name, age) {
+        students.push({ name: name, age: age });
+    }
+
+    addStudent("Riya", 20);
+
+    document.write(JSON.stringify(students));
+</script>
+
+</body>
+</html>

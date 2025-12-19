@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-8</title>
+</head>
+<body>
+
+<h2>Task-8: Sort an array of objects by age</h2>
+
+<script>
+    var students = [
+        { name: "Mani", age: 21 },
+        { name: "Arun", age: 22 },
+        { name: "Riya", age: 20 }
+    ];
+
+    students.sort((a,b) => a.age - b.age);
+
+    document.write(JSON.stringify(students));
+</script>
+
+</body>
+</html>

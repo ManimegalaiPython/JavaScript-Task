@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-28</title>
+</head>
+<body>
+
+<h2>Task-28: Fetch and display comments using AJAX</h2>
+
+<div id="comments"></div>
+
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open("GET","https://jsonplaceholder.typicode.com/comments?_limit=5",true);
+xhr.onload = function(){
+    var data = JSON.parse(this.response);
+    data.forEach(c=>{
+        document.getElementById("comments").innerHTML += c.name + " - " + c.body + "<br>";
+    });
+};
+xhr.send();
+</script>
+
+</body>
+</html>

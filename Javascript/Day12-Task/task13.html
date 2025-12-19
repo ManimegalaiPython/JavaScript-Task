@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-13</title>
+</head>
+<body>
+
+<h2>Task-13: Fetch data from API and handle errors</h2>
+
+<div id="output"></div>
+
+<script>
+    fetch("https://jsonplaceholder.typicode.com/userss") // wrong URL to test error
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML = JSON.stringify(data);
+    })
+    .catch(err => {
+        document.getElementById("output").innerHTML = "Error fetching data";
+        console.log(err);
+    });
+</script>
+
+</body>
+</html>

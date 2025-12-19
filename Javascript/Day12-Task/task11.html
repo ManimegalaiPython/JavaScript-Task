@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-11</title>
+</head>
+<body>
+
+<h2>Task-11: Remove a specific object from an array</h2>
+
+<script>
+    var students = [
+        { name: "Mani", age: 21 },
+        { name: "Arun", age: 22 },
+        { name: "Riya", age: 20 }
+    ];
+
+    // Remove student named "Arun"
+    students = students.filter(s => s.name !== "Arun");
+
+    document.write(JSON.stringify(students));
+</script>
+
+</body>
+</html>

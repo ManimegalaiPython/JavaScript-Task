@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-19</title>
+</head>
+<body>
+
+<h2>Task-19: Fetch weather for multiple cities</h2>
+
+<div id="output"></div>
+
+<script>
+var cities = ["London","Paris","New York"];
+cities.forEach(city => {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=0&longitude=0&current_weather=true`)
+    .then(res => res.json())
+    .then(data => {
+        // Simplified display
+        document.getElementById("output").innerHTML += city + " - Temp: " + (data.current_weather ? data.current_weather.temperature : "N/A") + "<br>";
+    });
+});
+</script>
+
+</body>
+</html>

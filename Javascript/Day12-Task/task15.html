@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-15</title>
+</head>
+<body>
+
+<h2>Task-15: Parse JSON array and log each object</h2>
+
+<script>
+    var json = '[{"name":"Mani","age":21},{"name":"Arun","age":22}]';
+    var arr = JSON.parse(json);
+
+    arr.forEach(obj => {
+        document.write("Name: " + obj.name + ", Age: " + obj.age + "<br>");
+    });
+</script>
+
+</body>
+</html>

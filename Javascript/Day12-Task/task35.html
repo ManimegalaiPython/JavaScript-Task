@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-35</title>
+</head>
+<body>
+
+<h2>Task-35: Show loading spinner while fetching data</h2>
+
+<div id="output">Loading...</div>
+
+<script>
+fetch("https://jsonplaceholder.typicode.com/users?_limit=5")
+.then(res => res.json())
+.then(data => {
+    let out = "";
+    data.forEach(u => { out += u.name + "<br>"; });
+    document.getElementById("output").innerHTML = out;
+})
+.catch(err => { document.getElementById("output").innerHTML = "Error fetching data"; });
+</script>
+
+</body>
+</html>

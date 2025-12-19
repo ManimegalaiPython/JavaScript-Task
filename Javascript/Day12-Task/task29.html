@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-29</title>
+</head>
+<body>
+
+<h2>Task-29: Fetch and display currency exchange rates</h2>
+
+<div id="rates">Loading rates...</div>
+
+<script>
+fetch("https://api.exchangerate.host/latest?base=USD")
+.then(res => res.json())
+.then(data => {
+    document.getElementById("rates").innerHTML = 
+        "EUR: " + data.rates.EUR + "<br>" +
+        "INR: " + data.rates.INR + "<br>" +
+        "GBP: " + data.rates.GBP;
+})
+.catch(err => {
+    console.error("Error fetching rates:", err);
+    document.getElementById("rates").innerHTML = "Failed to load rates.";
+});
+</script>
+
+</body>
+</html>

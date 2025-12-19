@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-34</title>
+</head>
+<body>
+
+<h2>Task-34: Fetch countries and populate dropdown</h2>
+
+<select id="countries"></select>
+
+<script>
+fetch("data2.json")
+.then(res => res.json())
+.then(data => {
+    let select = document.getElementById("countries");
+    data.forEach(c => {
+        let option = document.createElement("option");
+        option.text = c.name;
+        select.add(option);
+    });
+})
+.catch(err => {
+    console.log("Error fetching countries:", err);
+});
+</script>
+
+</body>
+</html>

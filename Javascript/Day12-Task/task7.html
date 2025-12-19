@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-7</title>
+</head>
+<body>
+
+<h2>Task-7: Filter JSON data to display only objects with age 21</h2>
+
+<script>
+    var students = [
+        { name: "Mani", age: 21 },
+        { name: "Arun", age: 22 },
+        { name: "Riya", age: 21 }
+    ];
+
+    var filtered = students.filter(s => s.age === 21);
+
+    document.write(JSON.stringify(filtered));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-31</title>
+</head>
+<body>
+
+<h2>Task-31: Handle API errors gracefully</h2>
+
+<div id="output"></div>
+
+<script>
+fetch("https://jsonplaceholder.typicode.com/userss") // wrong URL to cause error
+.then(res => res.json())
+.then(data => {
+    document.getElementById("output").innerHTML = JSON.stringify(data);
+})
+.catch(err => {
+    document.getElementById("output").innerHTML = "Error: Unable to fetch data";
+    console.log(err);
+});
+</script>
+
+</body>
+</html>

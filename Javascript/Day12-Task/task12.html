@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-12</title>
+</head>
+<body>
+
+<h2>Task-12: Fetch data and display in dropdown</h2>
+
+<select id="studentDropdown"></select>
+
+<script>
+    fetch("data1.json")
+    .then(res => res.json())
+    .then(data => {
+        var select = document.getElementById("studentDropdown");
+        data.forEach(item => {
+            var option = document.createElement("option");
+            option.text = item.name;
+            select.add(option);
+        });
+    });
+</script>
+
+</body>
+</html>

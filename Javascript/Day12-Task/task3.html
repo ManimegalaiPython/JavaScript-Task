@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-3 Fetch JSON</title>
+</head>
+<body>
+
+<h2>Task-3: Create a JSON file and fetch it using JavaScript</h2>
+
+<div id="output"></div>
+
+<script>
+    fetch("data.json")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+            "Name: " + data.name + "<br>" +
+            "Age: " + data.age + "<br>" +
+            "Course: " + data.course;
+    })
+    .catch(error => {
+        document.getElementById("output").innerHTML = "Error fetching JSON";
+        console.log(error);
+    });
+</script>
+
+</body>
+</html>

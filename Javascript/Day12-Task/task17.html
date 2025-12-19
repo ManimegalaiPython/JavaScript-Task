@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-17</title>
+</head>
+<body>
+
+<h2>Task-17: Store and retrieve JSON object in LocalStorage</h2>
+
+<div id="output"></div>
+
+<script>
+    var student = { name: "Mani", age: 21 };
+    localStorage.setItem("student", JSON.stringify(student));
+
+    var data = JSON.parse(localStorage.getItem("student"));
+
+    document.getElementById("output").innerHTML = data.name + " - " + data.age;
+</script>
+
+</body>
+</html>

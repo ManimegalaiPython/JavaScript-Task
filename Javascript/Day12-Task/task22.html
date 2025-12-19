@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-22</title>
+</head>
+<body>
+
+<h2>Task-22: Fetch posts and display in a list</h2>
+
+<ul id="posts"></ul>
+
+<script>
+fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
+.then(res => res.json())
+.then(data => {
+    data.forEach(post => {
+        let li = document.createElement("li");
+        li.textContent = post.title;
+        document.getElementById("posts").appendChild(li);
+    });
+});
+</script>
+
+</body>
+</html>
