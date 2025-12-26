@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+document.write("<h1>JavaScript Programs Tasks(1-50)</h1>");
+
+/* 1 */
+let num1 = -5;
+document.write("<b>1. Positive / Negative / Zero</b><br>");
+if (num1 > 0) {
+  document.write("Positive<br><br>");
+  console.log("Positive");
+} else if (num1 < 0) {
+  document.write("Negative<br><br>");
+  console.log("Negative");
+} else {
+  document.write("Zero<br><br>");
+  console.log("Zero");
+}
+
+/* 2 */
+let num2 = 6;
+document.write("<b>2. Even or Odd</b><br>");
+if (num2 % 2 == 0) {
+  document.write("Even<br><br>");
+  console.log("Even");
+} else {
+  document.write("Odd<br><br>");
+  console.log("Odd");
+}
+
+/* 3 */
+let age = 19;
+document.write("<b>3. Voting Eligibility</b><br>");
+if (age >= 18) {
+  document.write("Eligible<br><br>");
+  console.log("Eligible");
+} else {
+  document.write("Not Eligible<br><br>");
+  console.log("Not Eligible");
+}
+
+/* 4 */
+let a = 10, b = 20;
+document.write("<b>4. Greater Number</b><br>");
+if (a > b) {
+  document.write(a + " is greater<br><br>");
+  console.log(a + " is greater");
+} else {
+  document.write(b + " is greater<br><br>");
+  console.log(b + " is greater");
+}
+
+/* 5 */
+let year = 2024;
+document.write("<b>5. Leap Year</b><br>");
+if (year % 4 == 0) {
+  document.write("Leap Year<br><br>");
+  console.log("Leap Year");
+} else {
+  document.write("Not Leap Year<br><br>");
+  console.log("Not Leap Year");
+}
+
+/* 6 */
+let username = "admin1";
+document.write("<b>6. Username Length</b><br>");
+if (username.length >= 5) {
+  document.write("Valid Username<br><br>");
+  console.log("Valid Username");
+} else {
+  document.write("Invalid Username<br><br>");
+  console.log("Invalid Username");
+}
+
+/* 7 */
+let ch = 'a';
+document.write("<b>7. Vowel or Consonant</b><br>");
+if (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') {
+  document.write("Vowel<br><br>");
+  console.log("Vowel");
+} else {
+  document.write("Consonant<br><br>");
+  console.log("Consonant");
+}
+
+/* 8 */
+let marks = 85;
+document.write("<b>8. Grade</b><br>");
+if (marks >= 75) {
+  document.write("Grade A<br><br>");
+  console.log("Grade A");
+} else if (marks >= 50) {
+  document.write("Grade B<br><br>");
+  console.log("Grade B");
+} else {
+  document.write("Fail<br><br>");
+  console.log("Fail");
+}
+
+/* 9 */
+let num9 = 30;
+document.write("<b>9. Divisible by 3 and 5</b><br>");
+if (num9 % 3 == 0 && num9 % 5 == 0) {
+  document.write("Divisible<br><br>");
+  console.log("Divisible");
+} else {
+  document.write("Not Divisible<br><br>");
+  console.log("Not Divisible");
+}
+
+/* 10 */
+let hour = 15;
+document.write("<b>10. AM or PM</b><br>");
+if (hour < 12) {
+  document.write("AM<br><br>");
+  console.log("AM");
+} else {
+  document.write("PM<br><br>");
+  console.log("PM");
+}
+
+/* 11 */
+document.write("<b>11. Numbers 1 to 10</b><br>");
+for (let i = 1; i <= 10; i++) {
+  document.write(i + " ");
+  console.log(i);
+}
+document.write("<br><br>");
+
+/* 12 */
+document.write("<b>12. Even numbers 1 to 50</b><br>");
+for (let i = 2; i <= 50; i += 2) {
+  document.write(i + " ");
+  console.log(i);
+}
+document.write("<br><br>");
+
+/* 13 */
+let n = 5, sum = 0;
+document.write("<b>13. Sum from 1 to n</b><br>");
+for (let i = 1; i <= n; i++) {
+  sum = sum + i;
+}
+document.write(sum + "<br><br>");
+console.log(sum);
+
+/* 14 */
+let table = 5;
+document.write("<b>14. Multiplication Table</b><br>");
+for (let i = 1; i <= 10; i++) {
+  document.write(table + " x " + i + " = " + (table*i) + "<br>");
+  console.log(table*i);
+}
+document.write("<br>");
+
+/* 15 */
+let num15 = 123, rev = 0;
+document.write("<b>15. Reverse Number</b><br>");
+while (num15 > 0) {
+  rev = rev * 10 + (num15 % 10);
+  num15 = parseInt(num15 / 10);
+}
+document.write(rev + "<br><br>");
+console.log(rev);
+
+/* 16 */
+let num16 = 12345;
+document.write("<b>16. Count Digits</b><br>");
+document.write(num16.toString().length + "<br><br>");
+console.log(num16.toString().length);
+
+/* 17 */
+let arr = [10, 20, 30];
+document.write("<b>17. Print Array Elements</b><br>");
+for (let i = 0; i < arr.length; i++) {
+  document.write(arr[i] + " ");
+  console.log(arr[i]);
+}
+document.write("<br><br>");
+
+/* 18 */
+let f = 5, fact = 1;
+document.write("<b>18. Factorial</b><br>");
+for (let i = 1; i <= f; i++) {
+  fact = fact * i;
+}
+document.write(fact + "<br><br>");
+console.log(fact);
+
+/* 19 */
+let x = 0, y = 1;
+document.write("<b>19. Fibonacci Series</b><br>");
+document.write(x + " " + y + " ");
+console.log(x); console.log(y);
+for (let i = 3; i <= 6; i++) {
+  let z = x + y;
+  document.write(z + " ");
+  console.log(z);
+  x = y;
+  y = z;
+}
+document.write("<br><br>");
+
+/* 20 */
+let arr2 = [5, 9, 2];
+let max = arr2[0];
+document.write("<b>20. Largest in Array</b><br>");
+for (let i = 1; i < arr2.length; i++) {
+  if (arr2[i] > max) {
+    max = arr2[i];
+  }
+}
+document.write(max + "<br><br>");
+console.log(max);
+
+/* 21 */
+let str1 = "Hello";
+document.write("<b>21. Length of String</b><br>");
+document.write(str1.length + "<br><br>");
+console.log(str1.length);
+
+/* 22 */
+document.write("<b>22. String to Uppercase</b><br>");
+document.write(str1.toUpperCase() + "<br><br>");
+console.log(str1.toUpperCase());
+
+/* 23 */
+let str2 = "I like JavaScript";
+document.write("<b>23. Contains JavaScript</b><br>");
+if (str2.includes("JavaScript")) {
+  document.write("Yes<br><br>");
+  console.log("Yes");
+} else {
+  document.write("No<br><br>");
+  console.log("No");
+}
+
+/* 24 */
+let str3 = "Code";
+document.write("<b>24. Reverse String</b><br>");
+let revStr = "";
+for (let i = str3.length - 1; i >= 0; i--) {
+  revStr = revStr + str3[i];
+}
+document.write(revStr + "<br><br>");
+console.log(revStr);
+
+/* 25 */
+let str4 = "India", count = 0;
+document.write("<b>25. Count Vowels</b><br>");
+for (let i = 0; i < str4.length; i++) {
+  if ("aeiouAEIOU".includes(str4[i])) {
+    count++;
+  }
+}
+document.write(count + "<br>");
+console.log(count);
+
+
+/* 26 */
+let str26 = "Hello World";
+document.write("<b>26. Replace spaces with hyphens</b><br>");
+let res26 = str26.replace(/ /g, "-");
+document.write(res26 + "<br><br>");
+console.log(res26);
+
+/* 27 */
+let str27 = "madam";
+document.write("<b>27. Check palindrome</b><br>");
+let rev27 = str27.split("").reverse().join("");
+if (str27 === rev27) {
+  document.write("Palindrome<br><br>");
+  console.log("Palindrome");
+} else {
+  document.write("Not Palindrome<br><br>");
+  console.log("Not Palindrome");
+}
+
+/* 28 */
+let str28 = "JavaScript";
+document.write("<b>28. Extract first 5 characters</b><br>");
+document.write(str28.substring(0,5) + "<br><br>");
+console.log(str28.substring(0,5));
+
+/* 29 */
+let str29 = "  Hello   World  ";
+document.write("<b>29. Remove extra spaces</b><br>");
+let res29 = str29.trim();
+document.write(res29 + "<br><br>");
+console.log(res29);
+
+/* 30 */
+let str30 = "Hello";
+document.write("<b>30. Find index of character</b><br>");
+let index30 = str30.indexOf("e");
+document.write(index30 + "<br><br>");
+console.log(index30);
+
+/* 31 */
+let arr31 = [1,2,3];
+document.write("<b>31. Add element to end of array</b><br>");
+arr31.push(4);
+document.write(arr31 + "<br><br>");
+console.log(arr31);
+
+/* 32 */
+let arr32 = [10,20,30];
+document.write("<b>32. Remove first element from array</b><br>");
+arr32.shift();
+document.write(arr32 + "<br><br>");
+console.log(arr32);
+
+/* 33 */
+let arr33 = [5,6,7,8];
+document.write("<b>33. Find length of array</b><br>");
+document.write(arr33.length + "<br><br>");
+console.log(arr33.length);
+
+/* 34 */
+let arr34 = [1,3,5,7];
+document.write("<b>34. Check if element exists in array</b><br>");
+if (arr34.includes(5)) {
+  document.write("Element Found<br><br>");
+  console.log("Element Found");
+} else {
+  document.write("Not Found<br><br>");
+  console.log("Not Found");
+}
+
+/* 35 */
+let arr35 = [5,2,8,1];
+document.write("<b>35. Sort array in ascending order</b><br>");
+arr35.sort(function(a,b){ return a-b; });
+document.write(arr35 + "<br><br>");
+console.log(arr35);
+
+/* 36 */
+let arr36 = [1,2,3,4];
+document.write("<b>36. Reverse an array</b><br>");
+arr36.reverse();
+document.write(arr36 + "<br><br>");
+console.log(arr36);
+
+/* 37 */
+let arr37 = [2,4,6];
+let sum37 = 0;
+document.write("<b>37. Sum of array elements</b><br>");
+for (let i=0;i<arr37.length;i++) {
+  sum37 += arr37[i];
+}
+document.write(sum37 + "<br><br>");
+console.log(sum37);
+
+/* 38 */
+let arr38 = [9,3,6,1];
+let min = arr38[0];
+document.write("<b>38. Smallest number in array</b><br>");
+for (let i=1;i<arr38.length;i++) {
+  if (arr38[i] < min) min = arr38[i];
+}
+document.write(min + "<br><br>");
+console.log(min);
+
+/* 39 */
+let arr39a = [1,2];
+let arr39b = [3,4];
+document.write("<b>39. Merge two arrays</b><br>");
+let merged = arr39a.concat(arr39b);
+document.write(merged + "<br><br>");
+console.log(merged);
+
+/* 40 */
+let arr40 = [1,2,2,3,3];
+document.write("<b>40. Remove duplicates from array</b><br>");
+let unique = [...new Set(arr40)];
+document.write(unique + "<br><br>");
+console.log(unique);
+
+/* 41 */
+document.write("<b>41. Store username in localStorage</b><br>");
+localStorage.setItem("username","mani");
+document.write("Stored<br><br>");
+console.log("Stored");
+
+/* 42 */
+document.write("<b>42. Retrieve data from localStorage</b><br>");
+let user42 = localStorage.getItem("username");
+document.write(user42 + "<br><br>");
+console.log(user42);
+
+/* 43 */
+document.write("<b>43. Remove item from localStorage</b><br>");
+localStorage.removeItem("username");
+document.write("Removed<br><br>");
+console.log("Removed");
+
+/* 44 */
+document.write("<b>44. Clear sessionStorage</b><br>");
+sessionStorage.clear();
+document.write("Session Cleared<br><br>");
+console.log("Session Cleared");
+
+/* 45 */
+let arr45 = [10,20,30];
+document.write("<b>45. Store array in localStorage</b><br>");
+localStorage.setItem("numbers", JSON.stringify(arr45));
+document.write("Stored Array<br><br>");
+console.log("Stored Array");
+
+/* 46 */
+let obj46 = {name:"Mani", age:20};
+document.write("<b>46. Convert object to JSON</b><br>");
+let json46 = JSON.stringify(obj46);
+document.write(json46 + "<br><br>");
+console.log(json46);
+
+/* 47 */
+document.write("<b>47. Convert JSON to object</b><br>");
+let obj47 = JSON.parse(json46);
+document.write(obj47.name + "<br><br>");
+console.log(obj47);
+
+/* 48 */
+document.write("<b>48. Access value from JSON object</b><br>");
+document.write(obj47.age + "<br><br>");
+console.log(obj47.age);
+
+/* 49 */
+document.write("<b>49. Handle division by zero</b><br>");
+try {
+  let x = 10 / 0;
+  if (!isFinite(x)) throw "Cannot divide by zero";
+} catch (e) {
+  document.write(e + "<br><br>");
+  console.log(e);
+}
+
+/* 50 */
+document.write("<b>50. Custom error when input is empty</b><br>");
+let input = "";
+try {
+  if (input === "") throw "Input cannot be empty";
+} catch (e) {
+  document.write(e + "<br>");
+  console.log(e);
+}
+
+</script>
+
+</body>
+</html>
