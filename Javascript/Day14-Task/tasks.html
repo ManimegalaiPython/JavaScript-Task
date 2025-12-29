@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Non-UI Tasks</title>
+</head>
+<body>
+
+<script>
+
+/* ================= Task 1 ================= */
+document.write("<h3>Task 1: Variables</h3>");
+var t1_name1 = "Mani";
+let t1_name2 = "Mani";
+const t1_name3 = "Mani";
+document.write("Hello " + t1_name1 + "<br>");
+
+/* ================= Task 2 ================= */
+document.write("<h3>Task 2: typeof</h3>");
+let t2_num = 10;
+let t2_str = "JS";
+let t2_bool = true;
+document.write(typeof t2_num + "<br>");
+document.write(typeof t2_str + "<br>");
+document.write(typeof t2_bool + "<br>");
+
+/* ================= Task 3 ================= */
+document.write("<h3>Task 3: Arithmetic</h3>");
+let t3_a = 10, t3_b = 5;
+document.write((t3_a+t3_b)+"<br>");
+document.write((t3_a-t3_b)+"<br>");
+document.write((t3_a*t3_b)+"<br>");
+document.write((t3_a/t3_b)+"<br>");
+
+/* ================= Task 4 ================= */
+document.write("<h3>Task 4: String Operations</h3>");
+let t4_text = "JavaScript";
+document.write(t4_text + "<br>");
+document.write(t4_text.length + "<br>");
+document.write(t4_text[0] + "<br>");
+
+/* ================= Task 5 ================= */
+document.write("<h3>Task 5: Template Literals</h3>");
+let t5_name = "Mani";
+let t5_age = 20;
+document.write(`Name: ${t5_name}, Age: ${t5_age}<br>`);
+
+/* ================= Task 6 ================= */
+document.write("<h3>Task 6: Even or Odd</h3>");
+let t6_num = 7;
+document.write(t6_num%2==0?"Even<br>":"Odd<br>");
+
+/* ================= Task 7 ================= */
+document.write("<h3>Task 7: Grade</h3>");
+let t7_marks = 85;
+if(t7_marks>=90) document.write("A<br>");
+else if(t7_marks>=75) document.write("B<br>");
+else document.write("C<br>");
+
+/* ================= Task 8 ================= */
+document.write("<h3>Task 8: Switch Day</h3>");
+let t8_day = 3;
+switch(t8_day){
+  case 1: document.write("Monday<br>"); break;
+  case 2: document.write("Tuesday<br>"); break;
+  case 3: document.write("Wednesday<br>"); break;
+  default: document.write("Invalid<br>");
+}
+
+/* ================= Task 9 ================= */
+document.write("<h3>Task 9: Leap Year</h3>");
+let t9_year = 2024;
+document.write(t9_year%4==0?"Leap Year<br>":"Not Leap<br>");
+
+/* ================= Task 10 ================= */
+document.write("<h3>Task 10: Age Category</h3>");
+let t10_age = 65;
+if(t10_age<13) document.write("Child<br>");
+else if(t10_age<20) document.write("Teenager<br>");
+else if(t10_age<60) document.write("Adult<br>");
+else document.write("Senior<br>");
+
+/* ================= Task 11 ================= */
+document.write("<h3>Task 11: Multiplication Table</h3>");
+let t11_n = 5;
+for(let i=1;i<=10;i++)
+  document.write(t11_n+" x "+i+" = "+(t11_n*i)+"<br>");
+
+/* ================= Task 12 ================= */
+document.write("<h3>Task 12: Number Pyramid</h3>");
+for(let i=1;i<=4;i++){
+  for(let j=1;j<=i;j++) document.write(j);
+  document.write("<br>");
+}
+
+/* ================= Task 13 ================= */
+document.write("<h3>Task 13: Sum 1 to N</h3>");
+let t13_n = 5, t13_sum = 0;
+for(let i=1;i<=t13_n;i++) t13_sum+=i;
+document.write(t13_sum+"<br>");
+
+/* ================= Task 14 ================= */
+document.write("<h3>Task 14: FizzBuzz</h3>");
+for(let i=1;i<=30;i++){
+  if(i%15==0) document.write("FizzBuzz ");
+  else if(i%3==0) document.write("Fizz ");
+  else if(i%5==0) document.write("Buzz ");
+  else document.write(i+" ");
+}
+document.write("<br>");
+
+/* ================= Task 15 ================= */
+document.write("<h3>Task 15: Reverse String</h3>");
+let t15_str = "hello", t15_rev="";
+for(let i=t15_str.length-1;i>=0;i--) t15_rev+=t15_str[i];
+document.write(t15_rev+"<br>");
+
+/* ================= Task 16 ================= */
+document.write("<h3>Task 16: Array Basics</h3>");
+let t16_arr=[1,2,3];
+t16_arr.push(4);
+t16_arr.pop();
+document.write(t16_arr+" Length:"+t16_arr.length+"<br>");
+
+/* ================= Task 17 ================= */
+document.write("<h3>Task 17: Largest Number</h3>");
+let t17_max=t16_arr[0];
+for(let i=1;i<t16_arr.length;i++)
+ if(t16_arr[i]>t17_max) t17_max=t16_arr[i];
+document.write(t17_max+"<br>");
+
+/* ================= Task 18 ================= */
+document.write("<h3>Task 18: Sum & Average</h3>");
+let t18_sum=0;
+for(let i=0;i<t16_arr.length;i++) t18_sum+=t16_arr[i];
+document.write(t18_sum+" "+(t18_sum/t16_arr.length)+"<br>");
+
+/* ================= Task 19 ================= */
+document.write("<h3>Task 19: Even Numbers</h3>");
+for(let i=0;i<t16_arr.length;i++)
+ if(t16_arr[i]%2==0) document.write(t16_arr[i]+" ");
+document.write("<br>");
+
+/* ================= Task 20 ================= */
+document.write("<h3>Task 20: Value Exists</h3>");
+let t20_found=false;
+for(let i=0;i<t16_arr.length;i++)
+ if(t16_arr[i]==2) t20_found=true;
+document.write(t20_found+"<br>");
+
+/* ================= Task 21 ================= */
+document.write("<h3>Task 21: Palindrome</h3>");
+let t21_word="madam", t21_rev="";
+for(let i=t21_word.length-1;i>=0;i--) t21_rev+=t21_word[i];
+document.write(t21_word==t21_rev?"Palindrome<br>":"Not<br>");
+
+/* ================= Task 22 ================= */
+document.write("<h3>Task 22: Factorial</h3>");
+let t22_n=5, t22_fact=1;
+for(let i=1;i<=t22_n;i++) t22_fact*=i;
+document.write(t22_fact+"<br>");
+
+/* ================= Task 23 ================= */
+document.write("<h3>Task 23: Prime</h3>");
+let t23_n=7, t23_prime=true;
+for(let i=2;i<t23_n;i++) if(t23_n%i==0) t23_prime=false;
+document.write(t23_prime+"<br>");
+
+/* ================= Task 24 ================= */
+document.write("<h3>Task 24: Fibonacci</h3>");
+let t24_a=0,t24_b=1;
+for(let i=1;i<=5;i++){
+ document.write(t24_a+" ");
+ let c=t24_a+t24_b;
+ t24_a=t24_b; t24_b=c;
+}
+document.write("<br>");
+
+/* ================= Task 25 ================= */
+document.write("<h3>Task 25: Password Validation</h3>");
+let t25_pass="Abc12345";
+document.write(t25_pass.length>=8?"Valid<br>":"Invalid<br>");
+
+/* ================= Task 26 ================= */
+document.write("<h3>Task 26: Remove Duplicates</h3>");
+let t26_arr=[1,2,2,3], t26_new=[];
+for(let i=0;i<t26_arr.length;i++)
+ if(t26_new.indexOf(t26_arr[i])==-1) t26_new.push(t26_arr[i]);
+document.write(t26_new+"<br>");
+
+/* ================= Task 27 ================= */
+document.write("<h3>Task 27: Sort Array</h3>");
+let t27_arr=[3,1,2];
+for(let i=0;i<t27_arr.length;i++)
+ for(let j=i+1;j<t27_arr.length;j++)
+  if(t27_arr[i]>t27_arr[j]){
+   let temp=t27_arr[i];
+   t27_arr[i]=t27_arr[j];
+   t27_arr[j]=temp;
+  }
+document.write(t27_arr+"<br>");
+
+/* ================= Task 28 ================= */
+document.write("<h3>Task 28: Two Sum</h3>");
+let t28_nums=[2,7,11], t28_target=9;
+for(let i=0;i<t28_nums.length;i++)
+ for(let j=i+1;j<t28_nums.length;j++)
+  if(t28_nums[i]+t28_nums[j]==t28_target)
+   document.write(t28_nums[i]+"+"+t28_nums[j]+"<br>");
+
+/* ================= Task 29 ================= */
+document.write("<h3>Task 29: 2D Array</h3>");
+let t29_matrix=[[1,2],[3,4]];
+document.write(t29_matrix+"<br>");
+
+/* ================= Task 30 ================= */
+document.write("<h3>Task 30: Array Chunks</h3>");
+let t30_arr=[1,2,3,4];
+document.write(t30_arr.slice(0,2)+"<br>");
+document.write(t30_arr.slice(2,4)+"<br>");
+
+/* ================= Task 31 ================= */
+document.write("<h3>Task 31: Person Object</h3>");
+let t31_person={name:"Mani",age:20};
+document.write(t31_person.name+"<br>");
+
+/* ================= Task 32 ================= */
+document.write("<h3>Task 32: Product Total</h3>");
+let t32_products=[100,200];
+document.write(t32_products[0]+t32_products[1]+"<br>");
+
+/* ================= Task 33 ================= */
+document.write("<h3>Task 33: Grades</h3>");
+let t33_grades=[70,80,90];
+let t33_sum=0;
+for(let i=0;i<t33_grades.length;i++) t33_sum+=t33_grades[i];
+document.write("Avg:"+(t33_sum/t33_grades.length)+"<br>");
+
+/* ================= Task 34 ================= */
+document.write("<h3>Task 34: Deep Copy</h3>");
+let t34_obj={a:{b:1}};
+let t34_copy=JSON.parse(JSON.stringify(t34_obj));
+document.write(t34_copy.a.b+"<br>");
+
+/* ================= Task 35 ================= */
+document.write("<h3>Task 35: Combine Objects</h3>");
+let t35_o1={a:1}, t35_o2={b:2};
+let t35_o3={a:t35_o1.a,b:t35_o2.b};
+document.write(JSON.stringify(t35_o3)+"<br>");
+
+/* ================= Task 41 ================= */
+document.write("<h3>Task 41: Spread & Rest</h3>");
+function t41_add(a,b){return a+b;}
+document.write(t41_add(3,4)+"<br>");
+
+/* ================= Task 42 ================= */
+document.write("<h3>Task 42: Destructuring</h3>");
+let t42_arr=[10,20];
+document.write(t42_arr[0]+" "+t42_arr[1]+"<br>");
+
+/* ================= Task 43 ================= */
+document.write("<h3>Task 43: Set</h3>");
+let t43_set=new Set([1,1,2]);
+document.write(t43_set.size+"<br>");
+
+/* ================= Task 44 ================= */
+document.write("<h3>Task 44: Promise</h3>");
+let t44_p=new Promise(function(res){res("Resolved");});
+t44_p.then(function(msg){document.write(msg+"<br>");});
+
+/* ================= Task 45 ================= */
+document.write("<h3>Task 45: Async/Await</h3>");
+async function t45_data(){return "Async Data";}
+t45_data().then(d=>document.write(d+"<br>"));
+
+</script>
+</body>
+</html>

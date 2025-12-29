@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript UI Tasks 36–40</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .dark { background-color: #222; color: white; }
+    button { margin: 5px; padding: 5px 10px; }
+    img { width: 180px; height: 120px; }
+  </style>
+</head>
+<body>
+
+<!-- ================= TASK 36 ================= -->
+<h3>Task 36: Interactive List (Add / Remove)</h3>
+<input id="task36_input" placeholder="Enter item">
+<button onclick="task36_add()">Add</button>
+<ul id="task36_list"></ul>
+
+<script>
+function task36_add() {
+  let item = document.createElement("li");
+  item.innerText = document.getElementById("task36_input").value;
+  item.onclick = function() {
+    this.remove();
+  };
+  document.getElementById("task36_list").appendChild(item);
+}
+</script>
+
+<hr>
+
+<!-- ================= TASK 37 ================= -->
+<h3>Task 37: Dark / Light Mode Toggle</h3>
+<button onclick="task37_toggle()">Toggle Mode</button>
+
+<script>
+function task37_toggle() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+<hr>
+
+<!-- ================= TASK 38 ================= -->
+<h3>Task 38: Form Validation (Real Time)</h3>
+<input id="task38_name" placeholder="Enter name">
+<span id="task38_msg"></span>
+
+<script>
+document.getElementById("task38_name").onkeyup = function() {
+  if (this.value.length < 3) {
+    document.getElementById("task38_msg").innerText = " Too short";
+  } else {
+    document.getElementById("task38_msg").innerText = " OK";
+  }
+}
+</script>
+
+<hr>
+
+<!-- ================= TASK 39 ================= -->
+<h3>Task 39: Increment / Decrement Counter</h3>
+<button onclick="task39_dec()">-</button>
+<span id="task39_count">0</span>
+<button onclick="task39_inc()">+</button>
+
+<script>
+let task39_value = 0;
+
+function task39_inc() {
+  task39_value++;
+  document.getElementById("task39_count").innerText = task39_value;
+}
+
+function task39_dec() {
+  task39_value--;
+  document.getElementById("task39_count").innerText = task39_value;
+}
+</script>
+
+<hr>
+
+<!-- ================= TASK 40 ================= -->
+<h3>Task 40: Simple Image Gallery</h3>
+
+<button onclick="task40_prev()">Previous</button>
+<img id="task40_img" src="https://picsum.photos/id/237/200/130">
+<button onclick="task40_next()">Next</button>
+
+<script>
+let task40_images = [
+  "https://picsum.photos/id/237/200/130",
+  "https://picsum.photos/id/238/200/130",
+  "https://picsum.photos/id/239/200/130"
+];
+
+let task40_index = 0;
+
+function task40_next() {
+  task40_index = (task40_index + 1) % task40_images.length;
+  document.getElementById("task40_img").src = task40_images[task40_index];
+}
+
+function task40_prev() {
+  task40_index = (task40_index - 1 + task40_images.length) % task40_images.length;
+  document.getElementById("task40_img").src = task40_images[task40_index];
+}
+</script>
+
+</script>
+
+</body>
+</html>
