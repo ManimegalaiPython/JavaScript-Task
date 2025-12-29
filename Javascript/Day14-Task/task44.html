@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 44: Promise</title>
+</head>
+<body>
+
+<script>
+document.write("<h3>Task 44: Promise</h3>");
+
+// Create a promise that resolves or rejects based on a condition
+let t44_p = new Promise(function(resolve, reject){
+    let number = 5; // change number to test
+    if(number > 0){
+        resolve("Resolved: Number is positive");
+    } else {
+        reject("Rejected: Number is zero or negative");
+    }
+});
+
+// Handle resolved or rejected value
+t44_p
+    .then(function(msg){
+        document.write(msg + "<br>");
+    })
+    .catch(function(err){
+        document.write(err + "<br>");
+    });
+</script>
+
+</body>
+</html>
