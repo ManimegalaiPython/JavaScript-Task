@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Tasks 16–30</title>
+</head>
+<body>
+
+<script>
+// Common container
+document.body.style.fontFamily = "Arial";
+function title(text){
+  let h = document.createElement("h3");
+  h.innerText = text;
+  document.body.appendChild(h);
+}
+
+/* ================== 16. Hover Effect ================== */
+title("16. Button Hover Effect");
+let btn = document.createElement("button");
+btn.innerText = "Hover Me";
+btn.style.padding = "10px";
+btn.onmouseover = () => btn.style.background = "green";
+btn.onmouseout = () => btn.style.background = "";
+document.body.appendChild(btn);
+
+/* ================== 17. Counter ================== */
+title("17. Counter");
+let count = 0;
+let cText = document.createElement("p");
+cText.innerText = count;
+
+let inc = document.createElement("button");
+inc.innerText = "+";
+inc.onclick = () => cText.innerText = ++count;
+
+let dec = document.createElement("button");
+dec.innerText = "-";
+dec.onclick = () => cText.innerText = --count;
+
+document.body.append(cText, inc, dec);
+
+/* ================== 18. Change Font Size ================== */
+title("18. Change Font Size");
+let txt = document.createElement("p");
+txt.innerText = "Change my size";
+let fs = 16;
+let fsBtn = document.createElement("button");
+fsBtn.innerText = "Increase";
+fsBtn.onclick = () => {
+  fs += 2;
+  txt.style.fontSize = fs + "px";
+};
+document.body.append(txt, fsBtn);
+
+/* ================== 19. Checkbox Message ================== */
+title("19. Checkbox Message");
+let chk = document.createElement("input");
+chk.type = "checkbox";
+let msg = document.createElement("p");
+chk.onchange = () => msg.innerText = "Checkbox checked!";
+document.body.append(chk, msg);
+
+/* ================== 20. Show/Hide Password ================== */
+title("20. Show / Hide Password");
+let pass = document.createElement("input");
+pass.type = "password";
+let toggle = document.createElement("button");
+toggle.innerText = "Show/Hide";
+toggle.onclick = () => {
+  pass.type = pass.type === "password" ? "text" : "password";
+};
+document.body.append(pass, toggle);
+
+/* ================== 21. Navbar ================== */
+title("21. Simple Navbar");
+let nav = document.createElement("div");
+nav.innerHTML = "<a>Home</a> | <a>About</a> | <a>Contact</a>";
+nav.style.background = "#333";
+nav.style.color = "white";
+nav.style.padding = "10px";
+document.body.appendChild(nav);
+
+/* ================== 22. Console Message ================== */
+title("22. Console Message");
+console.log("Hello from JavaScript");
+document.write("Hello from JavaScript");
+
+/* ================== 23. Prevent Form Submit ================== */
+title("23. Prevent Form Submit");
+let form = document.createElement("form");
+let fbtn = document.createElement("button");
+fbtn.innerText = "Submit";
+form.onsubmit = e => {
+  e.preventDefault();
+  alert("Form submission prevented");
+};
+form.appendChild(fbtn);
+document.body.appendChild(form);
+
+/* ================== 24. Character Counter ================== */
+title("24. Character Counter");
+let ta = document.createElement("textarea");
+let countText = document.createElement("p");
+ta.oninput = () => countText.innerText = ta.value.length;
+document.body.append(ta, countText);
+
+/* ================== 25. External JS ================== */
+title("25. External JS Example");
+let p25 = document.createElement("p");
+p25.innerText = "External JS added using <script src='file.js'>";
+document.body.appendChild(p25);
+
+/* ================== 26. Form Validation ================== */
+title("26. Form Validation");
+let inp = document.createElement("input");
+let err = document.createElement("p");
+err.style.color = "red";
+let vbtn = document.createElement("button");
+vbtn.innerText = "Validate";
+vbtn.onclick = () => {
+  err.innerText = inp.value === "" ? "Field is required" : "Valid";
+};
+document.body.append(inp, vbtn, err);
+
+/* ================== 27. Flexbox Layout ================== */
+title("27. Flexbox Layout");
+let flex = document.createElement("div");
+flex.style.display = "flex";
+flex.style.gap = "10px";
+for(let i=1;i<=3;i++){
+  let box = document.createElement("div");
+  box.innerText = "Box " + i;
+  box.style.border = "1px solid black";
+  box.style.padding = "20px";
+  flex.appendChild(box);
+}
+document.body.appendChild(flex);
+
+/* ================== 28. Add & Remove List ================== */
+title("28. Add & Remove List");
+let ul = document.createElement("ul");
+let add = document.createElement("button");
+add.innerText = "Add Item";
+add.onclick = () => {
+  let li = document.createElement("li");
+  li.innerText = "Item";
+  ul.appendChild(li);
+};
+let rem = document.createElement("button");
+rem.innerText = "Remove Item";
+rem.onclick = () => ul.lastChild && ul.removeChild(ul.lastChild);
+document.body.append(add, rem, ul);
+
+/* ================== 29. Popup ================== */
+title("29. Popup");
+let pop = document.createElement("div");
+pop.innerText = "Popup Box";
+pop.style.display = "none";
+pop.style.border = "1px solid";
+let open = document.createElement("button");
+open.innerText = "Open";
+open.onclick = () => pop.style.display = "block";
+let close = document.createElement("button");
+close.innerText = "Close";
+close.onclick = () => pop.style.display = "none";
+document.body.append(open, close, pop);
+
+/* ================== 30. Image Slider ================== */
+title("30. Image Slider");
+let imgs = ["fast.png",
+            "footer.png",
+            "frame 30485.png"];
+let i = 0;
+let img = document.createElement("img");
+img.src = imgs[i];
+let next = document.createElement("button");
+next.innerText = "Next";
+next.onclick = () => {
+  i = (i + 1) % imgs.length;
+  img.src = imgs[i];
+};
+document.body.append(img, next);
+</script>
+
+</body>
+</html>

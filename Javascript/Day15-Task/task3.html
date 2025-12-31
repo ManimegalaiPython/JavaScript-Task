@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Tasks 31–40</title>
+</head>
+
+<body>
+
+<!-- Task 31: Filter list -->
+<h3>Task 31: Filter List</h3>
+<input onkeyup="filterList(this.value)" placeholder="Search">
+<ul id="list">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Orange</li>
+</ul>
+
+<hr>
+
+<!-- Task 32: localStorage -->
+<h3>Task 32: localStorage</h3>
+<button onclick="localStorage.setItem('name','Mani')">Store</button>
+<button onclick="alert(localStorage.getItem('name'))">Get</button>
+
+<hr>
+
+<!-- Task 33: Dark / Light Theme -->
+<h3>Task 33: Theme Toggle</h3>
+<button onclick="toggleTheme()">Toggle Theme</button>
+
+<hr>
+
+<!-- Task 34: JSON Data -->
+<h3>Task 34: JSON Data</h3>
+<p id="jsonData"></p>
+
+<hr>
+
+<!-- Task 35: Button Click Count -->
+<h3>Task 35: Click Count</h3>
+<button onclick="countClicks()">Click</button>
+<p id="clicks">0</p>
+
+<hr>
+
+<!-- Task 36: Sticky Header -->
+<h3 style="position:sticky; top:0; background:orange;">
+Task 36: Sticky Header
+</h3>
+
+<hr>
+
+<!-- Task 37: Password Length -->
+<h3>Task 37: Password Check</h3>
+<input type="password" oninput="checkPassword(this.value)">
+<p id="warn"></p>
+
+<hr>
+
+<!-- Task 38: Countdown Timer -->
+<h3>Task 38: Countdown</h3>
+<button onclick="startTimer()">Start</button>
+<p id="timer"></p>
+
+<hr>
+
+<!-- Task 39: BMI Calculator -->
+<h3>Task 39: BMI</h3>
+<input id="h" placeholder="Height">
+<input id="w" placeholder="Weight">
+<button onclick="calculateBMI()">Calculate</button>
+<p id="bmi"></p>
+
+<hr>
+
+<!-- Task 40: Tabs -->
+<h3>Task 40: Tabs</h3>
+<button onclick="openTab('t1')">Tab 1</button>
+<button onclick="openTab('t2')">Tab 2</button>
+
+<p id="t1" style="display:none;">Content of Tab 1</p>
+<p id="t2" style="display:none;">Content of Tab 2</p>
+
+<script>
+/* Task 31 */
+function filterList(val) {
+  let items = document.querySelectorAll("#list li");
+  items.forEach(li => {
+    li.style.display = li.innerText.toLowerCase().includes(val.toLowerCase())
+      ? "" : "none";
+  });
+}
+
+/* Task 33 */
+function toggleTheme() {
+  document.body.style.background =
+    document.body.style.background === "black" ? "white" : "black";
+  document.body.style.color =
+    document.body.style.color === "white" ? "black" : "white";
+}
+
+/* Task 34 */
+let data = { name: "Mani", age: 20 };
+document.getElementById("jsonData").innerText =
+  data.name + " - " + data.age;
+
+/* Task 35 */
+let count = 0;
+function countClicks() {
+  count++;
+  document.getElementById("clicks").innerText = count;
+}
+
+/* Task 37 */
+function checkPassword(val) {
+  document.getElementById("warn").innerText =
+    val.length < 6 ? "Password too short" : "";
+}
+
+/* Task 38 */
+function startTimer() {
+  let t = 5;
+  let x = setInterval(() => {
+    document.getElementById("timer").innerText = t--;
+    if (t < 0) clearInterval(x);
+  }, 1000);
+}
+
+/* Task 39 */
+function calculateBMI() {
+  let h = document.getElementById("h").value;
+  let w = document.getElementById("w").value;
+  document.getElementById("bmi").innerText = w / (h * h);
+}
+
+/* Task 40 */
+function openTab(id) {
+  document.getElementById("t1").style.display = "none";
+  document.getElementById("t2").style.display = "none";
+  document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>

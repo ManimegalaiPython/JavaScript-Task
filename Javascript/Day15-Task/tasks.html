@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Tasks 1–15</title>
+
+  <style>
+    /* Task 5: CSS Classes */
+    .red { color: red; }
+    .blue { color: blue; }
+
+    /* Task 7: Login Form CSS */
+    .login-box {
+      border: 1px solid #000;
+      width: 220px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    /* Task 10: Table CSS */
+    table {
+      border-collapse: collapse;
+      width: 300px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Task 1: Heading, Paragraph, Image -->
+<h1>Task 1: Web Page</h1>
+<p id="para">This is a paragraph.</p>
+<img id="myImg" src="https://via.placeholder.com/150" width="150">
+
+<hr>
+
+<!-- Task 2: Form -->
+<h3>Task 2: Form</h3>
+<form>
+  <input type="text" placeholder="Name"><br><br>
+  <input type="email" placeholder="Email"><br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<!-- Task 3: Alert -->
+<h3>Task 3: Alert Button</h3>
+<button onclick="showAlert()">Click Me</button>
+
+<hr>
+
+<!-- Task 4: Change Text -->
+<h3>Task 4: Change Paragraph Text</h3>
+<button onclick="changeText()">Change Text</button>
+
+<hr>
+
+<!-- Task 5: CSS Class Colors -->
+<h3>Task 5: CSS Colors</h3>
+<p class="red">Red Text</p>
+<p class="blue">Blue Text</p>
+
+<hr>
+
+<!-- Task 6: Change Background -->
+<h3>Task 6: Background Color</h3>
+<button onclick="changeBg()">Change Background</button>
+
+<hr>
+
+<!-- Task 7: Login Form -->
+<h3>Task 7: Login Form</h3>
+<div class="login-box">
+  <input type="text" placeholder="Username"><br><br>
+  <input type="password" placeholder="Password"><br><br>
+  <button>Login</button>
+</div>
+
+<hr>
+
+<!-- Task 8: Show Date -->
+<h3>Task 8: Current Date</h3>
+<p id="date"></p>
+<button onclick="showDate()">Show Date</button>
+
+<hr>
+
+<!-- Task 9: Hide / Show -->
+<h3>Task 9: Hide & Show Paragraph</h3>
+<p id="togglePara">This paragraph can be hidden.</p>
+<button onclick="toggleText()">Hide / Show</button>
+
+<hr>
+
+<!-- Task 10: Table -->
+<h3>Task 10: Table</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Mani</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Ravi</td>
+    <td>22</td>
+  </tr>
+</table>
+
+<hr>
+
+<!-- Task 11: Input Validation -->
+<h3>Task 11: Empty Input Validation</h3>
+<input type="text" id="checkInput">
+<button onclick="validate()">Check</button>
+<p id="msg"></p>
+
+<hr>
+
+<!-- Task 12: Change Image -->
+<h3>Task 12: Change Image</h3>
+<button onclick="changeImage()">Change Image</button>
+
+<hr>
+
+<!-- Task 13: Display Input Value -->
+<h3>Task 13: Display Input</h3>
+<input type="text" id="displayInput">
+<button onclick="displayValue()">Display</button>
+<p id="displayText"></p>
+
+<hr>
+
+<!-- Task 14: Disable Button -->
+<h3>Task 14: Disable Button</h3>
+<button id="disableBtn" onclick="disableButton()">Click Once</button>
+
+<hr>
+
+<!-- Task 15: Dropdown -->
+<h3>Task 15: Dropdown Value</h3>
+<select onchange="showOption(this.value)">
+  <option value="">Select</option>
+  <option value="HTML">HTML</option>
+  <option value="CSS">CSS</option>
+  <option value="JavaScript">JavaScript</option>
+</select>
+<p id="optionText"></p>
+
+<script>
+  // Task 3
+  function showAlert() {
+    alert("Button clicked!");
+  }
+
+  // Task 4
+  function changeText() {
+    document.getElementById("para").innerText = "Text changed using JavaScript!";
+  }
+
+  // Task 6
+  function changeBg() {
+    document.body.style.backgroundColor = "lightyellow";
+  }
+
+  // Task 8
+  function showDate() {
+    document.getElementById("date").innerText = new Date();
+  }
+
+  // Task 9
+  function toggleText() {
+    let p = document.getElementById("togglePara");
+    p.style.display = (p.style.display === "none") ? "block" : "none";
+  }
+
+  // Task 11
+  function validate() {
+    let val = document.getElementById("checkInput").value;
+    document.getElementById("msg").innerText =
+      val === "" ? "Input is empty" : "Input is filled";
+  }
+
+  // Task 12
+  function changeImage() {
+    document.getElementById("myImg").src =
+      "https://via.placeholder.com/150/0000FF";
+  }
+
+  // Task 13
+  function displayValue() {
+    document.getElementById("displayText").innerText =
+      document.getElementById("displayInput").value;
+  }
+
+  // Task 14
+  function disableButton() {
+    document.getElementById("disableBtn").disabled = true;
+  }
+
+  // Task 15
+  function showOption(value) {
+    document.getElementById("optionText").innerText = value;
+  }
+</script>
+
+</body>
+</html>

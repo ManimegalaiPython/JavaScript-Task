@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Tasks 41–50</title>
+</head>
+<body>
+
+<!-- Task 41: Accordion -->
+<h3>Task 41: Accordion</h3>
+<div onclick="toggleAccordion(this)">Section 1</div>
+<div style="display:none;">Content 1</div>
+<div onclick="toggleAccordion(this)">Section 2</div>
+<div style="display:none;">Content 2</div>
+
+<hr>
+
+<!-- Task 42: Login system using localStorage -->
+<h3>Task 42: Login</h3>
+<input type="text" id="user42" placeholder="Username">
+<input type="password" id="pass42" placeholder="Password">
+<button onclick="login42()">Login</button>
+<p id="msg42"></p>
+
+<hr>
+
+<!-- Task 43: Scroll to Top -->
+<h3>Task 43: Scroll to Top</h3>
+<p style="height:800px;">Scroll down...</p>
+<button id="topBtn" onclick="scrollTop()">Top</button>
+
+<hr>
+
+<!-- Task 44: Email Validation -->
+<h3>Task 44: Email Validation</h3>
+<input type="text" id="email44" placeholder="Enter Email">
+<button onclick="validateEmail()">Check Email</button>
+<p id="msg44"></p>
+
+<hr>
+
+<!-- Task 45: Image Preview -->
+<h3>Task 45: Image Preview</h3>
+<input type="file" id="file45" onchange="previewImage(this)">
+<br>
+<img id="img45" style="display:none;" width="150">
+
+<hr>
+
+<!-- Task 46: Number Guessing Game -->
+<h3>Task 46: Number Guessing</h3>
+<input type="number" id="guess46" placeholder="1-10">
+<button onclick="checkGuess()">Guess</button>
+<p id="msg46"></p>
+
+<hr>
+
+<!-- Task 47: Multiple Buttons -->
+<h3>Task 47: Multiple Buttons</h3>
+<button onclick="multiButton(this)">Button 1</button>
+<button onclick="multiButton(this)">Button 2</button>
+<button onclick="multiButton(this)">Button 3</button>
+<p id="msg47"></p>
+
+<hr>
+
+<!-- Task 48: Disable Form Submission if Validation Fails -->
+<h3>Task 48: Form Validation</h3>
+<form onsubmit="return validateForm48()">
+  <input type="text" id="inp48" placeholder="Required">
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<!-- Task 49: Search Feature -->
+<h3>Task 49: Search Feature</h3>
+<input type="text" id="search49" onkeyup="searchItems()" placeholder="Search...">
+<ul id="list49">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Orange</li>
+  <li>Mango</li>
+</ul>
+
+<hr>
+
+<!-- Task 50: Simple Landing Page -->
+<h3>Task 50: Landing Page</h3>
+<div>
+  <h1>Welcome!</h1>
+  <p>This is a simple landing page.</p>
+  <button onclick="alert('Button Clicked!')">Click Me</button>
+</div>
+
+<script>
+/* Task 41 */
+function toggleAccordion(elem){
+  let panel = elem.nextElementSibling;
+  panel.style.display = (panel.style.display === "none") ? "block" : "none";
+}
+
+/* Task 42 */
+function login42(){
+  let user = document.getElementById("user42").value;
+  let pass = document.getElementById("pass42").value;
+  localStorage.setItem("user42", user);
+  localStorage.setItem("pass42", pass);
+  document.getElementById("msg42").innerText = "Saved in localStorage";
+}
+
+/* Task 43 */
+window.onscroll = function(){
+  document.getElementById("topBtn").style.display = (window.scrollY > 200) ? "block" : "none";
+}
+function scrollTop(){ window.scrollTo({top:0, behavior:"smooth"}); }
+
+/* Task 44 */
+function validateEmail(){
+  let email = document.getElementById("email44").value;
+  let re = /^\S+@\S+\.\S+$/;
+  document.getElementById("msg44").innerText = re.test(email) ? "Valid Email" : "Invalid Email";
+}
+
+/* Task 45 */
+function previewImage(input){
+  let file = input.files[0];
+  if(file){
+    let reader = new FileReader();
+    reader.onload = function(e){
+      let img = document.getElementById("img45");
+      img.src = e.target.result;
+      img.style.display = "block";
+    }
+    reader.readAsDataURL(file);
+  }
+}
+
+/* Task 46 */
+let randomNum = Math.floor(Math.random() * 10) + 1;
+function checkGuess(){
+  let guess = parseInt(document.getElementById("guess46").value);
+  document.getElementById("msg46").innerText = (guess === randomNum) ? "Correct!" : "Try Again";
+}
+
+/* Task 47 */
+function multiButton(btn){
+  document.getElementById("msg47").innerText = btn.innerText + " clicked";
+}
+
+/* Task 48 */
+function validateForm48(){
+  let val = document.getElementById("inp48").value;
+  if(val === ""){
+    alert("Field is required");
+    return false;
+  }
+  return true;
+}
+
+/* Task 49 */
+function searchItems(){
+  let val = document.getElementById("search49").value.toLowerCase();
+  let items = document.getElementById("list49").getElementsByTagName("li");
+  for(let i=0;i<items.length;i++){
+    items[i].style.display = items[i].innerText.toLowerCase().includes(val) ? "list-item" : "none";
+  }
+}
+
+/* Task 50 */
+// Already handled by the alert button in HTML
+
+</script>
+
+</body>
+</html>
