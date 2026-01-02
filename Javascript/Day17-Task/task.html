@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Tasks 1–25</title>
+  <style>
+    body { font-family: Arial; }
+    .task { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    ol { color: blue; }
+    table, td { border: 1px solid black; border-collapse: collapse; }
+  </style>
+</head>
+<body>
+
+<div class="task">
+  <h3>1. Welcome Message</h3>
+  <p id="welcome"></p>
+</div>
+
+<div class="task">
+  <h3>2. Change Text Color</h3>
+  <p id="p2">Hello World</p>
+  <button onclick="changeColor()">Change Color</button>
+</div>
+
+<div class="task">
+  <h3>3. Clear Input</h3>
+  <input id="input3">
+  <button onclick="clearInput()">Clear</button>
+</div>
+
+<div class="task">
+  <h3>4. Current Year</h3>
+  <p id="year"></p>
+</div>
+
+<div class="task">
+  <h3>5. Hide One Paragraph</h3>
+  <p id="para5">Hide me</p>
+  <p>Keep me</p>
+  <button onclick="hidePara()">Hide</button>
+</div>
+
+<div class="task">
+  <h3>6. Increase Div Width</h3>
+  <div id="box6" style="width:100px;height:20px;background:gray"></div>
+  <button onclick="increaseWidth()">Increase</button>
+</div>
+
+<div class="task">
+  <h3>7. Character Count</h3>
+  <textarea id="text7" oninput="countChars()"></textarea>
+  <p>Count: <span id="count7">0</span></p>
+</div>
+
+<div class="task">
+  <h3>8. Print Form Values</h3>
+  <form onsubmit="printForm(); return false;">
+    <input id="name8" placeholder="Name">
+    <input id="email8" placeholder="Email">
+    <button>Submit</button>
+  </form>
+</div>
+
+<div class="task">
+  <h3>9. Checkbox Background</h3>
+  <input type="checkbox" onchange="changeBg(this)">
+</div>
+
+<div class="task">
+  <h3>10. Text Alignment</h3>
+  <p id="para10">Align me</p>
+  <button onclick="alignText()">Center</button>
+</div>
+
+<div class="task">
+  <h3>11. Ordered List</h3>
+  <ol>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JS</li>
+  </ol>
+</div>
+
+<div class="task">
+  <h3>12. Input Length</h3>
+  <input id="input12">
+  <button onclick="showLength()">Check</button>
+</div>
+
+<div class="task">
+  <h3>13. Password Empty</h3>
+  <input type="password" id="pwd13">
+  <button onclick="checkPassword()">Check</button>
+  <p id="msg13"></p>
+</div>
+
+<div class="task">
+  <h3>14. Enable Input</h3>
+  <input id="input14" disabled>
+  <button onclick="enableInput()">Enable</button>
+</div>
+
+<div class="task">
+  <h3>15. Change Font Size</h3>
+  <p class="font15">Text One</p>
+  <p class="font15">Text Two</p>
+  <button onclick="changeFontSize()">Change</button>
+</div>
+
+<div class="task">
+  <h3>16. Today Date</h3>
+  <p id="date16"></p>
+</div>
+
+<div class="task">
+  <h3>17. Toggle Background</h3>
+  <div id="box17" style="width:80px;height:20px;background:red"></div>
+  <button onclick="toggleBg()">Toggle</button>
+</div>
+
+<div class="task">
+  <h3>18. Show Input Value</h3>
+  <input oninput="showValue(this.value)">
+  <p id="para18"></p>
+</div>
+
+<div class="task">
+  <h3>19. Simple Table</h3>
+  <table>
+    <tr><td>A</td><td>B</td></tr>
+  </table>
+</div>
+
+<div class="task">
+  <h3>20. Mouse Leave</h3>
+  <div onmouseleave="mouseLeave()" style="width:80px;height:20px;background:orange"></div>
+</div>
+
+<div class="task">
+  <h3>21. Alert Before Submit</h3>
+  <button onclick="beforeSubmit()">Submit</button>
+</div>
+
+<div class="task">
+  <h3>22. Underline Text</h3>
+  <p id="para22">Underline me</p>
+  <button onclick="underlineText()">Underline</button>
+</div>
+
+<div class="task">
+  <h3>23. Word Count</h3>
+  <textarea id="text23" oninput="countWords()"></textarea>
+  <p>Words: <span id="words23">0</span></p>
+</div>
+
+
+<div class="task">
+  <h3>24. Hide All Paragraphs</h3>
+
+  <p>This is paragraph one</p>
+  <p>This is paragraph two</p>
+  <p>This is paragraph three</p>
+
+  <button onclick="hideAllParas()">Hide</button>
+</div>
+
+
+<div class="task">
+  <h3>25. Display message on key press</h3>
+
+  <input type="text" placeholder="Type here" onkeydown="keyPressed()">
+  <p id="msg25"></p>
+</div>
+
+
+
+<div class="task">
+<h3>26. Minimum Length Validation</h3>
+<input id="t26">
+<button onclick="checkLength()">Check</button>
+<p id="m26"></p>
+</div>
+
+<div class="task">
+<h3>27. Reset All Inputs</h3>
+<input><input>
+<button onclick="resetInputs()">Reset</button>
+</div>
+
+<div class="task">
+<h3>28. Change Button Styles</h3>
+<button onclick="styleButtons()">Change Style</button>
+</div>
+
+<div class="task">
+<h3>29. Dropdown Value</h3>
+<select onchange="showValue(this.value)">
+<option>HTML</option><option>CSS</option><option>JS</option>
+</select>
+<p id="m29"></p>
+</div>
+
+<div class="task">
+<h3>30. Right Click Message</h3>
+</div>
+
+<div class="task">
+<h3>31. localStorage Age</h3>
+<input id="age31">
+<button onclick="saveAge()">Save</button>
+<p id="m31"></p>
+</div>
+
+<div class="task">
+<h3>32. Only Letters</h3>
+<input oninput="onlyLetters(this)">
+</div>
+
+<div class="task">
+  <h3>33. Toggle Image</h3>
+  <img id="img33" src="login.png" width="90">
+  <button onclick="toggleImg()">Toggle</button>
+</div>
+
+
+<div class="task">
+<h3>34. Navigation Menu</h3>
+<div class="menu">
+<a onclick="activeMenu(this)">Home</a>
+<a onclick="activeMenu(this)">About</a>
+<a onclick="activeMenu(this)">Contact</a>
+</div>
+</div>
+
+<div class="task">
+<h3>35. Limit Textarea</h3>
+<textarea maxlength="50"></textarea>
+</div>
+
+<div class="task">
+<h3>36. Sum of Two Numbers</h3>
+<input id="n1"><input id="n2">
+<button onclick="sum()">Sum</button>
+<p id="m36"></p>
+</div>
+
+
+<div class="task">
+  <h3>37. Change Font Family</h3>
+  <p>This is some sample text. Click the button to change the font family.</p>
+  <button onclick="changeFont()">Change Font</button>
+</div>
+
+<div class="task">
+<h3>38. Email Empty Check</h3>
+<input id="email38">
+<button onclick="checkEmail()">Check</button>
+<p id="m38"></p>
+</div>
+
+<div class="task">
+<h3>39. Scroll to Top</h3>
+<button onclick="scrollTopPage()">Top</button>
+</div>
+
+<div class="task">
+<h3>40. Live Clock</h3>
+<p id="clock"></p>
+</div>
+
+<div class="task">
+<h3>41. Prevent Empty Submit</h3>
+<form onsubmit="return validateForm()">
+<input id="f41">
+<button>Submit</button>
+</form>
+</div>
+
+<div class="task">
+<h3>42. Hide / Show Table</h3>
+<table id="tbl42" border="1"><tr><td>Data</td></tr></table>
+<button onclick="toggleTable()">Toggle</button>
+</div>
+
+<div class="task">
+  <h3>43. Window Resize</h3>
+  <p id="m43">Resize the browser window to see the message.</p>
+</div>
+
+
+<div class="task">
+<h3>44. Lowercase Text</h3>
+<input oninput="this.value=this.value.toLowerCase()">
+</div>
+
+<div class="task">
+<h3>45. Change Div Height</h3>
+<div id="box45" style="height:30px;background:#ccc"></div>
+<button onclick="changeHeight()">Change</button>
+</div>
+
+<div class="task">
+  <h3>46. Count Input Fields</h3>
+
+  <input type="text" placeholder="Input 1">
+  <input type="text" placeholder="Input 2">
+  <input type="text" placeholder="Input 3">
+  <input type="text" placeholder="Input 4">
+
+  <button onclick="countInputs()">Count</button>
+  <p id="m46"></p>
+</div>
+
+<div class="task">
+<h3>47. Text Selection</h3>
+<p onmouseup="textSelected()">Select me</p>
+<p id="m47"></p>
+</div>
+
+<div class="task">
+<h3>48. Flexbox Layout</h3>
+<div class="flex">
+<div>A</div><div>B</div><div>C</div>
+</div>
+</div>
+
+<div class="task">
+<h3>49. Success Message</h3>
+<button onclick="success()">Validate</button>
+<p id="m49"></p>
+</div>
+
+<div class="task">
+  <h3>50. Toggle Favicon</h3>
+  <button onclick="toggleFavicon()">Change</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
