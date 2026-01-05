@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Tasks 1-50</title>
+
+<style>
+  body{
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  .task{
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  h3{
+    color:#2c3e50;
+    margin-top:0;
+  }
+
+   /* CSS Grid Layout */
+  .grid-layout{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .grid-box{
+    background-color: #eaeaea;
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #999;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Task 1 -->
+<div class="task">
+  <h3>Task 1: Change Heading Text</h3>
+  <h2 id="heading">Welcome to JavaScript</h2>
+  <button id="btnHeading">Change Heading</button>
+</div>
+
+<!-- Task 2 -->
+<div class="task">
+  <h3>Task 2: Message on Input Focus</h3>
+  <input id="focusInput" type="text" placeholder="Click here">
+  <p id="focusMsg"></p>
+</div>
+
+<!-- Task 3 -->
+<div class="task">
+  <h3>Task 3: Change Paragraph Background</h3>
+  <p id="bgPara">This is a paragraph</p>
+  <button id="bgBtn">Change Background</button>
+</div>
+
+<!-- Task 4 -->
+<div class="task">
+  <h3>Task 4: Display Current Month</h3>
+  <p id="month"></p>
+</div>
+
+<!-- Task 5 -->
+<div class="task">
+  <h3>Task 5: Increase / Decrease Text Size</h3>
+  <p id="sizeText">Resize this text</p>
+  <button id="incBtn">Increase</button>
+  <button id="decBtn">Decrease</button>
+</div>
+
+<!-- Task 6 -->
+<div class="task">
+  <h3>Task 6: Hide Paragraph on Double Click</h3>
+  <p id="dblPara">Double click to hide me</p>
+</div>
+
+<!-- Task 7 -->
+<div class="task">
+  <h3>Task 7: Disable Input Field</h3>
+  <input id="disableInput" type="text" placeholder="Disable me">
+  <button id="disableBtn">Disable</button>
+</div>
+
+<!-- Task 8 -->
+<div class="task">
+  <h3>Task 8: Count Total Buttons</h3>
+  <button id="countBtn">Count Buttons</button>
+</div>
+
+<!-- Task 9 -->
+<div class="task">
+  <h3>Task 9: Change Font Style to Italic</h3>
+  <p id="italicText">Make me italic</p>
+  <button id="italicBtn">Italic</button>
+</div>
+
+<!-- Task 10 -->
+<div class="task">
+  <h3>Task 10: Clear Form on Submit</h3>
+  <form id="clearForm">
+    <input type="text" placeholder="Name"><br><br>
+    <input type="email" placeholder="Email"><br><br>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+
+<!-- Task 11 -->
+<div class="task">
+  <h3>Task 11: Change Div Background on Mouse Over</h3>
+  <div id="hoverDiv">ClickMe</div>
+</div>
+
+<!-- Task 12 -->
+<div class="task">
+  <h3>Task 12: Display Range Slider Value</h3>
+  <input type="range" id="rangeSlider" min="0" max="100">
+  <p id="rangeValue"></p>
+</div>
+
+<!-- Task 13 -->
+<div class="task">
+  <h3>Task 13: Change Paragraph Font Weight</h3>
+  <p id="weightText">Change my font weight</p>
+  <button id="weightBtn">Bold</button>
+</div>
+
+<!-- Task 14 -->
+<div class="task">
+  <h3>Task 14: Show Message on Button Click</h3>
+  <button id="msgBtn">Click Me</button>
+  <p id="msgText"></p>
+</div>
+
+<!-- Task 15 -->
+<div class="task">
+  <h3>Task 15: Convert Input to Uppercase on Blur</h3>
+  <input type="text" id="upperInput" placeholder="Type here">
+</div>
+
+<!-- Task 16 -->
+<div class="task">
+  <h3>Task 16: Message When Checkbox is Unchecked</h3>
+  <input type="checkbox" id="checkBox" checked> Agree
+  <p id="checkMsg"></p>
+</div>
+
+<!-- Task 17 -->
+<div class="task">
+  <h3>Task 17: Hide a Specific Div</h3>
+  <div id="hideDiv" style="background:#eee;padding:10px;">Hide Me</div><br>
+  <button id="hideBtn">Hide Div</button>
+</div>
+
+<!-- Task 18 -->
+<div class="task">
+  <h3>Task 18: Display Current Time (HH:MM)</h3>
+  <p id="time"></p>
+</div>
+
+<!-- Task 19 -->
+<div class="task">
+  <h3>Task 19: Add Line-through to Paragraph</h3>
+  <p id="lineText">Strike this text</p>
+  <button id="lineBtn">Line Through</button>
+</div>
+
+<!-- Task 20 -->
+<div class="task">
+  <h3>Task 20: Toggle Image Visibility</h3>
+  <img id="toggleImg" src="login .png" width="200">
+  <br><br>
+  <button id="imgBtn">Toggle Image</button>
+</div>
+
+
+
+<!-- Task 21 -->
+<div class="task">
+  <h3>Task 21: Simple List with CSS Text Color</h3>
+  <ul class="color-list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+</div>
+
+<!-- Task 22 -->
+<div class="task">
+  <h3>Task 22: Display Text Length in Textarea</h3>
+  <textarea id="textArea" rows="4" cols="30"></textarea>
+  <p id="textLength">Length: 0</p>
+</div>
+
+<!-- Task 23 -->
+<div class="task">
+  <h3>Task 23: Change Page Background Color</h3>
+  <button id="bgBtn">Change Background</button>
+</div>
+
+<!-- Task 24 -->
+<div class="task">
+  <h3>Task 24: Show Warning if Input is Empty</h3>
+  <input id="emptyInput" type="text">
+  <button id="checkBtn">Check</button>
+  <p id="warnMsg" style="color:red;"></p>
+</div>
+
+<!-- Task 25 -->
+<div class="task">
+  <h3>Task 25: Message on Mouse Button Release</h3>
+  <button id="mouseBtn">Release Mouse Here</button>
+  <p id="mouseMsg"></p>
+</div>
+
+<!-- Task 26 -->
+<div class="task">
+  <h3>Task 26: Allow Only Uppercase Letters</h3>
+  <input id="upperOnly" type="text">
+</div>
+
+<!-- Task 27 -->
+<div class="task">
+  <h3>Task 27: Enable All Disabled Inputs</h3>
+  <input type="text" disabled value="Disabled 1">
+  <input type="text" disabled value="Disabled 2"><br><br>
+  <button id="enableBtn">Enable Inputs</button>
+</div>
+
+<!-- Task 28 -->
+<div class="task">
+  <h3>Task 28: Change Style of All Paragraphs</h3>
+  <p>Paragraph One</p>
+  <p>Paragraph Two</p>
+  <button id="styleBtn">Change Paragraph Style</button>
+</div>
+
+<!-- Task 29 -->
+<div class="task">
+  <h3>Task 29: Disable Dropdown</h3>
+  <select id="dropdown">
+    <option>Option 1</option>
+    <option>Option 2</option>
+  </select>
+  <button id="disableDrop">Disable Dropdown</button>
+</div>
+
+<!-- Task 30 -->
+<div class="task">
+  <h3>Task 30: Error if Number is Negative</h3>
+  <input id="numInput" type="number">
+  <p id="numError" style="color:red;"></p>
+</div>
+
+
+<!-- Task 31 -->
+<div class="task">
+  <h3>Task 31: Store & Retrieve Theme Color (localStorage)</h3>
+  <button id="saveTheme">Save Theme</button>
+  <button id="loadTheme">Load Theme</button>
+</div>
+
+<!-- Task 32 -->
+<div class="task">
+  <h3>Task 32: Change Multiple CSS Properties</h3>
+  <div id="multiBox" style="width:120px;height:60px;background:#ddd;"></div><br>
+  <button id="multiBtn">Change Style</button>
+</div>
+
+<!-- Task 33 -->
+<div class="task">
+  <h3>Task 33: Message on Scroll Bottom</h3>
+  <p id="scrollMsg">JavaScript is the programming language of the web.It can calculate, manipulate and validate data.
+
+It can update and change both HTML and CSS.</p>
+</div>
+
+
+<!-- Task 34 -->
+<div class="task">
+  <h3>Task 34: Show Form Data in Div</h3>
+  <form id="dataForm">
+    <input type="text" id="name" placeholder="Name"><br><br>
+    <input type="email" id="email" placeholder="Email"><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="output"></div>
+</div>
+
+<!-- Task 35 -->
+<div class="task">
+  <h3>Task 35: Toggle Button Text</h3>
+  <button id="toggleTextBtn">ON</button>
+</div>
+
+<!-- Task 36 -->
+<div class="task">
+  <h3>Task 36: Validate Length & Show Remaining</h3>
+  <input id="limitInput" type="text" maxlength="20">
+  <p id="remain">Remaining: 20</p>
+</div>
+
+<!-- Task 37 -->
+<div class="task">
+  <h3>Task 37: Add List Item Dynamically</h3>
+  <ul id="dynamicList">
+    <li>Item 1</li>
+  </ul>
+  <button id="addItem">Add Item</button>
+</div>
+
+<!-- Task 38 -->
+<div class="task">
+  <h3>Task 38: Message When Offline</h3>
+  <p id="offlineMsg">You are online</p>
+</div>
+
+<!-- Task 39 -->
+<div class="task">
+  <h3>Task 39: Remove Last List Item</h3>
+  <ul id="removeList">
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+  </ul>
+  <button id="removeItem">Remove Last</button>
+</div>
+
+<!-- Task 40 -->
+<div class="task">
+  <h3>Task 40: Simple Page Layout (CSS Grid)</h3>
+
+  <div class="grid-layout">
+    <div class="grid-box">Sidebar</div>
+    <div class="grid-box">Main Content</div>
+  </div>
+</div>
+
+
+<!-- Task 41 -->
+<div class="task">
+  <h3>Task 41: Change Border Style of a Div</h3>
+  <div id="borderDiv" style="width:150px;height:60px;border:2px solid black;"></div><br>
+  <button id="borderBtn">Change Border</button>
+</div>
+
+<!-- Task 42 -->
+<div class="task">
+  <h3>Task 42: Message on Paste Event</h3>
+  <input id="pasteInput" type="text">
+  <p id="pasteMsg"></p>
+</div>
+
+<!-- Task 43 -->
+<div class="task">
+  <h3>Task 43: Reset Form Using Reset Button</h3>
+  <form id="resetForm">
+    <input type="text" placeholder="Name"><br><br>
+    <input type="email" placeholder="Email"><br><br>
+    <button type="reset">Reset</button>
+  </form>
+</div>
+
+<!-- Task 44 -->
+<div class="task">
+  <h3>Task 44: Convert Input to Sentence Case</h3>
+  <input id="sentenceInput" type="text" placeholder="enter text">
+</div>
+
+<!-- Task 45 -->
+<div class="task">
+  <h3>Task 45: Disable Button After One Click</h3>
+  <button id="oneClickBtn">Click Once</button>
+</div>
+
+<!-- Task 46 -->
+<div class="task">
+  <h3>Task 46: Total Characters in Multiple Inputs</h3>
+  <input class="charInput" type="text"><br><br>
+  <input class="charInput" type="text"><br><br>
+  <p id="totalChars">Total Characters: 0</p>
+</div>
+
+<!-- Task 47 -->
+<div class="task">
+  <h3>Task 47: Hide All Images</h3>
+  <img src="image.jpg">
+  <img src="istockphoto-681388560-170667a.jpg"><br><br>
+  <button id="hideImages">Hide Images</button>
+</div>
+
+<!-- Task 48 -->
+<div class="task">
+  <h3>Task 48: Message When Window Gains Focus</h3>
+  <p id="focusMsg">Click outside the browser, then come back</p>
+</div>
+
+<!-- Task 49 -->
+<div class="task">
+  <h3>Task 49: Content Section Using Flexbox</h3>
+  <div class="flex-container">
+    <div class="flex-box">Box 1</div>
+    <div class="flex-box">Box 2</div>
+    <div class="flex-box">Box 3</div>
+  </div>
+</div>
+
+<!-- Task 50 -->
+<div class="task">
+  <h3>Task 50: Change Meta Title Dynamically</h3>
+  <button id="titleBtn">Change Page Title</button>
+</div>
+
+
+<script>
+/* Task 1 */
+document.getElementById("btnHeading").addEventListener("click", function(){
+  document.getElementById("heading").innerText = "Heading Changed!";
+});
+
+/* Task 2 */
+document.getElementById("focusInput").addEventListener("focus", function(){
+  document.getElementById("focusMsg").innerText = "Input field focused!";
+});
+
+/* Task 3 */
+document.getElementById("bgBtn").addEventListener("click", function(){
+  document.getElementById("bgPara").style.backgroundColor = "yellow";
+});
+
+/* Task 4 */
+document.getElementById("month").innerText =
+  "Current Month: " + new Date().toLocaleString("default",{month:"long"});
+
+/* Task 5 */
+let size = 16;
+document.getElementById("incBtn").addEventListener("click", function(){
+  size += 2;
+  document.getElementById("sizeText").style.fontSize = size + "px";
+});
+document.getElementById("decBtn").addEventListener("click", function(){
+  size -= 2;
+  document.getElementById("sizeText").style.fontSize = size + "px";
+});
+
+/* Task 6 */
+document.getElementById("dblPara").addEventListener("dblclick", function(){
+  this.style.display = "none";
+});
+
+/* Task 7 */
+document.getElementById("disableBtn").addEventListener("click", function(){
+  document.getElementById("disableInput").disabled = true;
+});
+
+/* Task 8 */
+document.getElementById("countBtn").addEventListener("click", function(){
+  alert("Total Buttons: " + document.querySelectorAll("button").length);
+});
+
+/* Task 9 */
+document.getElementById("italicBtn").addEventListener("click", function(){
+  document.getElementById("italicText").style.fontStyle = "italic";
+});
+
+/* Task 10 */
+document.getElementById("clearForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  this.reset();
+});
+
+/* Task 11 */
+const hoverDiv = document.getElementById("hoverDiv");
+hoverDiv.addEventListener("mouseover", () => {
+  hoverDiv.style.backgroundColor = "lightblue";
+});
+hoverDiv.addEventListener("mouseout", () => {
+  hoverDiv.style.backgroundColor = "#ddd";
+});
+
+/* Task 12 */
+const slider = document.getElementById("rangeSlider");
+const rangeValue = document.getElementById("rangeValue");
+slider.addEventListener("input", () => {
+  rangeValue.innerText = "Value: " + slider.value;
+});
+
+/* Task 13 */
+document.getElementById("weightBtn").addEventListener("click", () => {
+  document.getElementById("weightText").style.fontWeight = "bold";
+});
+
+/* Task 14 */
+document.getElementById("msgBtn").addEventListener("click", () => {
+  document.getElementById("msgText").innerText = "Button was clicked!";
+});
+
+/* Task 15 */
+document.getElementById("upperInput").addEventListener("blur", function(){
+  this.value = this.value.toUpperCase();
+});
+
+/* Task 16 */
+document.getElementById("checkBox").addEventListener("change", function(){
+  if(!this.checked){
+    document.getElementById("checkMsg").innerText = "Checkbox is unchecked!";
+  } else {
+    document.getElementById("checkMsg").innerText = "";
+  }
+});
+
+/* Task 17 */
+document.getElementById("hideBtn").addEventListener("click", () => {
+  document.getElementById("hideDiv").style.display = "none";
+});
+
+/* Task 18 */
+function updateTime(){
+  const now = new Date();
+  const hrs = String(now.getHours()).padStart(2,"0");
+  const mins = String(now.getMinutes()).padStart(2,"0");
+  document.getElementById("time").innerText = `${hrs}:${mins}`;
+}
+updateTime();
+
+/* Task 19 */
+document.getElementById("lineBtn").addEventListener("click", () => {
+  document.getElementById("lineText").style.textDecoration = "line-through";
+});
+
+/* Task 20 */
+document.getElementById("imgBtn").addEventListener("click", () => {
+  const img = document.getElementById("toggleImg");
+  img.style.display = img.style.display === "none" ? "block" : "none";
+});
+
+
+/* Task 22 */
+document.getElementById("textArea").addEventListener("input", function(){
+  document.getElementById("textLength").innerText =
+    "Length: " + this.value.length;
+});
+
+/* Task 23 */
+document.getElementById("bgBtn").addEventListener("click", () => {
+  document.body.style.backgroundColor = "#f2f2f6";
+});
+
+/* Task 24 */
+document.getElementById("checkBtn").addEventListener("click", () => {
+  const val = document.getElementById("emptyInput").value;
+  document.getElementById("warnMsg").innerText =
+    val === "" ? "Input field is empty!" : "";
+});
+
+/* Task 25 */
+document.getElementById("mouseBtn").addEventListener("mouseup", () => {
+  document.getElementById("mouseMsg").innerText =
+    "Mouse button released!";
+});
+
+/* Task 26 */
+document.getElementById("upperOnly").addEventListener("input", function(){
+  this.value = this.value.replace(/[^A-Z]/g,"");
+});
+
+/* Task 27 */
+document.getElementById("enableBtn").addEventListener("click", () => {
+  document.querySelectorAll("input").forEach(input => {
+    input.disabled = false;
+  });
+});
+
+/* Task 28 */
+document.getElementById("styleBtn").addEventListener("click", () => {
+  document.querySelectorAll("p").forEach(p => {
+    p.style.color = "blue";
+    p.style.fontWeight = "bold";
+  });
+});
+
+/* Task 29 */
+document.getElementById("disableDrop").addEventListener("click", () => {
+  document.getElementById("dropdown").disabled = true;
+});
+
+/* Task 30 */
+document.getElementById("numInput").addEventListener("input", function(){
+  document.getElementById("numError").innerText =
+    this.value < 0 ? "Negative numbers are not allowed!" : "";
+});
+
+
+
+/* Task 31 */
+document.getElementById("saveTheme").addEventListener("click", () => {
+  localStorage.setItem("themeColor", "#f5f5f5");
+  alert("Theme saved!");
+});
+document.getElementById("loadTheme").addEventListener("click", () => {
+  document.body.style.backgroundColor =
+    localStorage.getItem("themeColor");
+});
+
+/* Task 32 */
+document.getElementById("multiBtn").addEventListener("click", () => {
+  const box = document.getElementById("multiBox");
+  box.style.background = "skyblue";
+  box.style.border = "2px solid black";
+  box.style.borderRadius = "10px";
+});
+
+/* Task 33 */
+window.addEventListener("scroll", function () {
+  if (
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight
+  ) {
+    document.getElementById("scrollMsg").innerText =
+      "You have reached the bottom of the page!";
+  }
+});
+
+
+/* Task 34 */
+document.getElementById("dataForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("output").innerHTML =
+    `Name: ${name.value} <br> Email: ${email.value}`;
+});
+
+/* Task 35 */
+document.getElementById("toggleTextBtn").addEventListener("click", function(){
+  this.innerText = this.innerText === "ON" ? "OFF" : "ON";
+});
+
+/* Task 36 */
+document.getElementById("limitInput").addEventListener("input", function(){
+  document.getElementById("remain").innerText =
+    "Remaining: " + (20 - this.value.length);
+});
+
+/* Task 37 */
+let count = 2;
+document.getElementById("addItem").addEventListener("click", () => {
+  const li = document.createElement("li");
+  li.innerText = "Item " + count++;
+  document.getElementById("dynamicList").appendChild(li);
+});
+
+/* Task 38 */
+/* Detect when internet connection is lost */
+window.addEventListener("offline", function () {
+  document.getElementById("offlineMsg").innerText =
+    "You are offline!";
+});
+
+/* Optional: Detect when back online */
+window.addEventListener("online", function () {
+  document.getElementById("offlineMsg").innerText =
+    "You are back online!";
+});
+
+/* Task 39 */
+document.getElementById("removeItem").addEventListener("click", () => {
+  const list = document.getElementById("removeList");
+  if(list.lastElementChild){
+    list.removeChild(list.lastElementChild);
+  }
+});
+
+/* Task 41 */
+document.getElementById("borderBtn").addEventListener("click", () => {
+  document.getElementById("borderDiv").style.border = "3px dashed red";
+});
+
+/* Task 42 */
+document.getElementById("pasteInput").addEventListener("paste", () => {
+  document.getElementById("pasteMsg").innerText = "Text pasted!";
+});
+
+/* Task 44 */
+document.getElementById("sentenceInput").addEventListener("blur", function(){
+  const text = this.value.toLowerCase();
+  this.value = text.charAt(0).toUpperCase() + text.slice(1);
+});
+
+/* Task 45 */
+document.getElementById("oneClickBtn").addEventListener("click", function(){
+  this.disabled = true;
+  this.innerText = "Disabled";
+});
+
+/* Task 46 */
+document.querySelectorAll(".charInput").forEach(input => {
+  input.addEventListener("input", () => {
+    let total = 0;
+    document.querySelectorAll(".charInput").forEach(i => {
+      total += i.value.length;
+    });
+    document.getElementById("totalChars").innerText =
+      "Total Characters: " + total;
+  });
+});
+
+/* Task 47 */
+document.getElementById("hideImages").addEventListener("click", () => {
+  document.querySelectorAll("img").forEach(img => {
+    img.style.display = "none";
+  });
+});
+
+/* Task 48 */
+window.addEventListener("focus", function () {
+  document.getElementById("focusMsg").innerText =
+    "Window is focused!";
+});
+
+/* Task 50 */
+document.getElementById("titleBtn").addEventListener("click", () => {
+  document.title = "Title Changed Using JavaScript";
+});
+
+</script>
+
+</body>
+</html>
