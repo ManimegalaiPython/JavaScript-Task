@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 41–50</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  padding:20px;
+}
+
+.section{
+  border:1px solid #ccc;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+/* Task 49 */
+.flex-section{
+  display:flex;
+  gap:20px;
+  justify-content:space-between;
+}
+.flex-section div{
+  background:#f1c40f;
+  padding:20px;
+  flex:1;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h3>JavaScript Tasks 41–50</h3>
+
+<!-- 41 -->
+<div class="section">
+<h3>41. Change Border Style</h3>
+<button onclick="changeBorder()">Change Border</button>
+<div id="box41" style="width:120px;height:120px;"></div>
+</div>
+
+<!-- 42 -->
+<div class="section">
+<h3>42. Paste Event Message</h3>
+<input type="text" onpaste="pasteMsg()">
+<p id="msg42"></p>
+</div>
+
+<!-- 43 -->
+<div class="section">
+<h3>43. Reset Form</h3>
+<form id="form43">
+  <input placeholder="Name">
+  <button type="reset">Reset</button>
+</form>
+</div>
+
+<!-- 44 -->
+<div class="section">
+<h3>44. Sentence Case</h3>
+<input id="text44">
+<button onclick="sentenceCase()">Convert</button>
+<p id="out44"></p>
+</div>
+
+<!-- 45 -->
+<div class="section">
+<h3>45. Disable Button After Click</h3>
+<button id="btn45" onclick="disableBtn()">Click Me</button>
+</div>
+
+<!-- 46 -->
+<div class="section">
+<h3>46. Total Characters</h3>
+<input class="multi">
+<input class="multi">
+<button onclick="countAll()">Count</button>
+<p id="total46"></p>
+</div>
+
+<!-- 47 -->
+<div class="section">
+<h3>47. Hide All Images</h3>
+<img src="https://via.placeholder.com/50">
+<img src="https://via.placeholder.com/50">
+<button onclick="hideImages()">Hide Images</button>
+</div>
+
+<!-- 48 -->
+<div class="section">
+<h3>48. Window Focus Message</h3>
+<p id="focus48">Focus status</p>
+</div>
+
+<!-- 49 -->
+<div class="section">
+<h3>49. Flexbox Content</h3>
+<div class="flex-section">
+  <div>Box 1</div>
+  <div>Box 2</div>
+  <div>Box 3</div>
+</div>
+</div>
+
+<!-- 50 -->
+<div class="section">
+<h3>50. Change Page Title</h3>
+<button onclick="changeTitle()">Change Title</button>
+</div>
+
+<script>
+/* 41 */
+function changeBorder(){
+  document.getElementById("box41").style.border = "3px dashed red";
+}
+
+/* 42 */
+function pasteMsg(){
+  document.getElementById("msg42").innerText = "Text pasted!";
+}
+
+/* 44 */
+function sentenceCase(){
+  let txt = document.getElementById("text44").value;
+  document.getElementById("out44").innerText =
+    txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase();
+}
+
+/* 45 */
+function disableBtn(){
+  const btn = document.getElementById("btn45");
+  btn.disabled = true;
+  btn.innerText = "Disabled";
+}
+
+/* 46 */
+function countAll(){
+  let total = 0;
+  document.querySelectorAll(".multi").forEach(i=>{
+    total += i.value.length;
+  });
+  document.getElementById("total46").innerText =
+    "Total characters: " + total;
+}
+
+/* 47 */
+function hideImages(){
+  document.querySelectorAll("img").forEach(img=>{
+    img.style.display = "none";
+  });
+}
+
+/* 48 */
+window.addEventListener("focus",()=>{
+  document.getElementById("focus48").innerText = "Window focused";
+});
+
+/* 50 */
+function changeTitle(){
+  document.title = "Title Changed!";
+}
+</script>
+
+</body>
+</html>

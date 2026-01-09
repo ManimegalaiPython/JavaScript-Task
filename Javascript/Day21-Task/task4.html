@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 31–40 (JavaScript)</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  padding:20px;
+  line-height:1.8;
+}
+
+.section{
+  border:1px solid #ccc;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+/* Task 40 */
+.grid-layout{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+.grid-layout div{
+  background:#f1c40f;
+  padding:20px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h2>JavaScript Tasks 31–40</h2>
+
+<!-- 31 -->
+<div class="section">
+<h3>31. Store & Retrieve Theme Color (localStorage)</h3>
+<button onclick="saveTheme()">Save Yellow Theme</button>
+<button onclick="loadTheme()">Load Theme</button>
+</div>
+
+<!-- 32 -->
+<div class="section">
+<h3>32. Change Multiple CSS Properties</h3>
+<button onclick="changeStyle()">Change Style</button>
+<div id="box32" style="width:100px;height:100px;background:gray;"></div>
+</div>
+
+<!-- 33 -->
+<div class="section">
+<h3>33. Message on Scroll Bottom</h3>
+<p>Scroll the page down ⬇</p>
+</div>
+
+<!-- 34 -->
+<div class="section">
+<h3>34. Show Form Data</h3>
+<input id="name34" placeholder="Name">
+<button onclick="submitForm()">Submit</button>
+<div id="result34"></div>
+</div>
+
+<!-- 35 -->
+<div class="section">
+<h3>35. Toggle Button Text</h3>
+<button onclick="toggleText(this)">ON</button>
+</div>
+
+<!-- 36 -->
+<div class="section">
+<h3>36. Remaining Characters</h3>
+<input id="input36" maxlength="20" oninput="countChars()">
+<p id="count36">20 characters remaining</p>
+</div>
+
+<!-- 37 -->
+<div class="section">
+<h3>37. Add List Item</h3>
+<button onclick="addItem()">Add Item</button>
+<ul id="list37"></ul>
+</div>
+
+<!-- 38 -->
+<div class="section">
+<h3>38. Offline Message</h3>
+<p id="status38">Online</p>
+</div>
+
+<!-- 39 -->
+<div class="section">
+<h3>39. Remove Last List Item</h3>
+<ul id="list39">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+<button onclick="removeLast()">Remove Last</button>
+</div>
+
+<!-- 40 -->
+<div class="section">
+<h3>40. CSS Grid Layout</h3>
+<div class="grid-layout">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+</div>
+
+<script>
+/* 31 */
+function saveTheme(){
+  localStorage.setItem("themeColor","yellow");
+}
+function loadTheme(){
+  document.body.style.background = localStorage.getItem("themeColor");
+}
+
+/* 32 */
+function changeStyle(){
+  const box = document.getElementById("box32");
+  box.style.background = "red";
+  box.style.borderRadius = "50%";
+  box.style.transform = "rotate(45deg)";
+}
+
+/* 33 */
+window.addEventListener("scroll",()=>{
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
+    alert("Reached bottom of page");
+  }
+});
+
+/* 34 */
+function submitForm(){
+  document.getElementById("result34").innerText =
+    "Name: " + document.getElementById("name34").value;
+}
+
+/* 35 */
+function toggleText(btn){
+  btn.innerText = btn.innerText === "ON" ? "OFF" : "ON";
+}
+
+/* 36 */
+function countChars(){
+  const max = 20;
+  const len = document.getElementById("input36").value.length;
+  document.getElementById("count36").innerText =
+    (max - len) + " characters remaining";
+}
+
+/* 37 */
+function addItem(){
+  const li = document.createElement("li");
+  li.innerText = "New Item";
+  document.getElementById("list37").appendChild(li);
+}
+
+/* 38 */
+window.addEventListener("offline",()=>{
+  document.getElementById("status38").innerText = "Offline";
+});
+
+/* 39 */
+function removeLast(){
+  const list = document.getElementById("list39");
+  if(list.lastElementChild){
+    list.removeChild(list.lastElementChild);
+  }
+}
+</script>
+
+</body>
+</html>

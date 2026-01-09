@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Real-Time JavaScript Tasks</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f4f4;
+  padding:20px;
+}
+h1{text-align:center}
+.task{
+  background:#fff;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.task-title{
+  font-weight:bold;
+  margin-bottom:8px;
+}
+input, textarea, button{
+  padding:6px;
+  width:100%;
+  margin-top:5px;
+}
+.error{color:red}
+.success{color:green}
+.invalid{border:2px solid red}
+.highlight{background:yellow}
+.box{height:120px;background:#ddd;margin-top:5px}
+.task{background:#fff;padding:15px;margin-bottom:15px;border-radius:8px}
+.invalid{border:2px solid red}
+.active{background:#c7d2fe}
+.tooltip{display:none;background:black;color:white;padding:4px;font-size:12px;position:absolute}
+section{height:150px;margin:20px 0;background:#ddd}
+</style>
+</head>
+
+<body>
+
+<h1>Real-Time JavaScript Tasks (1–50)</h1>
+
+<!-- 1 -->
+<div class="task">
+<div class="task-title">1. Display the number of characters typed in an input field in real time</div>
+<input id="t1">
+<p>Characters: <span id="o1">0</span></p>
+</div>
+
+<!-- 2 -->
+<div class="task">
+<div class="task-title">2. Change the border color of an input field while the user is typing</div>
+<input id="t2">
+</div>
+
+<!-- 3 -->
+<div class="task">
+<div class="task-title">3. Show a live preview of text entered in an input field</div>
+<input id="t3">
+<p id="o3"></p>
+</div>
+
+<!-- 4 -->
+<div class="task">
+<div class="task-title">4. Display remaining characters allowed in a textarea while typing</div>
+<textarea id="t4" maxlength="50"></textarea>
+<p>Remaining: <span id="o4">50</span></p>
+</div>
+
+<!-- 5 -->
+<div class="task">
+<div class="task-title">5. Show an error message immediately when input is left empty</div>
+<input id="t5">
+<p id="o5" class="error"></p>
+</div>
+
+<!-- 6 -->
+<div class="task">
+<div class="task-title">6. Enable a submit button only when all required fields are filled</div>
+<input id="t6a" placeholder="Required field 1">
+<input id="t6b" placeholder="Required field 2">
+<button id="b6" disabled>Submit</button>
+</div>
+
+<!-- 7 -->
+<div class="task">
+<div class="task-title">7. Display the current mouse X and Y position on the page</div>
+<p id="o7"></p>
+</div>
+
+<!-- 8 -->
+<div class="task">
+<div class="task-title">8. Change the background color of a section while scrolling</div>
+<div class="box" id="t8"></div>
+</div>
+
+<!-- 9 -->
+<div class="task">
+<div class="task-title">9. Highlight an input field when it contains invalid data</div>
+<input id="t9" placeholder="Enter email">
+</div>
+
+<!-- 10 -->
+<div class="task">
+<div class="task-title">10. Show password strength while the user types</div>
+<input type="password" id="t10">
+<p id="o10"></p>
+</div>
+
+<!-- 11 -->
+<div class="task">
+<div class="task-title">11. Update a counter every second using JavaScript</div>
+<p id="o11">0</p>
+</div>
+
+<!-- 12 -->
+<div class="task">
+<div class="task-title">12. Display the current time and update it live</div>
+<p id="o12"></p>
+</div>
+
+<!-- 13 -->
+<div class="task">
+<div class="task-title">13. Change text color in real time based on input length</div>
+<input id="t13">
+</div>
+
+<!-- 14 -->
+<div class="task">
+<div class="task-title">14. Show a live word count for a textarea</div>
+<textarea id="t14"></textarea>
+<p>Words: <span id="o14">0</span></p>
+</div>
+
+<!-- 15 -->
+<div class="task">
+<div class="task-title">15. Display a warning when Caps Lock is turned on while typing</div>
+<input id="t15">
+<p id="o15" class="error"></p>
+</div>
+
+<!-- 16 -->
+<div class="task">
+<div class="task-title">16. Automatically convert text to uppercase while typing</div>
+<input id="t16">
+</div>
+
+<!-- 17 -->
+<div class="task">
+<div class="task-title">17. Show or hide helper text based on input focus</div>
+<input id="t17">
+<p id="o17" style="display:none;">Helper text shown on focus</p>
+</div>
+
+<!-- 18 -->
+<div class="task">
+<div class="task-title">18. Display selected range slider value in real time</div>
+<input type="range" id="t18">
+<p>Value: <span id="o18">0</span></p>
+</div>
+
+<!-- 19 -->
+<div class="task">
+<div class="task-title">19. Change button style while it is being pressed</div>
+<button id="t19">Press Me</button>
+</div>
+
+<!-- 20 -->
+<div class="task">
+<div class="task-title">20. Display a loading message while processing input</div>
+<input id="t20">
+<p id="o20"></p>
+</div>
+
+<!-- 21 -->
+<div class="task">
+<div class="task-title">21. Show a success message immediately after valid input</div>
+<input id="t21">
+<p id="o21"></p>
+</div>
+
+<!-- 22 -->
+<div class="task">
+<div class="task-title">22. Highlight matching text as the user types in a search box</div>
+<input id="t22" placeholder="Search">
+<p id="o22">JavaScript is powerful</p>
+</div>
+
+<!-- 23 -->
+<div class="task">
+<div class="task-title">23. Disable a button in real time when input exceeds limit</div>
+<input id="t23" maxlength="5">
+<button id="b23">Submit</button>
+</div>
+
+<!-- 24 -->
+<div class="task">
+<div class="task-title">24. Change page title dynamically based on user input</div>
+<input id="t24" placeholder="Type title">
+</div>
+
+<!-- 25 -->
+<div class="task">
+<div class="task-title">25. Display a message when the user stops typing</div>
+<input id="t25">
+<p id="o25"></p>
+</div>
+
+
+<!-- 26 -->
+<div class="task">
+<div class="task-title">26. Create a live form validation system without page reload</div>
+<input id="t26" placeholder="Min 3 characters">
+<p id="o26"></p>
+</div>
+
+<!-- 27 -->
+<div class="task">
+<div class="task-title">27. Show real-time preview of selected image before upload</div>
+<input type="file" id="t27">
+<img id="o27" width="100">
+</div>
+
+<!-- 28 -->
+<div class="task">
+<div class="task-title">28. Filter a list of items dynamically as the user types</div>
+<input id="t28">
+<ul id="o28">
+<li>Apple</li><li>Banana</li><li>Orange</li>
+</ul>
+</div>
+
+<!-- 29 -->
+<div class="task">
+<div class="task-title">29. Save input data automatically while typing</div>
+<input id="t29">
+</div>
+
+<!-- 30 -->
+<div class="task">
+<div class="task-title">30. Restore saved input values when the page reloads</div>
+<p>Reload page to see saved value</p>
+</div>
+
+<!-- 31 -->
+<div class="task">
+<div class="task-title">31. Show online/offline status in real time</div>
+<p id="o31"></p>
+</div>
+
+<!-- 32 -->
+<div class="task">
+<div class="task-title">32. Update UI instantly when checkbox is checked/unchecked</div>
+<input type="checkbox" id="t32"> Check me
+<p id="o32"></p>
+</div>
+
+<!-- 33 -->
+<div class="task">
+<div class="task-title">33. Show confirmation message when all fields are valid</div>
+<input id="t33a"><input id="t33b">
+<p id="o33"></p>
+</div>
+
+<!-- 34 -->
+<div class="task">
+<div class="task-title">34. Track and display total time spent on the page</div>
+<p id="o34">0 seconds</p>
+</div>
+
+<!-- 35 -->
+<div class="task">
+<div class="task-title">35. Show real-time typing speed (characters per second)</div>
+<input id="t35">
+<p id="o35"></p>
+</div>
+
+<!-- 36 -->
+<div class="task">
+<div class="task-title">36. Change layout styles dynamically based on window size</div>
+<p id="o36"></p>
+</div>
+
+<!-- 37 -->
+<div class="task">
+<div class="task-title">37. Display scroll percentage while scrolling the page</div>
+<p id="o37"></p>
+</div>
+
+<!-- 38 -->
+<div class="task">
+<div class="task-title">38. Highlight the active section while scrolling</div>
+<section id="s1">Section 1</section>
+<section id="s2">Section 2</section>
+</div>
+
+<!-- 39 -->
+<div class="task">
+<div class="task-title">39. Disable form fields based on user selection</div>
+<select id="t39">
+<option value="">Select</option>
+<option value="disable">Disable</option>
+</select>
+<input id="o39">
+</div>
+
+<!-- 40 -->
+<div class="task">
+<div class="task-title">40. Show tooltip text when hovering</div>
+<button id="t40">Hover me</button>
+<div id="o40" class="tooltip">Tooltip Text</div>
+</div>
+
+<!-- 41 -->
+<div class="task">
+<div class="task-title">41. Update multiple UI elements using one event</div>
+<input id="t41">
+<p id="o41a"></p>
+<p id="o41b"></p>
+</div>
+
+<!-- 42 -->
+<div class="task">
+<div class="task-title">42. Display a live countdown to a specific time</div>
+<p id="o42"></p>
+</div>
+
+<!-- 43 -->
+<div class="task">
+<div class="task-title">43. Show dynamic suggestions while typing</div>
+<input id="t43">
+<p id="o43"></p>
+</div>
+
+<!-- 44 -->
+<div class="task">
+<div class="task-title">44. Highlight invalid inputs instantly</div>
+<input id="t44" placeholder="Numbers only">
+</div>
+
+<!-- 45 -->
+<div class="task">
+<div class="task-title">45. Show real-time result of calculation</div>
+<input id="t45a" placeholder="Number">
+<input id="t45b" placeholder="Number">
+<p id="o45"></p>
+</div>
+
+<!-- 46 -->
+<div class="task">
+<div class="task-title">46. Lock submit button while processing</div>
+<button id="t46">Submit</button>
+<p id="o46"></p>
+</div>
+
+<!-- 47 -->
+<div class="task">
+<div class="task-title">47. Display last activity time of the user</div>
+<p id="o47"></p>
+</div>
+
+<!-- 48 -->
+<div class="task">
+<div class="task-title">48. Update UI when browser tab visibility changes</div>
+<p id="o48"></p>
+</div>
+
+<!-- 49 -->
+<div class="task">
+<div class="task-title">49. Warn if user tries to leave with unsaved data</div>
+<input id="t49">
+</div>
+
+<!-- 50 -->
+<div class="task">
+<div class="task-title">50. Multiple UI elements react to one user action</div>
+<button id="t50">Click</button>
+<p id="o50"></p>
+</div>
+
+
+<script>
+// 1
+t1.oninput=()=>o1.textContent=t1.value.length;
+
+// 2
+t2.oninput=()=>t2.style.border="2px solid green";
+
+// 3
+t3.oninput=()=>o3.textContent=t3.value;
+
+// 4
+t4.oninput=()=>o4.textContent=50-t4.value.length;
+
+// 5
+t5.oninput=()=>o5.textContent=t5.value?"":"Field required";
+
+// 6
+function check6(){b6.disabled=!(t6a.value&&t6b.value)}
+t6a.oninput=check6; t6b.oninput=check6;
+
+// 7
+document.onmousemove=e=>o7.textContent=`X:${e.clientX} Y:${e.clientY}`;
+
+// 8
+window.onscroll=()=>t8.style.background="#bde0fe";
+
+// 9
+t9.oninput=()=>t9.className=/\S+@\S+\.\S+/.test(t9.value)?"":"invalid";
+
+// 10
+t10.oninput=()=>o10.textContent=t10.value.length<4?"Weak":"Strong";
+
+// 11
+setInterval(()=>o11.textContent++,1000);
+
+// 12
+setInterval(()=>o12.textContent=new Date().toLocaleTimeString(),1000);
+
+// 13
+t13.oninput=()=>t13.style.color=t13.value.length>5?"red":"black";
+
+// 14
+t14.oninput=()=>o14.textContent=t14.value.trim()?t14.value.trim().split(/\s+/).length:0;
+
+// 15
+t15.onkeyup=e=>o15.textContent=e.getModifierState("CapsLock")?"Caps Lock ON":"";
+
+// 16
+t16.oninput=()=>t16.value=t16.value.toUpperCase();
+
+// 17
+t17.onfocus=()=>o17.style.display="block";
+t17.onblur=()=>o17.style.display="none";
+
+// 18
+t18.oninput=()=>o18.textContent=t18.value;
+
+// 19
+t19.onmousedown=()=>t19.style.background="orange";
+t19.onmouseup=()=>t19.style.background="";
+
+// 20
+t20.oninput=()=>{
+  o20.textContent="Loading...";
+  setTimeout(()=>o20.textContent="Done",500);
+}
+
+// 21
+t21.oninput=()=>o21.textContent=t21.value?"Valid input ✔":"";
+
+// 22
+t22.oninput=()=>{
+  o22.innerHTML=o22.textContent.replace(
+    new RegExp(t22.value,"gi"),
+    match=>`<span class="highlight">${match}</span>`
+  );
+}
+
+// 23
+t23.oninput=()=>b23.disabled=t23.value.length>5;
+
+// 24
+t24.oninput=()=>document.title=t24.value;
+
+// 25
+let timer;
+t25.oninput=()=>{
+  o25.textContent="";
+  clearTimeout(timer);
+  timer=setTimeout(()=>o25.textContent="User stopped typing",800);
+}
+
+
+// 26
+t26.oninput=()=>o26.textContent=t26.value.length>=3?"Valid":"Invalid";
+
+// 27
+t27.onchange=e=>o27.src=URL.createObjectURL(e.target.files[0]);
+
+// 28
+t28.oninput=()=>{
+[...o28.children].forEach(li=>{
+li.style.display=li.textContent.toLowerCase().includes(t28.value.toLowerCase())?"":"none";
+});
+};
+
+// 29 & 30
+t29.oninput=()=>localStorage.setItem("saved",t29.value);
+t29.value=localStorage.getItem("saved")||"";
+
+// 31
+function updateStatus(){o31.textContent=navigator.onLine?"Online":"Offline";}
+window.ononline=updateStatus;
+window.onoffline=updateStatus;
+updateStatus();
+
+// 32
+t32.onchange=()=>o32.textContent=t32.checked?"Checked":"Unchecked";
+
+// 33
+function check33(){o33.textContent=(t33a.value&&t33b.value)?"All valid":"";
+}
+t33a.oninput=check33; t33b.oninput=check33;
+
+// 34
+let seconds=0;
+setInterval(()=>o34.textContent=++seconds+" seconds",1000);
+
+// 35
+let start=Date.now();
+t35.oninput=()=>o35.textContent=
+(t35.value.length/((Date.now()-start)/1000)).toFixed(2)+" chars/sec";
+
+// 36
+window.onresize=()=>o36.textContent=window.innerWidth<600?"Mobile":"Desktop";
+
+// 37
+window.onscroll=()=>o37.textContent=
+Math.round((window.scrollY/(document.body.scrollHeight-innerHeight))*100)+"%";
+
+// 38
+window.addEventListener("scroll",()=>{
+document.querySelectorAll("section").forEach(sec=>{
+sec.classList.toggle("active",sec.getBoundingClientRect().top<100);
+});
+});
+
+// 39
+t39.onchange=()=>o39.disabled=t39.value==="disable";
+
+// 40
+t40.onmouseover=e=>{o40.style.display="block";o40.style.left=e.pageX+"px";};
+t40.onmouseout=()=>o40.style.display="none";
+
+// 41
+t41.oninput=()=>{
+o41a.textContent=t41.value;
+o41b.textContent=t41.value.length;
+};
+
+// 42
+let target=new Date(Date.now()+60000);
+setInterval(()=>{
+let diff=target-new Date();
+o42.textContent=Math.max(0,Math.floor(diff/1000))+" sec";
+},1000);
+
+// 43
+const words=["apple","banana","orange"];
+t43.oninput=()=>o43.textContent=
+words.filter(w=>w.startsWith(t43.value)).join(", ");
+
+// 44
+t44.oninput=()=>t44.className=/^\d*$/.test(t44.value)?"":"invalid";
+
+// 45
+function calc(){o45.textContent=(+t45a.value||0)+(+t45b.value||0);}
+t45a.oninput=calc; t45b.oninput=calc;
+
+// 46
+t46.onclick=()=>{
+t46.disabled=true;
+o46.textContent="Processing...";
+setTimeout(()=>{t46.disabled=false;o46.textContent="Done";},1000);
+};
+
+// 47
+document.onmousemove=()=>o47.textContent=new Date().toLocaleTimeString();
+
+// 48
+document.onvisibilitychange=()=>o48.textContent=document.hidden?"Hidden":"Visible";
+
+// 49
+let dirty=false;
+t49.oninput=()=>dirty=true;
+window.onbeforeunload=()=>dirty?"Unsaved data":null;
+
+// 50
+t50.onclick=()=>{
+document.body.style.background="#e0f2fe";
+o50.textContent="All UI Updated!";
+};
+</script>
+
+</body>
+</html>

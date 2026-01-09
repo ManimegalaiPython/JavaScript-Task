@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 21–30 Animations</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  padding:20px;
+  background:#f4f6fb;
+}
+
+section{
+  background:#fff;
+  padding:20px;
+  margin-bottom:25px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+/* Container */
+.progress-container{
+  width:300px;
+  height:25px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+
+/* Progress bar */
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#27ae60;
+  border-radius:20px;
+}
+
+/* Button */
+button{
+  padding:10px 20px;
+  border:none;
+  background:#f1c40f;
+  font-size:16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ---------- TASK 21 ---------- */
+.box21{
+  width:80px;height:80px;
+  background:#f1c40f;
+  animation: spin21 2s linear infinite;
+}
+@keyframes spin21{
+  from{transform:rotate(0);}
+  to{transform:rotate(360deg);}
+}
+
+/* ---------- TASK 22 ---------- */
+.bar22{
+  width:0;height:20px;
+  background:green;
+}
+
+/* ---------- TASK 23 ---------- */
+.circle23{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:#3498db;
+  animation: move23 2s infinite alternate;
+}
+.delay1{animation-delay:0s;}
+.delay2{animation-delay:0.5s;}
+.delay3{animation-delay:1s;}
+
+@keyframes move23{
+  from{transform:translateX(0);}
+  to{transform:translateX(200px);}
+}
+
+/* ---------- TASK 24 ---------- */
+.box24{
+  width:80px;height:80px;
+  background:red;
+  animation: fill24 2s forwards;
+}
+@keyframes fill24{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ---------- TASK 25 ---------- */
+.box25{
+  width:80px;height:80px;
+  background:purple;
+  animation: move25 2s infinite;
+}
+@keyframes move25{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- TASK 26 ---------- */
+.layout26{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+.layout26 div{
+  background:#ddd;
+  padding:20px;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@media(max-width:900px){
+  .layout26{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:600px){
+  .layout26{grid-template-columns:1fr;}
+}
+
+/* ---------- TASK 27 ---------- */
+.box27{
+  width:80px;height:80px;
+  background:orange;
+  animation: bounce27 2s infinite;
+}
+@media(max-width:600px){
+  .box27{animation:none;}
+}
+@keyframes bounce27{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-30px);}
+}
+
+
+
+/*----28----*/
+/* Animated box */
+.box{
+  width:120px;
+  height:120px;
+  background:#f1c40f;
+  animation: move 2s infinite alternate;
+  margin-bottom:20px;
+}
+
+/* Animation */
+@keyframes move{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(200px);
+  }
+}
+
+/* 🔴 TASK 28 IMPLEMENTATION */
+/* Disable all animations below 600px */
+@media (max-width: 600px){
+  *{
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* ---------- TASK 29 ---------- */
+.nav{
+  background:#333;
+  color:#fff;
+  padding:10px;
+}
+.menu{
+  display:none;
+  animation: slide29 0.4s forwards;
+}
+@keyframes slide29{
+  from{transform:translateY(-20px);opacity:0;}
+  to{transform:translateY(0);opacity:1;}
+}
+
+/* ---------- TASK 30 ---------- */
+.box30{
+  width:80px;height:80px;
+  background:#2ecc71;
+  animation: move30 4s infinite alternate;
+}
+@media(max-width:600px){
+  .box30{animation-duration:1s;}
+}
+@keyframes move30{
+  from{transform:translateX(0);}
+  to{transform:translateX(150px);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TASK 21 -->
+<section>
+<h3>21. Stop and Restart Animation</h3>
+<div class="box21" id="box21"></div><br>
+<button onclick="stopAnim()">Stop</button>
+<button onclick="startAnim()">Start</button>
+</section>
+
+<!-- TASK 22 -->
+<h3>Task 22: Fill Bar from 0% to 100%</h3>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<button onclick="startProgress()">Start Progress</button>
+
+<!-- TASK 23 -->
+<section>
+<h3>23. Multiple Delayed Animations</h3>
+<div class="circle23 delay1"></div>
+<div class="circle23 delay2"></div>
+<div class="circle23 delay3"></div>
+</section>
+
+<!-- TASK 24 -->
+<section>
+<h3>24. animation-fill-mode</h3>
+<div class="box24"></div>
+</section>
+
+<!-- TASK 25 -->
+<section>
+<h3>25. Opacity + Position Animation</h3>
+<div class="box25"></div>
+</section>
+
+<!-- TASK 26 -->
+<section>
+<h3>26. Responsive Layout</h3>
+<div class="layout26">
+  <div>Box 1</div><div>Box 2</div><div>Box 3</div>
+</div>
+</section>
+
+<!-- TASK 27 -->
+<section>
+<h3>27. Change Animation by Screen Size</h3>
+<div class="box27"></div>
+</section>
+
+<!-- TASK 28 -->
+<h3>Task 28: Disable Animations on Small Screens</h3>
+<p>Resize the screen below 600px → animation stops</p>
+
+<div class="box"></div>
+
+<!-- TASK 29 -->
+<section>
+<h3>29. Responsive Navbar</h3>
+<div class="nav">
+<button onclick="toggleMenu()">Menu</button>
+<div class="menu" id="menu">
+<p>Home</p>
+<p>About</p>
+<p>Contact</p>
+</div>
+</div>
+</section>
+
+<!-- TASK 30 -->
+<section>
+<h3>30. Change Duration by Screen Size</h3>
+<div class="box30"></div>
+</section>
+
+<script>
+/* TASK 21 */
+function stopAnim(){
+  document.getElementById("box21").style.animationPlayState="paused";
+}
+function startAnim(){
+  document.getElementById("box21").style.animationPlayState="running";
+}
+
+/* TASK 22 */
+function startProgress(){
+  const bar = document.getElementById("progressBar");
+  
+  // reset
+  bar.style.width = "0%";
+  bar.style.transition = "none";
+
+  // force reflow
+  bar.offsetHeight;
+
+  // animate
+  bar.style.transition = "width 2s linear";
+  bar.style.width = "100%";
+}
+
+/* TASK 29 */
+function toggleMenu(){
+  const menu=document.getElementById("menu");
+  menu.style.display = menu.style.display==="block"?"none":"block";
+}
+</script>
+
+</body>
+</html>

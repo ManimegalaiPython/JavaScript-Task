@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Animation Tasks 11–20</title>
+
+<style>
+body{
+  font-family:Segoe UI, sans-serif;
+  background:#f4f6fb;
+  padding:30px;
+}
+h2{text-align:center;margin-bottom:30px;}
+.task{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:25px;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
+.demo{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  min-height:80px;
+}
+.box{
+  width:50px;
+  height:50px;
+  background:#6c63ff;
+  border-radius:8px;
+}
+button{
+  padding:8px 16px;
+  border:none;
+  border-radius:20px;
+  background:#f1c40f;
+  cursor:pointer;
+}
+
+.typing-box{
+  background:#fff;
+  padding:30px 40px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  font-size:22px;
+  font-weight:500;
+  color:#333;
+}
+
+.cursor{
+  display:inline-block;
+  width:2px;
+  height:24px;
+  background:#333;
+  margin-left:5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,50%,100%{opacity:1;}
+  25%,75%{opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h2>JavaScript Animation Tasks (11 – 20)</h2>
+
+<!-- 11 -->
+<div class="task">
+<h3>11. Pause animation on hover (JS)</h3>
+<div class="demo">
+<div class="box" id="box11"></div>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="task">
+<h3>12. Change animation speed using button</h3>
+<div class="demo">
+<div class="box" id="box12"></div>
+<button onclick="toggleSpeed()">Change Speed</button>
+</div>
+</div>
+
+<!-- 13 -->
+<div class="task">
+<h3>13. Animation runs once on page load</h3>
+<div class="demo">
+<div class="box" id="box13"></div>
+</div>
+</div>
+
+<!-- 14 -->
+<div class="task">
+<h3>14. Alternate between two positions</h3>
+<div class="demo">
+<div class="box" id="box14"></div>
+</div>
+</div>
+
+<!-- 15 -->
+<div class="task">
+<h3>15. Animation starts after delay</h3>
+<div class="demo">
+<div class="box" id="box15"></div>
+</div>
+</div>
+
+<!-- 16 -->
+<div class="task">
+<h3>16. Trigger animation using JS class logic</h3>
+<div class="demo">
+<div class="box" id="box16"></div>
+<button onclick="bounce()">Animate</button>
+</div>
+</div>
+
+<!-- 17 -->
+<div class="task">
+<h3>17. Hover animation scale + rotate (JS)</h3>
+<div class="demo">
+<div class="box" id="box17"></div>
+</div>
+</div>
+
+<!-- 18 -->
+<div class="task">
+<h3>18. Typing effect using JS</h3>
+
+<div class="typing-box">
+  <span id="text"></span><span class="cursor"></span>
+</div>
+</div>
+
+<!-- 19 -->
+<div class="task">
+<h3>19. Background color animation using JS</h3>
+<div class="demo">
+<div class="box" id="box19"></div>
+</div>
+</div>
+
+<!-- 20 -->
+<div class="task">
+<h3>20. Shake box on button click</h3>
+<div class="demo">
+<div class="box" id="box20"></div>
+<button onclick="shake()">Shake</button>
+</div>
+</div>
+
+<script>
+/* 11. Pause on hover */
+let x11=0, move11=true;
+const box11=document.getElementById("box11");
+setInterval(()=>{
+  if(move11){
+    x11=(x11+2)%200;
+    box11.style.transform=`translateX(${x11}px)`;
+  }
+},16);
+box11.onmouseenter=()=>move11=false;
+box11.onmouseleave=()=>move11=true;
+
+/* 12. Speed change */
+let speed=2, x12=0;
+const box12=document.getElementById("box12");
+setInterval(()=>{
+  x12=(x12+speed)%200;
+  box12.style.transform=`translateX(${x12}px)`;
+},16);
+function toggleSpeed(){speed=speed===2?6:2}
+
+/* 13. Run once */
+let x13=0;
+const box13=document.getElementById("box13");
+const once=setInterval(()=>{
+  x13+=3;
+  box13.style.transform=`translateX(${x13}px)`;
+  if(x13>200) clearInterval(once);
+},16);
+
+/* 14. Alternate */
+let dir=true, pos14=0;
+setInterval(()=>{
+  pos14+=dir?2:-2;
+  if(pos14>200||pos14<0) dir=!dir;
+  box14.style.transform=`translateX(${pos14}px)`;
+},16);
+
+/* 15. Delay */
+const box15=document.getElementById("box15");
+setTimeout(()=>{
+  let x15=0;
+  setInterval(()=>{
+    x15+=2;
+    box15.style.transform=`translateX(${x15}px)`;
+  },16);
+},2000);
+
+/* 16. Trigger bounce */
+function bounce(){
+  const box=document.getElementById("box16");
+  let y=0, up=true;
+  const id=setInterval(()=>{
+    y+=up?-4:4;
+    box.style.transform=`translateY(${y}px)`;
+    if(y<-60) up=false;
+    if(y>0){box.style.transform="";clearInterval(id);}
+  },16);
+}
+
+/* 17. Hover scale rotate */
+const box17=document.getElementById("box17");
+box17.onmouseenter=()=>box17.style.transform="scale(1.2) rotate(15deg)";
+box17.onmouseleave=()=>box17.style.transform="";
+
+/* 18. Typing */
+/* ========= TASK 18 =========
+   Text Typing-like Effect
+   Using JavaScript
+============================ */
+
+const message = "Typing animation using JavaScript";
+let index = 0;
+const speed1 = 100; // typing speed (ms)
+const textElement = document.getElementById("text");
+
+function typeText(){
+  if(index < message.length){
+    textElement.textContent += message.charAt(index);
+    index++;
+    setTimeout(typeText, speed);
+  }
+}
+
+// Start typing when page loads
+typeText();
+
+/* 19. Background color animation */
+let hue=0;
+setInterval(()=>{
+  box19.style.background=`hsl(${hue},80%,60%)`;
+  hue=(hue+1)%360;
+},30);
+
+/* 20. Shake */
+function shake(){
+  const box=document.getElementById("box20");
+  let count=0;
+  const id=setInterval(()=>{
+    box.style.transform=`translateX(${count%2?5:-5}px)`;
+    count++;
+    if(count>10){
+      clearInterval(id);
+      box.style.transform="";
+    }
+  },40);
+}
+</script>
+
+</body>
+</html>
