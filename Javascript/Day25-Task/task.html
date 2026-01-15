@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Mega App (Tasks 1–10)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Task (1–50)</h1>
+
+<!-- 1 LOGIN SYSTEM -->
+<section>
+<h2>1. Login System (localStorage)</h2>
+<input id="loginUser" placeholder="Username">
+<input type="password" id="loginPass" placeholder="Password">
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- 2 CRUD APP -->
+<section>
+<h2>2. User CRUD App</h2>
+<input id="crudName" placeholder="User Name">
+<button onclick="addUser()">Add</button>
+<ul id="crudList"></ul>
+</section>
+
+<!-- 3 DYNAMIC TABLE -->
+<section>
+<h2>3. Dynamic Table (Search)</h2>
+<input oninput="filterTable(this.value)" placeholder="Search">
+<table>
+<thead><tr><th>Name</th></tr></thead>
+<tbody id="tableBody"></tbody>
+</table>
+</section>
+
+<!-- 4 FORM VALIDATION -->
+<section>
+<h2>4. Form Validation</h2>
+<input id="email" placeholder="Email">
+<button onclick="validateForm()">Submit</button>
+<p id="formError"></p>
+</section>
+
+<!-- 5 TODO APP -->
+<section>
+<h2>5. To-Do App (Persistent)</h2>
+<input id="todoInput">
+<button onclick="addTodo()">Add</button>
+<ul id="todoList"></ul>
+</section>
+
+<!-- 6 THEME SWITCHER -->
+<section>
+<h2>6. Theme Switcher</h2>
+<button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<!-- 7 PAGINATION -->
+<section>
+<h2>7. Pagination App</h2>
+<ul id="pageList"></ul>
+<button onclick="prevPage()">Prev</button>
+<button onclick="nextPage()">Next</button>
+</section>
+
+<!-- 8 MODAL -->
+<section>
+<h2>8. Modal Management</h2>
+<button onclick="openModal()">Open Modal</button>
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <p>This is a reusable modal</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- 9 MULTI STEP FORM -->
+<section>
+<h2>9. Multi-Step Form</h2>
+<p id="stepText">Step 1</p>
+<button onclick="nextStep()">Next</button>
+</section>
+
+<!-- 10 DASHBOARD -->
+<section>
+<h2>10. Dashboard Layout</h2>
+<div class="dashboard">
+  <div class="sidebar">
+    <button onclick="showPanel('home')">Home</button>
+    <button onclick="showPanel('stats')">Stats</button>
+  </div>
+  <div class="content">
+    <div id="home" class="panel">Home Panel</div>
+    <div id="stats" class="panel">Stats Panel</div>
+  </div>
+</div>
+</section>
+
+
+<!-- 11 SEARCH SUGGESTION -->
+<section>
+<h2>11. Search Suggestion App</h2>
+<input id="searchBox" oninput="showSuggestions()" placeholder="Search...">
+<ul id="suggestions"></ul>
+</section>
+
+<!-- 12 PASSWORD STRENGTH -->
+<section>
+<h2>12. Password Strength Analyzer</h2>
+<input type="password" id="pwd" oninput="checkStrength()">
+<p id="pwdStrength"></p>
+</section>
+
+<!-- 13 NOTIFICATION -->
+<section>
+<h2>13. Notification System</h2>
+<button onclick="showNotification()">Show Notification</button>
+<div id="notification"></div>
+</section>
+
+<!-- 14 FORM AUTO SAVE -->
+<section>
+<h2>14. Form Auto-Save</h2>
+<input id="autoName" oninput="autoSave()" placeholder="Your Name">
+<p>Auto saved in localStorage</p>
+</section>
+
+<!-- 15 PROFILE EDITOR -->
+<section>
+<h2>15. Profile Editor (Live Preview)</h2>
+<input id="profileName" oninput="updateProfile()" placeholder="Name">
+<input id="profileEmail" oninput="updateProfile()" placeholder="Email">
+<div id="profilePreview"></div>
+</section>
+
+<!-- 16 SORTABLE TABLE -->
+<section>
+<h2>16. Sortable Table</h2>
+  <p>Click on column headers to sort</p>
+
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Name ⬍</th>
+        <th onclick="sortTable(1)">Age ⬍</th>
+        <th onclick="sortTable(2)">Department ⬍</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Mani</td><td>22</td><td>IT</td></tr>
+      <tr><td>Anu</td><td>20</td><td>HR</td></tr>
+      <tr><td>Raj</td><td>25</td><td>Finance</td></tr>
+      <tr><td>Kiran</td><td>23</td><td>IT</td></tr>
+      <tr><td>Neha</td><td>21</td><td>Marketing</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 17 RESPONSIVE NAVBAR -->
+<section>
+<h2>17. Responsive Navbar</h2>
+<button onclick="toggleNav()">☰ Menu</button>
+<ul id="navbar" class="hidden">
+  <li>Home</li>
+  <li>About</li>
+  <li>Contact</li>
+</ul>
+</section>
+
+<!-- 18 ROLE BASED UI -->
+<section>
+<h2>18. Role Based UI</h2>
+<select onchange="setRole(this.value)">
+  <option>User</option>
+  <option>Admin</option>
+</select>
+<p id="roleText"></p>
+</section>
+
+<!-- 19 CART LOGIC -->
+<section>
+<h2>19. Cart Logic App</h2>
+<button onclick="addToCart(100)">Add Item ₹100</button>
+<button onclick="addToCart(200)">Add Item ₹200</button>
+<p id="cartTotal"></p>
+</section>
+
+<!-- 20 REUSABLE COMPONENT -->
+<section>
+<h2>20. Reusable Component System</h2>
+<div id="componentArea"></div>
+<button onclick="createCard('Hello','Reusable Card')">Add Card</button>
+</section>
+
+
+<section>
+<h2>21. Data Dashboard</h2>
+<div class="cards">
+  <div class="card">Users: <span id="users21">120</span></div>
+  <div class="card">Sales: ₹<span id="sales21">45000</span></div>
+  <div class="card">Orders: <span id="orders21">75</span></div>
+</div>
+</section>
+
+<section>
+<h2>22. Confirmation Dialog</h2>
+<button onclick="confirmDelete()">Delete Item</button>
+<p id="confirmResult"></p>
+</section>
+
+<section>
+<h2>23. Image Upload & Preview</h2>
+<input type="file" onchange="previewImg(event)">
+<img id="imgPreview">
+</section>
+
+<section>
+<h2>24. Form Submission Tracker</h2>
+<input id="trackInput" placeholder="Enter text">
+<button onclick="submitTrack()">Submit</button>
+<p>Total Submissions: <span id="trackCount">0</span></p>
+</section>
+
+<section>
+<h2>25. Session Timeout</h2>
+<p>Logout in <span id="timer25">10</span> seconds</p>
+</section>
+
+<section>
+<h2>26. Settings Management</h2>
+<label><input type="checkbox" onchange="saveSetting(this)"> Enable Alerts</label>
+</section>
+
+<section>
+<h2>27. Dynamic Dropdown</h2>
+<select onchange="loadCities(this.value)">
+  <option value="">Select Country</option>
+  <option value="India">India</option>
+  <option value="USA">USA</option>
+</select>
+<select id="citySelect"></select>
+</section>
+
+<section>
+<h2>28. Search & Highlight</h2>
+<input oninput="highlightText(this.value)" placeholder="Search">
+<p id="text28">JavaScript makes web applications interactive</p>
+</section>
+
+<section>
+<h2>29. Progress Tracker</h2>
+<input type="range" min="0" max="100" oninput="updateProgress(this.value)">
+<div class="progress">
+  <div id="bar29"></div>
+</div>
+</section>
+
+<section>
+<h2>30. Validation Library</h2>
+<input id="email30" placeholder="Email">
+<button onclick="validateEmail()">Validate</button>
+<p id="valMsg30"></p>
+</section>
+
+<section>
+<h2>31. Mini Admin Panel</h2>
+<input id="admin31" placeholder="Name">
+<button onclick="addAdmin()">Add</button>
+<ul id="adminList31"></ul>
+</section>
+
+<section>
+<h2>32. User Activity Log</h2>
+<button onclick="logActivity('Clicked Button')">Click</button>
+<ul id="activityLog"></ul>
+</section>
+
+<section>
+<h2>33. Offline Data Handling</h2>
+<input id="offlineInput" placeholder="Type data">
+<button onclick="saveOffline()">Save Offline</button>
+<p id="offlineStatus"></p>
+</section>
+
+<section>
+<h2>34. Conditional Form Wizard</h2>
+<select onchange="checkAge(this.value)">
+  <option value="">Select Age</option>
+  <option value="minor">Below 18</option>
+  <option value="adult">Above 18</option>
+</select>
+<p id="wizardMsg"></p>
+</section>
+
+<section>
+<h2>35. Notification Center</h2>
+<button onclick="addNotify()">Add Notification</button>
+<ul id="notifyList"></ul>
+</section>
+
+<section>
+<h2>36. Responsive Grid</h2>
+<div class="grid">
+  <div class="box">A</div>
+  <div class="box">B</div>
+  <div class="box">C</div>
+</div>
+</section>
+
+<section>
+<h2>37. Feedback Analyzer</h2>
+<input type="number" id="rate37" min="1" max="5">
+<button onclick="addFeedback()">Submit</button>
+<p id="avg37"></p>
+</section>
+
+<section>
+<h2>38. State Management</h2>
+<button onclick="increment()">+</button>
+<button onclick="decrement()">-</button>
+<p>State: <span id="state38">0</span></p>
+</section>
+
+<section>
+<h2>39. Tabs</h2>
+<button onclick="openTab('t1')">Tab 1</button>
+<button onclick="openTab('t2')">Tab 2</button>
+<p id="t1">Content 1</p>
+<p id="t2" class="hidden">Content 2</p>
+</section>
+
+<section>
+<h2>40. Search & Filter Dashboard</h2>
+<input oninput="filterDash(this.value)" placeholder="Search">
+<ul id="dashList"></ul>
+</section>
+
+
+<!-- 41 FORM RULES ENGINE -->
+<section>
+<h2>41. Form Rules Engine</h2>
+<input id="age41" type="number" placeholder="Enter Age">
+<button onclick="checkRules()">Check Rule</button>
+<p id="ruleResult"></p>
+</section>
+
+<!-- 42 LOGIN ATTEMPT LIMIT -->
+<section>
+<h2>42. Login Attempt Limit</h2>
+<input id="user42" placeholder="Username">
+<input type="password" id="pass42" placeholder="Password">
+<button onclick="login42()">Login</button>
+<p id="attemptMsg"></p>
+</section>
+
+<!-- 43 DYNAMIC CONTENT LOADER -->
+<section>
+<h2>43. Dynamic Content Loader</h2>
+<button onclick="loadContent('about')">About</button>
+<button onclick="loadContent('contact')">Contact</button>
+<div id="contentArea"></div>
+</section>
+
+<!-- 44 REPORTING DASHBOARD -->
+<section>
+<h2>44. Reporting Dashboard</h2>
+<button onclick="generateReport()">Generate Report</button>
+<ul id="report44"></ul>
+</section>
+
+<!-- 45 KEYBOARD ACCESSIBILITY -->
+<section tabindex="0" onkeydown="handleKey(event)">
+<h2>45. Keyboard Accessibility</h2>
+<p>Press Enter or Space</p>
+<p id="keyMsg"></p>
+</section>
+
+<!-- 46 UI ERROR HANDLING -->
+<section>
+<h2>46. UI Error Handling</h2>
+<input id="num46" placeholder="Enter number">
+<button onclick="divide()">Divide 100</button>
+<p id="error46"></p>
+</section>
+
+<!-- 47 THEME CUSTOMIZER -->
+<section>
+<h2>47. Dashboard Theme Customizer</h2>
+<select onchange="setTheme(this.value)">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+  <option value="blue">Blue</option>
+</select>
+</section>
+
+<!-- 48 USER ONBOARDING -->
+<section>
+<h2>48. User Onboarding Flow</h2>
+<div id="onboard1">Welcome <button onclick="nextOnboard(2)">Next</button></div>
+<div id="onboard2" class="hidden">Profile Setup <button onclick="nextOnboard(3)">Next</button></div>
+<div id="onboard3" class="hidden">Done 🎉</div>
+</section>
+
+<!-- 49 CLIENT SIDE ROUTING -->
+<section>
+<h2>49. Client-Side Routing</h2>
+<button onclick="navigate('home')">Home</button>
+<button onclick="navigate('profile')">Profile</button>
+<button onclick="navigate('settings')">Settings</button>
+<div id="routeView"></div>
+</section>
+
+<!-- 50 COMPLETE MINI APP -->
+<section>
+<h2>50. Complete Interview-Ready Mini App</h2>
+
+<input id="name50" placeholder="Name">
+<input id="email50" placeholder="Email">
+<button onclick="addUser50()">Add User</button>
+
+<table>
+<thead><tr><th>Name</th><th>Email</th></tr></thead>
+<tbody id="userTable50"></tbody>
+</table>
+
+<p>Total Users: <span id="count50">0</span></p>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>

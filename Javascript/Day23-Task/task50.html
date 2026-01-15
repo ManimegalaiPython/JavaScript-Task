@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 50 - Admin Dashboard</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#f2f2f2;
+  margin:0;
+}
+
+/* Layout */
+.dashboard{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  min-height:100vh;
+}
+
+.sidebar{
+  background:#2c3e50;
+  color:white;
+  padding:15px;
+}
+
+.sidebar h3{
+  margin-top:0;
+}
+
+.sidebar button{
+  width:100%;
+  margin:5px 0;
+  padding:8px;
+  border:none;
+  cursor:pointer;
+}
+
+.content{
+  padding:20px;
+}
+
+/* Cards */
+.cards{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.card{
+  background:#4CAF50;
+  color:white;
+  padding:15px;
+  flex:1;
+  text-align:center;
+  border-radius:5px;
+}
+
+/* Form */
+form input{
+  padding:6px;
+  margin-right:5px;
+}
+
+button{
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+/* Table */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th, td{
+  border:1px solid #ccc;
+  padding:8px;
+  text-align:center;
+}
+
+th{
+  background:#eee;
+}
+
+/* Notification */
+#notify{
+  margin-top:10px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h3>Admin Panel</h3>
+    <button>Dashboard</button>
+    <button>Users</button>
+    <button>Settings</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <h2>50. Admin Dashboard</h2>
+
+    <!-- SUMMARY -->
+    <div class="cards">
+      <div class="card">
+        Total Users<br>
+        <span id="totalUsers">0</span>
+      </div>
+      <div class="card">
+        Total Records<br>
+        <span id="totalRecords">0</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <h3>Add User</h3>
+    <form onsubmit="addUser(event)">
+      <input id="userName" placeholder="Name" required>
+      <input id="userEmail" placeholder="Email" required>
+      <button type="submit">Add</button>
+      <button type="button" onclick="resetDashboard()">Reset</button>
+    </form>
+
+    <!-- NOTIFICATION -->
+    <div id="notify"></div>
+
+    <!-- TABLE -->
+    <h3>User Table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="userTable"></tbody>
+    </table>
+
+  </div>
+</div>
+
+<script>
+let userCount = 0;
+
+// Add user
+function addUser(e){
+  e.preventDefault();
+
+  const name = userName.value;
+  const email = userEmail.value;
+
+  userCount++;
+
+  userTable.innerHTML += `
+    <tr>
+      <td>${userCount}</td>
+      <td>${name}</td>
+      <td>${email}</td>
+      <td>
+        <button onclick="deleteRow(this)">Delete</button>
+      </td>
+    </tr>
+  `;
+
+  updateSummary();
+  notify.innerText = "User added successfully";
+
+  userName.value = "";
+  userEmail.value = "";
+}
+
+// Delete row
+function deleteRow(btn){
+  if(confirm("Delete this user?")){
+    btn.closest("tr").remove();
+    notify.innerText = "User deleted";
+    updateSummary();
+  }
+}
+
+// Update summary
+function updateSummary(){
+  const rows = document.querySelectorAll("#userTable tr").length;
+  totalUsers.innerText = rows;
+  totalRecords.innerText = rows;
+}
+
+// Reset dashboard
+function resetDashboard(){
+  if(confirm("Reset dashboard data?")){
+    userTable.innerHTML = "";
+    userCount = 0;
+    updateSummary();
+    notify.innerText = "Dashboard reset";
+  }
+}
+
+// Logout
+function logout(){
+  localStorage.clear();
+  alert("Logged out");
+}
+</script>
+
+</body>
+</html>

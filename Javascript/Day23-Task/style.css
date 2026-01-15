@@ -1,0 +1,158 @@
+/* ===== GLOBAL ===== */
+body {
+  font-family: Arial;
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 30%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 10px;
+}
+
+.sidebar {
+  background: #333;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.sidebar div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar .active {
+  background: #555;
+}
+
+.content {
+  padding: 15px;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  flex: 1;
+  background: #e0f2fe;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* ===== NOTIFICATIONS ===== */
+#notificationArea {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  padding: 8px 10px;
+  border-radius: 4px;
+  color: white;
+  animation: fadeIn 0.3s ease;
+}
+
+.success {
+  background: #22c55e;
+}
+
+.error {
+  background: #dc2626;
+}
+
+.info {
+  background: #3b82f6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== REQUIRED FIELDS ===== */
+.required input {
+  border: 2px solid red;
+}
+
+/* ===== CARD STYLING ===== */
+.card-special {
+  background: #4CAF50;
+  color: white;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* ===== HIDDEN ELEMENTS ===== */
+.hidden {
+  display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}

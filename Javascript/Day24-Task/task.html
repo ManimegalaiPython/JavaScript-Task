@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Apps 1–10</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>JavaScript Mini Apps (1–50)</h1>
+
+<!-- 1 Student Registration -->
+<section>
+  <h2>1. Student Registration</h2>
+  <input id="stuName" placeholder="Name">
+  <input id="stuAge" placeholder="Age">
+  <button onclick="addStudent()">Register</button>
+  <ul id="studentList"></ul>
+</section>
+
+<!-- 2 Login & Logout -->
+<section>
+  <h2>2. Login & Logout</h2>
+  <input id="loginUser" placeholder="Username">
+  <button onclick="login()">Login</button>
+  <button onclick="logout()">Logout</button>
+  <p id="loginStatus"></p>
+</section>
+
+<!-- 3 To-Do Manager -->
+<section>
+  <h2>3. To-Do Manager</h2>
+  <input id="todoInput" placeholder="Task">
+  <button onclick="addTodo()">Add</button>
+  <ul id="todoList"></ul>
+</section>
+
+<!-- 4 Notes App -->
+<section>
+  <h2>4. Notes App</h2>
+  <textarea id="noteText"></textarea><br>
+  <button onclick="saveNote()">Save</button>
+  <ul id="noteList"></ul>
+</section>
+
+<!-- 5 User Profile Manager -->
+<section>
+  <h2>5. User Profile Manager</h2>
+  <input id="profileName" placeholder="Name">
+  <input id="profileEmail" placeholder="Email">
+  <button onclick="updateProfile()">Update</button>
+  <p id="profilePreview"></p>
+</section>
+
+<!-- 6 Contact Management -->
+<section>
+  <h2>6. Contact Management</h2>
+  <input id="contactName" placeholder="Contact Name">
+  <button onclick="addContact()">Add</button>
+  <ul id="contactList"></ul>
+</section>
+
+<!-- 7 Feedback Collection -->
+<section>
+  <h2>7. Feedback Collection</h2>
+  <input type="number" id="rate7" min="1" max="5">
+  <textarea id="comment7" placeholder="Comment"></textarea><br>
+  <button onclick="submitFeedback()">Submit</button>
+  <p id="feedbackResult"></p>
+</section>
+
+<!-- 8 Expense Tracker -->
+<section>
+  <h2>8. Expense Tracker</h2>
+  <input id="amount8" type="number" placeholder="Amount">
+  <select id="type8">
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+  <button onclick="addExpense()">Add</button>
+  <p id="summary8"></p>
+</section>
+
+<!-- 9 Daily Task Planner -->
+<section>
+  <h2>9. Daily Task Planner</h2>
+  <input type="date" id="date9">
+  <input id="task9" placeholder="Task">
+  <button onclick="addTask9()">Add</button>
+  <ul id="taskList9"></ul>
+</section>
+
+<!-- 10 Password Strength Checker -->
+<section>
+  <h2>10. Password Strength Checker</h2>
+  <input type="password" id="pass10" oninput="checkStrength()">
+  <p id="strengthMsg"></p>
+</section>
+
+
+
+<!-- 11 Form Validation App -->
+<section>
+  <h2>11. Form Validation</h2>
+  <input id="valName" placeholder="Name">
+  <span id="valNameErr" class="error"></span><br>
+  <input id="valEmail" placeholder="Email">
+  <span id="valEmailErr" class="error"></span><br>
+  <button onclick="validateForm()">Submit</button>
+</section>
+
+<!-- 12 Search & Filter App -->
+<section>
+  <h2>12. Search & Filter</h2>
+  <input id="search12" placeholder="Search product" oninput="filterProducts()">
+  <ul id="productList12"></ul>
+</section>
+
+<!-- 13 Dashboard App -->
+<section>
+  <h2>13. Dashboard App</h2>
+  <div class="dashboard">
+    <button onclick="showTab('home13')">Home</button>
+    <button onclick="showTab('analytics13')">Analytics</button>
+    <button onclick="showTab('settings13')">Settings</button>
+  </div>
+  <div id="home13" class="tabContent">Welcome Home!</div>
+  <div id="analytics13" class="tabContent" style="display:none;">Analytics Data...</div>
+  <div id="settings13" class="tabContent" style="display:none;">Settings Panel...</div>
+</section>
+
+<!-- 14 Multi-Step Registration -->
+<section>
+  <h2>14. Multi-Step Registration</h2>
+  <div id="step14-1" class="step">Step 1: <input id="regName14" placeholder="Name"><button onclick="nextStep14()">Next</button></div>
+  <div id="step14-2" class="step" style="display:none;">Step 2: <input id="regEmail14" placeholder="Email"><button onclick="nextStep14()">Next</button></div>
+  <div id="step14-3" class="step" style="display:none;">Step 3: <input id="regPass14" placeholder="Password"><button onclick="finishStep14()">Finish</button></div>
+  <p id="regResult14"></p>
+</section>
+
+<!-- 15 Theme Switcher -->
+<div>
+  <h2>15.Theme Switcher App</h2>
+  <p>Click the button to switch theme</p>
+
+  <button id="themeBtn">Switch Theme</button>
+
+  <p class="status" id="themeStatus"></p>
+</div>
+
+<!-- 16 Login Attempts Tracker -->
+<section>
+  <h2>16. Login Attempts Tracker</h2>
+  <input id="user16" placeholder="Username">
+  <input type="password" id="pass16" placeholder="Password">
+  <button onclick="login16()">Login</button>
+  <p id="attempts16"></p>
+</section>
+
+<!-- 17 User Feedback Dashboard -->
+<section>
+  <h2>17. Feedback Dashboard</h2>
+  <input type="number" id="rate17" min="1" max="5">
+  <textarea id="comment17" placeholder="Comment"></textarea>
+  <button onclick="addFeedback17()">Submit</button>
+  <p id="feedbackStats17"></p>
+</section>
+
+<!-- 18 Admin Panel -->
+<section>
+  <h2>18. Admin Panel</h2>
+  <input id="adminName18" placeholder="Name">
+  <button onclick="addAdmin18()">Add</button>
+  <ul id="adminList18"></ul>
+</section>
+
+<!-- 19 Form Submission History -->
+<section>
+  <h2>19. Form Submission History</h2>
+  <input id="form19" placeholder="Enter something">
+  <button onclick="submitForm19()">Submit</button>
+  <ul id="history19"></ul>
+</section>
+
+<!-- 20 Notification Center -->
+<section>
+  <h2>20. Notification Center</h2>
+  <button onclick="addNotification20()">Add Notification</button>
+  <ul id="notif20"></ul>
+</section>
+
+<!-- 21 Responsive Nav Menu -->
+<section>
+  <h2>21. Responsive Navigation Menu</h2>
+  <button onclick="toggleMenu21()">Toggle Menu</button>
+  <ul id="menu21" class="menu21" style="display:none;">
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+</section>
+
+<!-- 22 User Activity Tracker -->
+<section>
+  <h2>22. User Activity Tracker</h2>
+  <button onclick="trackActivity22('Clicked Button')">Click Me</button>
+  <ul id="activity22"></ul>
+</section>
+
+<!-- 23 Profile Completion Status -->
+<section>
+  <h2>23. Profile Completion Status</h2>
+  <input id="name23" placeholder="Name" oninput="updateProfile23()">
+  <input id="email23" placeholder="Email" oninput="updateProfile23()">
+  <p id="status23"></p>
+</section>
+
+<!-- 24 Survey Form -->
+<section>
+  <h2>24. Survey Form</h2>
+  <input type="radio" name="q24" value="Yes">Yes
+  <input type="radio" name="q24" value="No">No
+  <button onclick="submitSurvey24()">Submit</button>
+  <p id="result24"></p>
+</section>
+
+<!-- 25 Chat UI -->
+<section>
+  <h2>25. Chat UI</h2>
+  <div id="chat25" class="chatBox"></div>
+  <input id="msg25" placeholder="Type message">
+  <button onclick="sendMsg25()">Send</button>
+</section>
+
+<!-- 26 User Settings Auto-Save -->
+<section>
+  <h2>26. User Settings</h2>
+  <input id="setting26" placeholder="Setting" oninput="saveSetting26()">
+  <p id="saved26"></p>
+</section>
+
+<!-- 27 Product Management -->
+<section>
+  <h2>27. Product Management</h2>
+  <input id="product27" placeholder="Product name" oninput="filterProduct27()">
+  <ul id="productList27"></ul>
+</section>
+
+<!-- 28 Registration Approval -->
+<section>
+  <h2>28. Registration Approval</h2>
+  <input id="reg28" placeholder="User name">
+  <button onclick="approveUser28()">Add Pending</button>
+  <ul id="regList28"></ul>
+</section>
+
+<!-- 29 Form Draft Save -->
+<section>
+  <h2>29. Form Draft Save</h2>
+  <textarea id="draft29" oninput="saveDraft29()"></textarea>
+  <p id="draftSaved29"></p>
+</section>
+
+<!-- 30 Session Timeout Warning -->
+<section>
+  <h2>30. Session Timeout Warning</h2>
+  <p>Auto logout in <span id="timeout30"></span> seconds</p>
+</section>
+
+
+
+<!-- 31. Mini CRM App -->
+ <h2>31.Mini CRM App</h2>
+
+  <!-- Add Customer -->
+  <div class="card">
+    <h2>Add Customer</h2>
+    <input type="text" id="name" placeholder="Customer Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="phone" placeholder="Phone">
+    <button onclick="addCustomer()">Add Customer</button>
+  </div>
+
+  <!-- Customer List -->
+  <div class="card">
+    <h2>Customer List</h2>
+    <ul id="customerList"></ul>
+  </div>
+
+  <!-- Customer Details -->
+  <div class="card">
+    <h2>Customer Details</h2>
+    <p id="details">Select a customer to view details</p>
+  </div>
+
+<!-- 32. Support Ticket System -->
+<section>
+  <h2>32. Support Ticket System</h2>
+  <input id="ticketInput" placeholder="Enter issue">
+  <button onclick="addTicket()">Add Ticket</button>
+  <ul id="ticketList"></ul>
+</section>
+
+<!-- 33. Employee Attendance -->
+<section>
+  <h2>33. Employee Attendance</h2>
+  <button onclick="markAttendance()">Mark Attendance</button>
+  <p id="attendanceStatus"></p>
+</section>
+
+<!-- 34. Dashboard Analytics -->
+<section>
+  <h2>34. Dashboard Analytics</h2>
+  <p>Total Users: <span id="users">120</span></p>
+  <p>Sales: <span id="sales">₹45,000</span></p>
+</section>
+
+<!-- 35. Form Wizard -->
+<section>
+  <h2>35. Form Wizard</h2>
+  <div id="step1">
+    <input placeholder="Your Name" id="wizardName">
+    <button onclick="nextStep()">Next</button>
+  </div>
+  <div id="step2" class="hidden">
+    <input placeholder="Your Age">
+    <button onclick="prevStep()">Back</button>
+  </div>
+</section>
+
+<!-- 36. User Role Management -->
+<section>
+  <h2>36. User Role Management</h2>
+  <select id="roleSelect" onchange="changeRole()">
+    <option>User</option>
+    <option>Admin</option>
+  </select>
+  <p id="roleResult"></p>
+</section>
+
+<!-- 37. Polling App -->
+<section>
+  <h2>37. Polling App</h2>
+  <button onclick="vote()">Vote 👍</button>
+  <p>Votes: <span id="votes">0</span></p>
+</section>
+
+<!-- 38. Profile Image Upload -->
+<section>
+  <h2>38. Profile Image Upload</h2>
+  <input type="file" onchange="previewImage(event)">
+  <img id="preview">
+</section>
+
+<!-- 39. Notification Preferences -->
+<section>
+  <h2>39. Notification Preferences</h2>
+  <label><input type="checkbox" onchange="notify()"> Email</label>
+  <label><input type="checkbox" onchange="notify()"> SMS</label>
+  <p id="notifyStatus"></p>
+</section>
+
+<!-- 40. Login History -->
+<section>
+  <h2>40. Login History</h2>
+  <button onclick="addLogin()">Login</button>
+  <ul id="loginHistory"></ul>
+</section>
+
+
+<!-- 41 E-Learning Course List -->
+<section>
+  <h2>41. E-Learning Courses</h2>
+  <ul id="courseList"></ul>
+</section>
+
+<!-- 42 Task Progress -->
+<section>
+  <h2>42. Task Progress</h2>
+  <input type="range" min="0" max="100" oninput="updateProgress(this.value)">
+  <p>Progress: <span id="progressValue">0</span>%</p>
+</section>
+
+<!-- 43 Validation Rules -->
+<section>
+  <h2>43. Validation Rules</h2>
+  <input id="password43" placeholder="Enter password">
+  <button onclick="checkRules()">Check</button>
+  <p id="ruleResult"></p>
+</section>
+
+<!-- 44 Account Deactivation -->
+<section>
+  <h2>44. Account Deactivation</h2>
+  <button onclick="deactivateAccount()">Deactivate</button>
+  <p id="accountStatus"></p>
+</section>
+
+<!-- 45 Project Tracker -->
+<section>
+  <h2>45. Project Tracker</h2>
+  <ul id="projectList"></ul>
+</section>
+
+<!-- 46 System Settings -->
+<section>
+  <h2>46. System Settings</h2>
+  <label><input type="checkbox"> Dark Mode</label><br>
+  <label><input type="checkbox"> Notifications</label>
+</section>
+
+<!-- 47 Report Generator -->
+<section>
+  <h2>47. User Report</h2>
+  <button onclick="generateReport()">Generate Report</button>
+  <p id="reportOutput"></p>
+</section>
+
+<!-- 48 Booking Form -->
+<section>
+  <h2>48. Booking Form</h2>
+  <input id="bookName" placeholder="Name">
+  <input type="date" id="bookDate">
+  <button onclick="submitBooking()">Book</button>
+  <p id="bookingStatus"></p>
+</section>
+
+<!-- 49 Calculator -->
+<section>
+  <h2>49. Calculator</h2>
+  <input type="number" id="num1">
+  <input type="number" id="num2">
+  <button onclick="calculate()">Add</button>
+  <p id="calcResult"></p>
+</section>
+
+<!-- 50 Admin Dashboard -->
+<section>
+  <h2>50. Mini Admin Dashboard</h2>
+  <form>
+    <input placeholder="User Name">
+    <input placeholder="Email">
+  </form>
+
+  <table>
+    <tr><th>User</th><th>Status</th></tr>
+    <tr><td>Ravi</td><td>Active</td></tr>
+    <tr><td>Anita</td><td>Inactive</td></tr>
+  </table>
+
+  <p>Total Users: 2</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
