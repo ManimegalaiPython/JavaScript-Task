@@ -1,399 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Form & Dashboard Tasks</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>Form & Dashboard Tasks(1-50)</h1>
+  <h1>Form & Dashboard Tasks(1-50)</h1>
 
-<!-- TASK 1 -->
-<section>
-  <h2>1. Registration Form</h2>
-  <input id="regName" placeholder="Name">
-  <input id="regEmail" placeholder="Email">
-  <button onclick="registerUser()">Register</button>
-  <p id="regResult"></p>
-</section>
+  <!-- TASK 1 -->
+  <section>
+    <h2>1. Registration Form</h2>
+    <input id="regName" placeholder="Name">
+    <input id="regEmail" placeholder="Email">
+    <button onclick="registerUser()">Register</button>
+    <p id="regResult"></p>
+  </section>
 
-<!-- TASK 2 -->
-<section>
-  <h2>2. Login Form</h2>
-  <input id="loginName" placeholder="Username">
-  <input id="loginPass" type="password" placeholder="Password">
-  <button onclick="loginUser()">Login</button>
-  <p id="loginMsg"></p>
-</section>
+  <!-- TASK 2 -->
+  <section>
+    <h2>2. Login Form</h2>
+    <input id="loginName" placeholder="Username">
+    <input id="loginPass" type="password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+    <p id="loginMsg"></p>
+  </section>
 
-<!-- TASK 3 -->
-<section>
-  <h2>3. Disable Submit Until Filled</h2>
-  <input id="reqInput" oninput="checkRequired()">
-  <button id="reqBtn" disabled>Submit</button>
-</section>
+  <!-- TASK 3 -->
+  <section>
+    <h2>3. Disable Submit Until Filled</h2>
+    <input id="reqInput" oninput="checkRequired()">
+    <button id="reqBtn" disabled>Submit</button>
+  </section>
 
-<!-- TASK 4 -->
-<section>
-  <h2>4. Inline Error</h2>
-  <input id="emailCheck" placeholder="Enter Email">
-  <span id="emailError"></span><br>
-  <button onclick="validateEmail()">Check</button>
-</section>
+  <!-- TASK 4 -->
+  <section>
+    <h2>4. Inline Error</h2>
+    <input id="emailCheck" placeholder="Enter Email">
+    <span id="emailError"></span><br>
+    <button onclick="validateEmail()">Check</button>
+  </section>
 
-<!-- TASK 5 -->
-<section>
-  <h2>5. Clear Form After Submit</h2>
-  <input id="clearField">
-  <button onclick="clearForm()">Submit</button>
-</section>
+  <!-- TASK 5 -->
+  <section>
+    <h2>5. Clear Form After Submit</h2>
+    <input id="clearField">
+    <button onclick="clearForm()">Submit</button>
+  </section>
 
-<!-- TASK 6 -->
-<section>
-  <h2>6. Submission Count</h2>
-  <button onclick="countSubmission()">Submit</button>
-  <p>Total Submissions: <span id="submitCount">0</span></p>
-</section>
+  <!-- TASK 6 -->
+  <section>
+    <h2>6. Submission Count</h2>
+    <button onclick="countSubmission()">Submit</button>
+    <p>Total Submissions: <span id="submitCount">0</span></p>
+  </section>
 
-<!-- TASK 7 -->
-<section>
-  <h2>7. Contact Form</h2>
-  <button onclick="contactSubmit()">Send</button>
-  <p id="contactMsg"></p>
-</section>
+  <!-- TASK 7 -->
+  <section>
+    <h2>7. Contact Form</h2>
+    <button onclick="contactSubmit()">Send</button>
+    <p id="contactMsg"></p>
+  </section>
 
-<!-- TASK 8 -->
-<section class="required">
-  <h2>8. Required Field Highlight</h2>
-  <input placeholder="Required Field">
-</section>
+  <!-- TASK 8 -->
+  <section class="required">
+    <h2>8. Required Field Highlight</h2>
+    <input placeholder="Required Field">
+  </section>
 
-<!-- TASK 9 -->
-<section>
-  <h2>9. Live Profile Preview</h2>
-  <input oninput="profilePreview(this.value)" placeholder="Enter Name">
-  <p id="profileText"></p>
-</section>
+  <!-- TASK 9 -->
+  <section>
+    <h2>9. Live Profile Preview</h2>
+    <input oninput="profilePreview(this.value)" placeholder="Enter Name">
+    <p id="profileText"></p>
+  </section>
 
-<!-- TASK 10 -->
-<section>
-  <h2>10. Password Confirmation</h2>
-  <input id="passOne" type="password" placeholder="Password">
-  <input id="passTwo" type="password" placeholder="Confirm Password">
-  <button onclick="checkPassword()">Check</button>
-  <p id="passMsg"></p>
-</section>
+  <!-- TASK 10 -->
+  <section>
+    <h2>10. Password Confirmation</h2>
+    <input id="passOne" type="password" placeholder="Password">
+    <input id="passTwo" type="password" placeholder="Confirm Password">
+    <button onclick="checkPassword()">Check</button>
+    <p id="passMsg"></p>
+  </section>
 
-<!-- TASK 12 -->
-<section class="dashboard">
-  <header>
-    <h2>12. Dashboard</h2>
-    <p id="dateTime"></p>
-  </header>
-  <aside>Sidebar</aside>
-  <main>Content Area</main>
-</section>
+  <!-- TASK 12 -->
+  <section class="dashboard">
+    <header>
+      <h2>12. Dashboard</h2>
+      <p id="dateTime"></p>
+    </header>
+    <aside>Sidebar</aside>
+    <main>Content Area</main>
+  </section>
 
-<!-- TASK 14 & 15 -->
-<section>
-  <h2>14 & 15. Settings (localStorage)</h2>
-  <input id="settingInput" placeholder="Enter Setting">
-  <button onclick="saveSetting()">Save</button>
-  <p id="settingMsg"></p>
-</section>
-
-
-<!-- 16 -->
-<section>
-<h2>16. Feedback Average Rating</h2>
-<input type="number" id="rate16" min="1" max="5">
-<button onclick="addRating16()">Add</button>
-<p id="avg16"></p>
-</section>
-
-<!-- 17 -->
-<section>
-<h2>17. Character Count</h2>
-<textarea id="text17" oninput="count17()"></textarea>
-<p id="count17">0</p>
-</section>
-
-<!-- 18 -->
-<section>
-<h2>18. Disable Submit on Validation</h2>
-<input id="input18" oninput="check18()">
-<button id="btn18" disabled>Submit</button>
-</section>
-
-<!-- 19 -->
-<section>
-<h2>19. Radio Button Selection</h2>
-<input type="radio" name="opt19" value="Yes" onchange="radio19(this.value)">Yes
-<input type="radio" name="opt19" value="No" onchange="radio19(this.value)">No
-<p id="res19"></p>
-</section>
-
-<!-- 20 -->
-<section>
-<h2>20. Dashboard Card</h2>
-<div class="card">Total Users<br><b>250</b></div>
-</section>
-
-<!-- 21 -->
-<section>
-<h2>21. Conditional Message</h2>
-<input id="val21" oninput="check21()">
-<p id="msg21"></p>
-</section>
-
-<!-- 22 -->
-<section>
-<h2>22. Search Filter</h2>
-<input oninput="search22(this.value)">
-<p id="res22"></p>
-</section>
-
-<!-- 23 -->
-<section>
-<h2>23. Loading Message</h2>
-<button onclick="load23()">Submit</button>
-<p id="loadMsg23"></p>
-</section>
-
-<!-- 24 -->
-<section>
-<h2>24. Reset Form</h2>
-<input id="input24">
-<button onclick="reset24()">Reset</button>
-</section>
-
-<!-- 25 -->
-<section>
-<h2>25. Dropdown Selection</h2>
-<select onchange="select25(this.value)">
-<option>Select</option>
-<option>India</option>
-<option>USA</option>
-</select>
-<p id="res25"></p>
-</section>
-
-<!-- 26 -->
-<section>
-<h2>26. Multi-Step Form</h2>
-<p id="step26">Step 1</p>
-<button onclick="next26()">Next</button>
-</section>
-
-<!-- 27 -->
-<section>
-<h2>27. Step Validation</h2>
-<input id="step27">
-<button onclick="validate27()">Next</button>
-<p id="msg27"></p>
-</section>
-
-<!-- 28 -->
-<section>
-<h2>28. Add Row to Table</h2>
-<input id="name28" placeholder="Name">
-<button onclick="addRow28()">Add</button>
-<table>
-<tbody id="table28"></tbody>
-</table>
-</section>
-
-<!-- 29 -->
-<section>
-<h2>29. Edit Table Row</h2>
-<input id="edit29">
-<button onclick="editRow29()">Edit First Row</button>
-</section>
-
-<!-- 30 -->
-<section>
-<h2>30. Delete Row with Confirmation</h2>
-<button onclick="deleteRow30()">Delete First Row</button>
-</section>
+  <!-- TASK 14 & 15 -->
+  <section>
+    <h2>14 & 15. Settings (localStorage)</h2>
+    <input id="settingInput" placeholder="Enter Setting">
+    <button onclick="saveSetting()">Save</button>
+    <p id="settingMsg"></p>
+  </section>
 
 
-<!-- 31 -->
-<section>
-<h2>31. Dashboard Filter</h2>
-<button onclick="filter31('A')">A</button>
-<button onclick="filter31('B')">B</button>
-<p id="filter31">A B A B</p>
-</section>
+  <!-- 16 -->
+  <section>
+    <h2>16. Feedback Average Rating</h2>
+    <input type="number" id="rate16" min="1" max="5">
+    <button onclick="addRating16()">Add</button>
+    <p id="avg16"></p>
+  </section>
 
-<!-- 32 -->
-<section>
-<h2>32. Total Records</h2>
-<p id="total32">Records: 0</p>
-</section>
+  <!-- 17 -->
+  <section>
+    <h2>17. Character Count</h2>
+    <textarea id="text17" oninput="count17()"></textarea>
+    <p id="count17">0</p>
+  </section>
 
+  <!-- 18 -->
+  <section>
+    <h2>18. Disable Submit on Validation</h2>
+    <input id="input18" oninput="check18()">
+    <button id="btn18" disabled>Submit</button>
+  </section>
 
-<!-- TASK 33 & 34 -->
-<section>
-  <h2>Task 33 & 34: Auto-Save Form with Restore on Reload</h2>
+  <!-- 19 -->
+  <section>
+    <h2>19. Radio Button Selection</h2>
+    <input type="radio" name="opt19" value="Yes" onchange="radio19(this.value)">Yes
+    <input type="radio" name="opt19" value="No" onchange="radio19(this.value)">No
+    <p id="res19"></p>
+  </section>
 
-  <form id="autoSaveForm">
-    <label>Name</label>
-    <input type="text" id="name">
+  <!-- 20 -->
+  <section>
+    <h2>20. Dashboard Card</h2>
+    <div class="card">Total Users<br><b>250</b></div>
+  </section>
 
-    <label>Email</label>
-    <input type="email" id="email">
+  <!-- 21 -->
+  <section>
+    <h2>21. Conditional Message</h2>
+    <input id="val21" oninput="check21()">
+    <p id="msg21"></p>
+  </section>
 
-    <label>Message</label>
-    <textarea id="message"></textarea>
+  <!-- 22 -->
+  <section>
+    <h2>22. Search Filter</h2>
+    <input oninput="search22(this.value)">
+    <p id="res22"></p>
+  </section>
 
-    <button type="button" onclick="clearForm()">Clear Form</button>
-  </form>
-</section>
+  <!-- 23 -->
+  <section>
+    <h2>23. Loading Message</h2>
+    <button onclick="load23()">Submit</button>
+    <p id="loadMsg23"></p>
+  </section>
 
-<!-- TASK 35 -->
-<section>
-  <h2>Task 35: Dashboard Notification Message Area</h2>
-  <div id="notificationArea"></div>
-</section>
-    <!-- Task 36: Notification Example -->
-    <section>
-      <h2>Task 36: Action Notifications</h2>
-      <button onclick="notify('Success action!', 'success')">Trigger Success</button>
-      <button onclick="notify('Error action!', 'error')">Trigger Error</button>
-      <div id="notificationArea"></div>
-    </section>
+  <!-- 24 -->
+  <section>
+    <h2>24. Reset Form</h2>
+    <input id="input24">
+    <button onclick="reset24()">Reset</button>
+  </section>
 
-    <!-- Task 37: Conditional Form -->
-    <section>
-      <h2>Task 37: Conditional Form Fields</h2>
-      <label>Choose Role</label>
-      <select id="roleSelect" onchange="toggleConditional()">
-        <option value="">--Select--</option>
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
-      </select>
+  <!-- 25 -->
+  <section>
+    <h2>25. Dropdown Selection</h2>
+    <select onchange="select25(this.value)">
+      <option>Select</option>
+      <option>India</option>
+      <option>USA</option>
+    </select>
+    <p id="res25"></p>
+  </section>
 
-      <div id="adminField" class="hidden">
-        <label>Admin Code</label>
-        <input type="text" id="adminCode">
-      </div>
-    </section>
+  <!-- 26 -->
+  <section>
+    <h2>26. Multi-Step Form</h2>
+    <p id="step26">Step 1</p>
+    <button onclick="next26()">Next</button>
+  </section>
 
-    <!-- Task 38: Disable invalid actions -->
-    <section>
-      <h2>Task 38: Disable Action</h2>
-      <button id="actionBtn" disabled onclick="notify('Action done','success')">Action</button>
-      <input type="text" id="validInput" placeholder="Type anything..." oninput="validateAction()">
-    </section>
+  <!-- 27 -->
+  <section>
+    <h2>27. Step Validation</h2>
+    <input id="step27">
+    <button onclick="validate27()">Next</button>
+    <p id="msg27"></p>
+  </section>
 
-    <!-- Task 44: Profile Update -->
-    <section>
-      <h2>Task 44: Update Profile</h2>
-      <label>Name</label>
-      <input type="text" id="profileName" placeholder="Name">
-      <label>Email</label>
-      <input type="email" id="profileEmail" placeholder="Email">
-      <button onclick="updateProfile()">Update Profile</button>
-      <p id="profilePreview"></p>
-    </section>
-
-    <!-- Task 45 & 46: Dashboard Table + Button Update + Prevent duplicates -->
-    <section>
-      <h2>Tasks 45 & 46: Table Widget</h2>
-      <input type="text" id="tableInput" placeholder="Add entry">
-      <button onclick="addTableEntry()">Add</button>
-      <table id="dataTable">
-        <thead>
-          <tr><th>#</th><th>Name</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-
-    <!-- Task 47: Summary Section -->
-    <section>
-      <h2>Task 47: Dashboard Summary</h2>
-      <div id="summaryCards" class="cards">
-        <div class="card">Total Entries: <span id="totalEntries">0</span></div>
-      </div>
-    </section>
-
-    <!-- Task 48: Reset confirmation -->
-    <section>
-      <h2>Task 48: Reset Dashboard</h2>
-      <button onclick="resetDashboard()">Reset Dashboard</button>
-    </section>
-
-    <!-- Task 49: Submission History -->
-    <section>
-      <h2>Task 49: Form Submission History</h2>
-      <input type="text" id="historyInput" placeholder="Submit something">
-      <button onclick="submitHistory()">Submit</button>
-      <ul id="submissionHistory"></ul>
-    </section>
-
-
-<!-- 50 -->
-<section>
-<h2>50. Admin Dashboard</h2>
-<div class="dashboard">
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h3>Admin Panel</h3>
-    <button>Dashboard</button>
-    <button>Users</button>
-    <button>Settings</button>
-    <button onclick="logout()">Logout</button>
-  </div>
-
-  <!-- CONTENT -->
-  <div class="content">
-
-    <h2>50. Admin Dashboard</h2>
-
-    <!-- SUMMARY -->
-    <div class="cards">
-      <div class="card">
-        Total Users<br>
-        <span id="totalUsers">0</span>
-      </div>
-      <div class="card">
-        Total Records<br>
-        <span id="totalRecords">0</span>
-      </div>
-    </div>
-
-    <!-- FORM -->
-    <h3>Add User</h3>
-    <form onsubmit="addUser(event)">
-      <input id="userName" placeholder="Name" required>
-      <input id="userEmail" placeholder="Email" required>
-      <button type="submit">Add</button>
-      <button type="button" onclick="resetDashboard()">Reset</button>
-    </form>
-
-    <!-- NOTIFICATION -->
-    <div id="notify"></div>
-
-    <!-- TABLE -->
-    <h3>User Table</h3>
+  <!-- 28 -->
+  <section>
+    <h2>28. Add Row to Table</h2>
+    <input id="name28" placeholder="Name">
+    <button onclick="addRow28()">Add</button>
     <table>
+      <tbody id="table28"></tbody>
+    </table>
+  </section>
+
+  <!-- 29 -->
+  <section>
+    <h2>29. Edit Table Row</h2>
+    <input id="edit29">
+    <button onclick="editRow29()">Edit First Row</button>
+  </section>
+
+  <!-- 30 -->
+  <section>
+    <h2>30. Delete Row with Confirmation</h2>
+    <button onclick="deleteRow30()">Delete First Row</button>
+  </section>
+
+
+  <!-- 31 -->
+  <section>
+    <h2>31. Dashboard Filter</h2>
+    <button onclick="filter31('A')">A</button>
+    <button onclick="filter31('B')">B</button>
+    <p id="filter31">A B A B</p>
+  </section>
+
+  <!-- 32 -->
+  <section>
+    <h2>32. Total Records</h2>
+    <p id="total32">Records: 0</p>
+  </section>
+
+
+  <!-- TASK 33 & 34 -->
+  <section>
+    <h2>Task 33 & 34: Auto-Save Form with Restore on Reload</h2>
+
+    <form id="autoSaveForm">
+      <label>Name</label>
+      <input type="text" id="name">
+
+      <label>Email</label>
+      <input type="email" id="email">
+
+      <label>Message</label>
+      <textarea id="message"></textarea>
+
+      <button type="button" onclick="clearForm()">Clear Form</button>
+    </form>
+  </section>
+
+  <!-- TASK 35 -->
+  <section>
+    <h2>Task 35: Dashboard Notification Message Area</h2>
+    <div id="notificationArea"> click clear button in previous task 34 it will work</div>
+  </section>
+
+
+
+  <!-- Task 36: Notification Example -->
+  <section>
+    <h2>Task 36: Action Notifications</h2>
+    <button onclick="notify('Success action!', 'success')">Trigger Success</button>
+    <button onclick="notify('Error action!', 'error')">Trigger Error</button>
+    <div id="notificationArea"></div>
+  </section>
+
+  <!-- Task 37: Conditional Form -->
+  <section>
+    <h2>Task 37: Conditional Form Fields</h2>
+    <label>Choose Role</label>
+    <select id="roleSelect" onchange="toggleConditional()">
+      <option value="">--Select--</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+
+    <div id="adminField" class="hidden">
+      <label>Admin Code</label>
+      <input type="text" id="adminCode">
+    </div>
+  </section>
+
+  <!-- Task 38: Disable invalid actions -->
+  <section>
+    <h2>Task 38: Disable Action</h2>
+    <button id="actionBtn" disabled onclick="notify('Action done','success')">Action</button>
+    <input type="text" id="validInput" placeholder="Type anything..." oninput="validateAction()">
+  </section>
+
+  <!-- Task 44: Profile Update -->
+  <section>
+    <h2>Task 44: Update Profile</h2>
+    <label>Name</label>
+    <input type="text" id="profileName" placeholder="Name">
+    <label>Email</label>
+    <input type="email" id="profileEmail" placeholder="Email">
+    <button onclick="updateProfile()">Update Profile</button>
+    <p id="profilePreview"></p>
+  </section>
+
+  <!-- Task 45 & 46: Dashboard Table + Button Update + Prevent duplicates -->
+  <section>
+    <h2>Tasks 45 & 46: Table Widget</h2>
+    <input type="text" id="tableInput" placeholder="Add entry">
+    <button onclick="addTableEntry()">Add</button>
+    <table id="dataTable">
       <thead>
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Email</th>
-          <th>Action</th>
         </tr>
       </thead>
-      <tbody id="userTable"></tbody>
+      <tbody></tbody>
     </table>
+  </section>
 
-  </div>
-</div>
+  <!-- Task 47: Summary Section -->
+  <section>
+    <h2>Task 47: Dashboard Summary</h2>
+    <div id="summaryCards" class="cards">
+      <div class="card">Total Entries: <span id="totalEntries">0</span></div>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- Task 48: Reset confirmation -->
+  <section>
+    <h2>Task 48: Reset Dashboard</h2>
+    <button onclick="resetDashboard()">Reset Dashboard</button>
+  </section>
+
+  <!-- Task 49: Submission History -->
+  <section>
+    <h2>Task 49: Form Submission History</h2>
+    <input type="text" id="historyInput" placeholder="Submit something">
+    <button onclick="submitHistory()">Submit</button>
+    <ul id="submissionHistory"></ul>
+  </section>
+
+
+  <!-- 50 -->
+  <section>
+    <h2>50. Admin Dashboard</h2>
+    <div class="dashboard">
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <h3>Admin Panel</h3>
+        <button>Dashboard</button>
+        <button>Users</button>
+        <button>Settings</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+
+        <h2>50. Admin Dashboard</h2>
+
+        <!-- SUMMARY -->
+        <div class="cards">
+          <div class="card">
+            Total Users<br>
+            <span id="totalUsers">0</span>
+          </div>
+          <div class="card">
+            Total Records<br>
+            <span id="totalRecords">0</span>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <h3>Add User</h3>
+        <form onsubmit="addUser(event)">
+          <input id="userName" placeholder="Name" required>
+          <input id="userEmail" placeholder="Email" required>
+          <button type="submit">Add</button>
+          <button type="button" onclick="resetDashboard()">Reset</button>
+        </form>
+
+        <!-- NOTIFICATION -->
+        <div id="notify"></div>
+
+        <!-- TABLE -->
+        <h3>User Table</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="userTable"></tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
