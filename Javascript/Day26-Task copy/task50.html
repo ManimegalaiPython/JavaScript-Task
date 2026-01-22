@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Company Ready Mini App</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      padding: 30px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 260px;
+      padding: 8px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    button {
+      padding: 8px 14px;
+      background: #2f6bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f1f1f1;
+      padding: 8px;
+      margin-bottom: 6px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #formMsg {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Company-Ready Employee Management App</h2>
+
+  <!-- EMPLOYEE FORM -->
+  <div class="card">
+    <h3>Add Employee</h3>
+
+    <input type="text" id="name" placeholder="Employee Name">
+    <input type="email" id="email" placeholder="Employee Email">
+    <input type="number" id="age" placeholder="Age">
+
+    <button onclick="addEmployee()">Save Employee</button>
+    <p id="formMsg"></p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="card">
+    <h3>Dashboard</h3>
+    <p>Total Employees: <span id="totalCount">0</span></p>
+  </div>
+
+  <!-- SEARCH + LIST -->
+  <div class="card">
+    <h3>Employee List</h3>
+    <input type="text" placeholder="Search by name" onkeyup="searchEmployee(this.value)">
+    <ul id="employeeList"></ul>
+  </div>
+
+  <script>
+    // INITIAL DATA LOAD
+    let employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+    renderEmployees();
+    updateDashboard();
+
+    // ADD EMPLOYEE
+    function addEmployee() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const msg = document.getElementById("formMsg");
+
+      // VALIDATION
+      if (!name || !email || !age) {
+        msg.innerText = "All fields are required!";
+        msg.style.color = "red";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        msg.innerText = "Invalid email format!";
+        msg.style.color = "red";
+        return;
+      }
+
+      if (age < 18) {
+        msg.innerText = "Age must be 18 or above!";
+        msg.style.color = "red";
+        return;
+      }
+
+      // SAVE DATA
+      employees.push({ name, email, age });
+      localStorage.setItem("employees", JSON.stringify(employees));
+
+      msg.innerText = "Employee added successfully!";
+      msg.style.color = "green";
+
+      clearForm();
+      renderEmployees();
+      updateDashboard();
+    }
+
+    // DISPLAY EMPLOYEES
+    function renderEmployees(data = employees) {
+      const list = document.getElementById("employeeList");
+      list.innerHTML = "";
+
+      if (data.length === 0) {
+        list.innerHTML = "<li>No employees found</li>";
+        return;
+      }
+
+      data.forEach((emp, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span>${emp.name} | ${emp.email} | Age: ${emp.age}</span>
+          <button onclick="deleteEmployee(${index})">❌</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    // DELETE EMPLOYEE
+    function deleteEmployee(index) {
+      employees.splice(index, 1);
+      localStorage.setItem("employees", JSON.stringify(employees));
+      renderEmployees();
+      updateDashboard();
+    }
+
+    // SEARCH EMPLOYEE
+    function searchEmployee(value) {
+      const filtered = employees.filter(emp =>
+        emp.name.toLowerCase().includes(value.toLowerCase())
+      );
+      renderEmployees(filtered);
+    }
+
+    // DASHBOARD UPDATE
+    function updateDashboard() {
+      document.getElementById("totalCount").innerText = employees.length;
+    }
+
+    // CLEAR FORM
+    function clearForm() {
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("age").value = "";
+    }
+  </script>
+
+</body>
+</html>

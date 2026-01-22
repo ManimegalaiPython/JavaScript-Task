@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frontend Tasks 1–10</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Frontend Tasks (1–10)</h1>
+
+<!-- 1 LOGIN APP -->
+<section>
+<h2>1. Login App</h2>
+<input id="loginEmail" placeholder="Email">
+<input id="loginPassword" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- 2 USER MANAGEMENT -->
+<section>
+<h2>2. User Management (Add / Edit / Delete)</h2>
+<input id="userName" placeholder="Enter name">
+<button onclick="addUser()">Add</button>
+<ul id="userList"></ul>
+</section>
+
+<!-- 3 TODO APP -->
+<section>
+<h2>3. To-Do App</h2>
+<input id="todoInput" placeholder="New task">
+<button onclick="addTodo()">Add</button>
+<button onclick="filterTodo('all')">All</button>
+<button onclick="filterTodo('completed')">Completed</button>
+<button onclick="filterTodo('pending')">Pending</button>
+<ul id="todoList"></ul>
+</section>
+
+<!-- 4 DYNAMIC TABLE -->
+<section>
+<h2>4. Dynamic Table</h2>
+<input id="tableName" placeholder="Name">
+<input id="tableAge" placeholder="Age">
+<button onclick="addRow()">Add Row</button>
+<table>
+<thead><tr><th>Name</th><th>Age</th></tr></thead>
+<tbody id="tableBody"></tbody>
+</table>
+</section>
+
+<!-- 5 MULTI STEP FORM -->
+<section>
+<h2>5. Multi-Step Registration Form</h2>
+<div id="step1">
+<input id="regName" placeholder="Name">
+<button onclick="nextStep()">Next</button>
+</div>
+<div id="step2" class="hide">
+<input id="regEmail" placeholder="Email">
+<button onclick="submitRegistration()">Submit</button>
+</div>
+</section>
+
+<!-- 6 THEME SWITCHER -->
+<section>
+<h2>6. Theme Switcher</h2>
+<button onclick="toggleTheme()">Toggle Theme</button>
+</section>
+
+<!-- 7 SEARCH FILTER -->
+<section>
+<h2>7. Search & Filter</h2>
+<input onkeyup="searchItem(this.value)" placeholder="Search">
+<ul id="searchList">
+<li>Apple</li>
+<li>Banana</li>
+<li>Mango</li>
+<li>Orange</li>
+</ul>
+</section>
+
+<!-- 8 MODAL -->
+<section>
+<h2>8. Modal Popup</h2>
+<button onclick="openModal()">Open Modal</button>
+</section>
+
+<!-- 9 DASHBOARD -->
+<h2>9. Dashboard Layout</h2>
+
+<div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Admin Panel</h2>
+      <button id="sidebarToggle">☰</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <h1>Dashboard</h1>
+    <div class="cards">
+      <div class="card">Users: 120</div>
+      <div class="card">Orders: 45</div>
+      <div class="card">Revenue: $5000</div>
+    </div>
+    <div class="charts">
+      <div class="chart">Chart 1</div>
+      <div class="chart">Chart 2</div>
+    </div>
+  </main>
+</div>
+
+<!-- 10 PASSWORD STRENGTH -->
+<section>
+<h2>10. Password Strength Checker</h2>
+<input type="password" onkeyup="checkStrength(this.value)" placeholder="Password">
+<p id="strength"></p>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-box">
+<p>This is a modal popup</p>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
+
+<!-- 11 CRUD USING LOCALSTORAGE -->
+<section>
+<h2>11. CRUD App (localStorage)</h2>
+<input id="crudInput" placeholder="Enter item">
+<button onclick="addCrud()">Add</button>
+<ul id="crudList"></ul>
+</section>
+
+<!-- 12 SORTABLE & SEARCHABLE TABLE -->
+<section>
+<h2>12. Sortable & Searchable Table</h2>
+<input onkeyup="searchTable(this.value)" placeholder="Search">
+<button onclick="sortTable()">Sort A-Z</button>
+<table>
+<thead><tr><th>Name</th></tr></thead>
+<tbody id="sortTableBody">
+<tr><td>Apple</td></tr>
+<tr><td>Mango</td></tr>
+<tr><td>Banana</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- 13 CONDITIONAL FORM -->
+<section>
+<h2>13. Conditional Fields</h2>
+<select onchange="toggleField(this.value)">
+  <option value="">Select</option>
+  <option value="yes">Yes</option>
+</select>
+<input id="conditionalField" class="hide" placeholder="Shown when Yes">
+</section>
+
+<!-- 14 TOAST NOTIFICATION -->
+<section>
+<h2>14. Toast Notification</h2>
+<button onclick="showToast()">Show Toast</button>
+<div id="toast"></div>
+</section>
+
+<!-- 15 IMAGE UPLOAD PREVIEW -->
+<section>
+<h2>15. Image Upload Preview</h2>
+<input type="file" onchange="previewImage(event)">
+<img id="preview" width="120">
+</section>
+
+<!-- 16 PAGINATION -->
+<section>
+<h2>16. Pagination</h2>
+<ul id="pageList"></ul>
+<button onclick="prevPage()">Prev</button>
+<button onclick="nextPage()">Next</button>
+</section>
+
+<!-- 17 FORM AUTO SAVE -->
+ <section>
+    <h2>17. Form Auto Save</h2>
+    <input id="autoSave" placeholder="Typing saves automatically">
+    <div class="status" id="status"></div>
+ </section>
+
+<!-- 18 TABS -->
+<section>
+<h2>18. Tab Switching</h2>
+<button onclick="openTab(1)">Tab 1</button>
+<button onclick="openTab(2)">Tab 2</button>
+<p id="tabContent">Tab 1 Content</p>
+</section>
+
+<!-- 19 ROLE BASED UI -->
+<section>
+<h2>19. Role Based UI</h2>
+<select onchange="setRole(this.value)">
+  <option>User</option>
+  <option>Admin</option>
+</select>
+<p id="adminPanel" class="hide">Admin Controls Visible</p>
+</section>
+
+<!-- 20 CART UI -->
+<section>
+<h2>20. Cart Logic (UI Only)</h2>
+<button onclick="addToCart()">Add Item</button>
+<p>Items in Cart: <span id="cartCount">0</span></p>
+</section>
+
+
+<!-- 21 SESSION TIMEOUT -->
+<section>
+<h2>21. Session Timeout Warning</h2>
+<p id="sessionStatus">Active</p>
+</section>
+
+<!-- 22 PROFILE EDIT & PREVIEW -->
+<section>
+<h2>22. Profile Edit & Preview</h2>
+<input id="profileName" placeholder="Name">
+<input id="profileBio" placeholder="Bio">
+<button onclick="saveProfile()">Preview</button>
+<p id="profilePreview"></p>
+</section>
+
+<!-- 23 SEARCH SUGGESTION -->
+<section>
+<h2>23. Search Suggestion</h2>
+<input onkeyup="suggest(this.value)" placeholder="Search fruit">
+<ul id="suggestList"></ul>
+</section>
+
+<!-- 24 DEPENDENT DROPDOWN -->
+<section>
+<h2>24. Dynamic Dropdown</h2>
+<select onchange="loadCities(this.value)">
+  <option value="">Country</option>
+  <option value="India">India</option>
+  <option value="USA">USA</option>
+</select>
+<select id="city"></select>
+</section>
+
+<!-- 25 DASHBOARD CARDS -->
+<section>
+<h2>25. Dashboard Summary Cards</h2>
+<div class="card">Users: 120</div>
+<div class="card">Orders: 45</div>
+<div class="card">Revenue: $5000</div>
+</section>
+
+<!-- 26 REUSABLE VALIDATION -->
+<section>
+<h2>26. Reusable Form Validation</h2>
+<input id="valEmail" placeholder="Email">
+<button onclick="validateEmail()">Validate</button>
+<p id="valMsg"></p>
+</section>
+
+<!-- 27 CLIENT SIDE ROUTING -->
+<section>
+<h2>27. Client-Side Routing</h2>
+<button onclick="navigate('home')">Home</button>
+<button onclick="navigate('about')">About</button>
+<p id="routeView"></p>
+</section>
+
+<!-- 28 ADMIN PANEL -->
+<section>
+<h2>28. Admin Panel UI</h2>
+<select onchange="setAdmin(this.value)">
+  <option>User</option>
+  <option>Admin</option>
+</select>
+<div id="adminOnly" class="hide">Admin Settings Panel</div>
+</section>
+
+<!-- 29 OFFLINE FIRST FORM -->
+  <h2>29. Offline-First Form App</h2>
+
+  <form id="offlineForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <textarea id="message" placeholder="Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="status" id="status"></div>
+
+<!-- 30 KEYBOARD ACCESSIBLE MODAL -->
+<section>
+<h2>30. Keyboard Accessible Modal</h2>
+<button onclick="openKeyModal()">Open Modal</button>
+</section>
+
+<div id="keyboardModal" class="modal" aria-hidden="true">
+  <div class="modal-box" tabindex="0">
+    <p>Press ESC to close</p>
+    <button onclick="closeKeyModal()">Close</button>
+  </div>
+</div>
+
+
+<!-- 31 USER ACTIVITY LOG -->
+<section>
+<h2>31. User Activity Log</h2>
+<button onclick="logAction('Clicked Button')">Click Me</button>
+<ul id="activityLog"></ul>
+</section>
+
+<!-- 32 DASHBOARD NOTIFICATION CENTER -->
+<section>
+<h2>32. Notification Center</h2>
+<button onclick="addNotification('New Notification')">Add Notification</button>
+<ul id="notifications"></ul>
+</section>
+
+<!-- 33 STATE MANAGEMENT MINI-APP -->
+<section>
+<h2>33. State Management (JS)</h2>
+<p>Counter: <span id="stateCounter">0</span></p>
+<button onclick="incrementState()">Increment</button>
+<button onclick="decrementState()">Decrement</button>
+</section>
+
+<!-- 34 RESPONSIVE NAVBAR TOGGLE -->
+<h2>34. Responsive Navbar</h2>
+   <header>
+        <nav class="navbar">
+            <div class="logo">MyLogo</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+
+<!-- 35 FORM SUBMISSION HISTORY -->
+  <div class="wrapper">
+    <h2>35. Form Submission History</h2>
+
+    <form id="dataForm">
+      <input type="text" id="userName" placeholder="Name" required>
+      <textarea id="userMessage" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="records">
+      <h3>Submission Records</h3>
+      <div id="recordContainer"></div>
+      <button class="remove-btn" onclick="wipeRecords()">Clear History</button>
+    </div>
+  </div>
+<!-- 36 SETTINGS DASHBOARD AUTO-SAVE -->
+<section>
+<div class="settings-box">
+    <h2>36. Settings Dashboard</h2>
+
+    <div class="setting">
+      <label>Dark Mode</label>
+      <input type="checkbox" id="darkModeToggle">
+    </div>
+
+    <div class="setting">
+      <label>Username</label>
+      <input type="text" id="userNameInput" placeholder="Enter name">
+    </div>
+
+    <div class="setting">
+      <label>Language</label>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="ta">Tamil</option>
+        <option value="hi">Hindi</option>
+      </select>
+    </div>
+
+    <div class="status" id="saveStatus"></div>
+  </div>
+</section>
+
+<!-- 37 DYNAMIC CONTENT LOADER -->
+<section>
+<h2>37. Dynamic Content Loader</h2>
+<button onclick="loadContent()">Load Content</button>
+<div id="dynamicContent"></div>
+</section>
+
+<!-- 38 PROGRESS TRACKING -->
+<section>
+<h2>38. Progress Tracker</h2>
+<progress id="progressBar" value="0" max="100"></progress>
+<button onclick="advanceProgress()">Advance</button>
+</section>
+
+<!-- 39 FORM RULES ENGINE -->
+<section>
+<h2>39. Form Rules Engine</h2>
+<input id="rulesInput" placeholder="Type number">
+<button onclick="checkRules()">Check Rules</button>
+<p id="rulesMsg"></p>
+</section>
+
+<!-- 40 SEARCH & HIGHLIGHT -->
+<section>
+<h2>40. Search & Highlight</h2>
+<input onkeyup="highlightText(this.value)" placeholder="Search in text">
+<p id="highlightContent">This is a sample text for search and highlight demo.</p>
+</section>
+
+
+<!-- 41 MINI ADMIN DASHBOARD -->
+<section>
+<h2>41. Mini Admin Dashboard</h2>
+<div class="card">Users: 120</div>
+<div class="card">Orders: 45</div>
+<div class="card">Revenue: $5000</div>
+</section>
+
+<!-- 42 USER ONBOARDING FLOW -->
+<section id="task42">
+  <h2>42. User Onboarding Flow</h2>
+  <div id="onboardStep">Step 1: Enter Name</div>
+  <input id="onboardInput" placeholder="Enter info">
+  <button onclick="nextOnboardStep()">Next</button>
+  <p id="onboardMessage"></p>
+</section>
+
+
+<!-- 43 REPORTING DASHBOARD (STATIC DATA) -->
+<section>
+<h2>43. Reporting Dashboard</h2>
+<table border="1">
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Visitors</td><td>1500</td></tr>
+<tr><td>Orders</td><td>300</td></tr>
+<tr><td>Revenue</td><td>$5000</td></tr>
+</table>
+</section>
+
+<!-- 44 COMPONENT-BASED UI (JS FUNCTIONS) -->
+<section>
+<h2>44. Component-based UI</h2>
+<div id="componentArea"></div>
+<button onclick="renderComponent('Card 1')">Render Card 1</button>
+<button onclick="renderComponent('Card 2')">Render Card 2</button>
+</section>
+
+<!-- 45 PERFORMANCE-OPTIMIZED LIST -->
+<section>
+<h2>45. Performance-Optimized List</h2>
+<ul id="perfList"></ul>
+<button onclick="renderLargeList()">Load 1000 Items</button>
+</section>
+
+<!-- 46 LOGIN ATTEMPT LIMIT -->
+<h2>46. Login Attempt Limit</h2>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" id="loginBtn">Login</button>
+            <p id="message"></p>
+        </form>
+    </div>
+
+
+
+<!-- 47 USER PREFERENCE MANAGEMENT -->
+<section>
+<h2>47. User Preference Management</h2>
+<label>Font Size:</label>
+<select onchange="setFontSize(this.value)">
+  <option value="14px">14px</option>
+  <option value="16px">16px</option>
+  <option value="18px">18px</option>
+</select>
+<p id="preferenceText">This text follows user preference.</p>
+</section>
+
+<!-- 48 DASHBOARD THEME CUSTOMIZER -->
+<section>
+<h2>48. Dashboard Theme Customizer</h2>
+<select onchange="setTheme(this.value)">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+</select>
+</section>
+
+<!-- 49 REUSABLE CONFIRMATION DIALOG -->
+<section>
+<h2>49. Reusable Confirmation Dialog</h2>
+<button onclick="showConfirm('Are you sure?', ()=>alert('Confirmed!'))">Delete Item</button>
+<div id="confirmModal" class="modal">
+  <div class="modal-box">
+    <p id="confirmText"></p>
+    <button onclick="confirmYes()">Yes</button>
+    <button onclick="confirmNo()">No</button>
+  </div>
+</div>
+</section>
+
+<!-- 50 COMPLETE INTERVIEW-READY FRONTEND MINI-APP -->
+  <h2>50. Complete Frontend Mini-Application</h2>
+     <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" id="loginBtn">Login</button>
+            <p id="message"></p>
+        </form>
+    </div>
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
