@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 21-30</title>
+<style>
+/* ================= Global Styles ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+    margin: 0;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+input, select, button, textarea {
+    padding: 6px 10px;
+    margin: 5px 5px 5px 0;
+    width: auto;
+    max-width: 200px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #f2f2f2;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: none;
+}
+
+img.preview {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Dashboard cards */
+.dashboard-cards {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.card {
+    flex: 1;
+    padding: 15px;
+    background: #4caf50;
+    color: #fff;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Tabs */
+.tabs button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tabs button.active {
+    background: #4caf50;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 21: Session Timeout Warning ================= -->
+<section>
+<h3>Task 21: Session Timeout Warning</h3>
+<p>Stay active or you will be logged out in <span id="sessionTimer">10</span> seconds.</p>
+</section>
+
+<!-- ================= TASK 22: Profile Edit & Preview ================= -->
+<section>
+<h3>Task 22: Profile Edit & Preview</h3>
+<input id="profName" placeholder="Name">
+<input id="profEmail" placeholder="Email">
+<button onclick="updateProfile()">Update Profile</button>
+<p>Preview: <span id="profPreview"></span></p>
+</section>
+
+<!-- ================= TASK 23: Search Suggestion ================= -->
+<section>
+<h3>Task 23: Search Suggestion</h3>
+<input id="searchInput23" placeholder="Search names...">
+<ul id="suggestList23"></ul>
+</section>
+
+<!-- ================= TASK 24: Dynamic Dropdown Dependency ================= -->
+<section>
+<h3>Task 24: Dynamic Dropdown Dependency</h3>
+<select id="countrySelect" onchange="updateCities()">
+<option value="">Select Country</option>
+<option value="India">India</option>
+<option value="USA">USA</option>
+</select>
+<select id="citySelect">
+<option value="">Select City</option>
+</select>
+</section>
+
+<!-- ================= TASK 25: Dashboard Summary Cards ================= -->
+<section>
+<h3>Task 25: Dashboard Summary Cards</h3>
+<div class="dashboard-cards">
+    <div class="card" id="cardUsers">Users: 0</div>
+    <div class="card" id="cardSales">Sales: 0</div>
+    <div class="card" id="cardOrders">Orders: 0</div>
+</div>
+</section>
+
+<!-- ================= TASK 26: Reusable Form Validation ================= -->
+<section>
+<h3>Task 26: Reusable Form Validation</h3>
+<input id="valName" placeholder="Name">
+<input id="valEmail" placeholder="Email">
+<button onclick="validateForm26()">Submit</button>
+<p id="valMsg"></p>
+</section>
+
+<!-- ================= TASK 27: Client-side Routing ================= -->
+<section>
+<h3>Task 27: Client-side Routing</h3>
+<div class="tabs">
+<button class="tabBtn active" onclick="showRoute('home27')">Home</button>
+<button class="tabBtn" onclick="showRoute('about27')">About</button>
+<button class="tabBtn" onclick="showRoute('contact27')">Contact</button>
+</div>
+<div id="home27" class="tab-content active">Home Content</div>
+<div id="about27" class="tab-content">About Content</div>
+<div id="contact27" class="tab-content">Contact Content</div>
+</section>
+
+<!-- ================= TASK 28: Admin Panel UI ================= -->
+<section>
+<h3>Task 28: Admin Panel UI</h3>
+<select id="role28" onchange="showAdminPanel()">
+<option value="">Select Role</option>
+<option value="admin">Admin</option>
+<option value="user">User</option>
+</select>
+<div id="adminPanel28" class="hidden">
+<p>Admin Controls: [Edit, Delete, Manage Users]</p>
+</div>
+<div id="userPanel28" class="hidden">
+<p>User Controls: [View Profile, Comment]</p>
+</div>
+</section>
+
+<!-- ================= TASK 29: Offline-First Form ================= -->
+<section>
+<h3>Task 29: Offline-First Form</h3>
+<input id="offlineName" placeholder="Name">
+<input id="offlineEmail" placeholder="Email">
+<button onclick="saveOfflineForm()">Save Form</button>
+<p id="offlineStatus"></p>
+</section>
+
+<!-- ================= TASK 30: Keyboard Accessible Modal ================= -->
+<section>
+<h3>Task 30: Keyboard Accessible Modal</h3>
+<button onclick="openModal30()">Open Modal</button>
+<div class="modal" id="modal30">
+<div class="modal-content">
+<p>This modal can be closed with ESC</p>
+<button onclick="closeModal30()">Close</button>
+</div>
+</div>
+</section>
+
+<script>
+/* ================= TASK 21: Session Timeout ================= */
+let timer=10;
+setInterval(()=>{
+    const el=document.getElementById("sessionTimer");
+    if(timer>0){ timer--; el.textContent=timer; }
+    else{ el.textContent="Logged out!"; }
+},1000);
+
+/* ================= TASK 22: Profile Edit & Preview ================= */
+function updateProfile(){
+    const name=document.getElementById("profName").value;
+    const email=document.getElementById("profEmail").value;
+    document.getElementById("profPreview").textContent=`${name} (${email})`;
+}
+
+/* ================= TASK 23: Search Suggestion ================= */
+const names23=["Mani","Rahul","Priya","Anjali","Suresh"];
+document.getElementById("searchInput23").addEventListener("input", ()=>{
+    const val=document.getElementById("searchInput23").value.toLowerCase();
+    const list=document.getElementById("suggestList23");
+    list.innerHTML="";
+    names23.filter(n=>n.toLowerCase().includes(val)).forEach(n=>{
+        const li=document.createElement("li");
+        li.textContent=n;
+        li.onclick=()=>{ document.getElementById("searchInput23").value=n; list.innerHTML=""; };
+        list.appendChild(li);
+    });
+});
+
+/* ================= TASK 24: Dynamic Dropdown ================= */
+const cityMap={"India":["Delhi","Mumbai","Bangalore"],"USA":["NY","LA","Chicago"]};
+function updateCities(){
+    const country=document.getElementById("countrySelect").value;
+    const city=document.getElementById("citySelect");
+    city.innerHTML="<option value=''>Select City</option>";
+    if(cityMap[country]) cityMap[country].forEach(c=>city.innerHTML+=`<option>${c}</option>`);
+}
+
+/* ================= TASK 25: Dashboard Summary Cards ================= */
+document.getElementById("cardUsers").textContent="Users: 150";
+document.getElementById("cardSales").textContent="Sales: 320";
+document.getElementById("cardOrders").textContent="Orders: 45";
+
+/* ================= TASK 26: Reusable Form Validation ================= */
+function validateForm26(){
+    const name=document.getElementById("valName").value.trim();
+    const email=document.getElementById("valEmail").value.trim();
+    let msg="";
+    if(name==="") msg="Name required.";
+    else if(!email.includes("@")) msg="Invalid Email.";
+    else msg="Form valid!";
+    document.getElementById("valMsg").textContent=msg;
+}
+
+/* ================= TASK 27: Client-side Routing ================= */
+function showRoute(id){
+    document.querySelectorAll("#home27,#about27,#contact27").forEach(c=>c.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    document.querySelectorAll(".tabBtn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".tabBtn")[Array.from(["home27","about27","contact27"]).indexOf(id)].classList.add("active");
+}
+
+/* ================= TASK 28: Admin Panel ================= */
+function showAdminPanel(){
+    const role=document.getElementById("role28").value;
+    document.getElementById("adminPanel28").classList.toggle("hidden",role!=="admin");
+    document.getElementById("userPanel28").classList.toggle("hidden",role!=="user");
+}
+
+/* ================= TASK 29: Offline-First Form ================= */
+function saveOfflineForm(){
+    const name=document.getElementById("offlineName").value;
+    const email=document.getElementById("offlineEmail").value;
+    localStorage.setItem("offlineForm",JSON.stringify({name,email}));
+    document.getElementById("offlineStatus").textContent="Form saved offline!";
+}
+window.addEventListener("load",()=>{
+    const data=JSON.parse(localStorage.getItem("offlineForm")||"{}");
+    if(data.name) document.getElementById("offlineName").value=data.name;
+    if(data.email) document.getElementById("offlineEmail").value=data.email;
+});
+
+/* ================= TASK 30: Keyboard Accessible Modal ================= */
+function openModal30(){ document.getElementById("modal30").style.display="flex"; }
+function closeModal30(){ document.getElementById("modal30").style.display="none"; }
+document.addEventListener("keydown", e=>{
+    if(e.key==="Escape") closeModal30();
+});
+</script>
+
+</body>
+</html>

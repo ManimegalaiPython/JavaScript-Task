@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice Tasks 41-50</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+input {
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    width: calc(100% - 30px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover { opacity: 0.9; }
+
+.output {
+    display: block;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    min-height: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Task-specific border colors */
+#task41 { border-left:5px solid #4caf50; }
+#task42 { border-left:5px solid #2196F3; }
+#task43 { border-left:5px solid #FF9800; }
+#task44 { border-left:5px solid #9C27B0; }
+#task45 { border-left:5px solid #f44336; }
+#task46 { border-left:5px solid #009688; }
+#task47 { border-left:5px solid #3F51B5; }
+#task48 { border-left:5px solid #795548; }
+#task49 { border-left:5px solid #E91E63; }
+#task50 { border-left:5px solid #607D8B; }
+
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 41 ================= -->
+<section id="task41">
+<h3>41. Uppercase All Words</h3>
+<input type="text" id="arr41" placeholder="Enter words comma separated">
+<button onclick="uppercase41()">Uppercase</button>
+<span id="out41" class="output"></span>
+</section>
+
+<!-- ================= TASK 42 ================= -->
+<section id="task42">
+<h3>42. Check If Array is Sorted</h3>
+<input type="text" id="arr42" placeholder="Enter numbers comma separated">
+<button onclick="sorted42()">Check</button>
+<span id="out42" class="output"></span>
+</section>
+
+<!-- ================= TASK 43 ================= -->
+<section id="task43">
+<h3>43. Split Array Into Chunks</h3>
+<input type="text" id="arr43" placeholder="Enter numbers comma separated">
+<input type="number" id="size43" placeholder="Chunk size">
+<button onclick="chunk43()">Split</button>
+<span id="out43" class="output"></span>
+</section>
+
+<!-- ================= TASK 44 ================= -->
+<section id="task44">
+<h3>44. Remove Value from Array</h3>
+<input type="text" id="arr44" placeholder="Enter array elements comma separated">
+<input type="text" id="val44" placeholder="Value to remove">
+<button onclick="remove44()">Remove</button>
+<span id="out44" class="output"></span>
+</section>
+
+<!-- ================= TASK 45 ================= -->
+<section id="task45">
+<h3>45. Common Elements From Multiple Arrays</h3>
+<input type="text" id="arr45a" placeholder="Array 1 comma separated">
+<input type="text" id="arr45b" placeholder="Array 2 comma separated">
+<input type="text" id="arr45c" placeholder="Array 3 comma separated">
+<button onclick="common45()">Common Elements</button>
+<span id="out45" class="output"></span>
+</section>
+
+<!-- ================= TASK 46 ================= -->
+<section id="task46">
+<h3>46. Random Number In Range</h3>
+<input type="number" id="min46" placeholder="Min">
+<input type="number" id="max46" placeholder="Max">
+<button onclick="random46()">Generate</button>
+<span id="out46" class="output"></span>
+</section>
+
+<!-- ================= TASK 47 ================= -->
+<section id="task47">
+<h3>47. Validate Email (Logic Only)</h3>
+<input type="text" id="email47" placeholder="Enter email">
+<button onclick="validateEmail47()">Check</button>
+<span id="out47" class="output"></span>
+</section>
+
+<!-- ================= TASK 48 ================= -->
+<section id="task48">
+<h3>48. Total and Average of Student Marks</h3>
+<input type="text" id="marks48" placeholder="Enter marks comma separated">
+<button onclick="marks48()">Calculate</button>
+<span id="out48" class="output"></span>
+</section>
+
+<!-- ================= TASK 49 ================= -->
+<section id="task49">
+<h3>49. Sort Objects by Property</h3>
+<textarea id="obj49" placeholder='Enter objects as JSON array, e.g., [{"name":"A","age":20},{"name":"B","age":25}]' rows="3"></textarea>
+<input type="text" id="prop49" placeholder="Property to sort by">
+<button onclick="sortObj49()">Sort</button>
+<span id="out49" class="output"></span>
+</section>
+
+<!-- ================= TASK 50 ================= -->
+<section id="task50">
+<h3>50. Copy Array Without Reference</h3>
+<input type="text" id="arr50" placeholder="Enter array comma separated">
+<button onclick="copy50()">Copy</button>
+<span id="out50" class="output"></span>
+</section>
+
+<script>
+/* ===== TASK 41 ===== */
+function uppercase41(){
+    const arr = document.getElementById('arr41').value.split(',').map(w=>w.trim().toUpperCase());
+    document.getElementById('out41').textContent = arr.join(", ");
+}
+
+/* ===== TASK 42 ===== */
+function sorted42(){
+    const arr = document.getElementById('arr42').value.split(',').map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out42').textContent="Enter valid numbers"; return; }
+    const isSorted = arr.every((v,i,a)=>i===0||a[i]>=a[i-1]);
+    document.getElementById('out42').textContent = isSorted ? "Array is sorted" : "Array is not sorted";
+}
+
+/* ===== TASK 43 ===== */
+function chunk43(){
+    let arr = document.getElementById('arr43').value.split(',').map(Number);
+    const size = Number(document.getElementById('size43').value);
+    if(arr.some(isNaN)||isNaN(size)||size<=0){ document.getElementById('out43').textContent="Invalid input"; return; }
+    const chunks=[];
+    for(let i=0;i<arr.length;i+=size) chunks.push(arr.slice(i,i+size));
+    document.getElementById('out43').textContent = JSON.stringify(chunks);
+}
+
+/* ===== TASK 44 ===== */
+function remove44(){
+    const arr = document.getElementById('arr44').value.split(',').map(v=>v.trim());
+    const val = document.getElementById('val44').value.trim();
+    const result = arr.filter(v=>v!==val);
+    document.getElementById('out44').textContent = result.join(", ");
+}
+
+/* ===== TASK 45 ===== */
+function common45(){
+    const a = document.getElementById('arr45a').value.split(',').map(v=>v.trim());
+    const b = document.getElementById('arr45b').value.split(',').map(v=>v.trim());
+    const c = document.getElementById('arr45c').value.split(',').map(v=>v.trim());
+    const common = a.filter(v=>b.includes(v) && c.includes(v));
+    document.getElementById('out45').textContent = common.join(", ");
+}
+
+/* ===== TASK 46 ===== */
+function random46(){
+    const min = Number(document.getElementById('min46').value);
+    const max = Number(document.getElementById('max46').value);
+    if(isNaN(min)||isNaN(max)||min>max){ document.getElementById('out46').textContent="Invalid range"; return; }
+    const rand = Math.floor(Math.random()*(max-min+1))+min;
+    document.getElementById('out46').textContent = rand;
+}
+
+/* ===== TASK 47 ===== */
+function validateEmail47(){
+    const email = document.getElementById('email47').value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    document.getElementById('out47').textContent = regex.test(email) ? "Valid Email" : "Invalid Email";
+}
+
+/* ===== TASK 48 ===== */
+function marks48(){
+    const marks = document.getElementById('marks48').value.split(',').map(Number);
+    if(marks.some(isNaN)){ document.getElementById('out48').textContent="Enter valid numbers"; return; }
+    const total = marks.reduce((a,b)=>a+b,0);
+    const avg = total/marks.length;
+    document.getElementById('out48').textContent = `Total: ${total}, Average: ${avg.toFixed(2)}`;
+}
+
+/* ===== TASK 49 ===== */
+function sortObj49(){
+    try{
+        const objs = JSON.parse(document.getElementById('obj49').value);
+        const prop = document.getElementById('prop49').value.trim();
+        objs.sort((a,b)=> (a[prop] > b[prop]) ? 1 : (a[prop] < b[prop])?-1:0);
+        document.getElementById('out49').textContent = JSON.stringify(objs);
+    }catch(e){document.getElementById('out49').textContent="Invalid JSON or property";}
+}
+
+/* ===== TASK 50 ===== */
+function copy50(){
+    const arr = document.getElementById('arr50').value.split(',').map(v=>v.trim());
+    const copy = [...arr];
+    document.getElementById('out50').textContent = "Copy: " + copy.join(", ");
+}
+</script>
+
+</body>
+</html>

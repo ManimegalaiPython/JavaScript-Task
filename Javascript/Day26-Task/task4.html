@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 31-40 Apps</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+section {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+input, select, button, textarea {
+  padding: 6px 10px;
+  margin: 5px 5px 5px 0;
+  width: auto;
+  max-width: 200px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+.tabContent {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.widget {
+  background: #e0e0e0;
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 31: State Management Mini-App ================= -->
+<section>
+<h3>Task 31: State Management Mini-App</h3>
+<input id="stateInput" placeholder="Add item">
+<button onclick="addStateItem()">Add</button>
+<ul id="stateList"></ul>
+</section>
+
+<!-- ================= TASK 32: Role-Based UI Rendering ================= -->
+<section>
+<h3>Task 32: Role-Based UI Rendering</h3>
+<select id="roleSelect" onchange="renderRoleUI()">
+  <option value="">Select Role</option>
+  <option value="Admin">Admin</option>
+  <option value="User">User</option>
+  <option value="Guest">Guest</option>
+</select>
+<div id="roleUI"></div>
+</section>
+
+<!-- ================= TASK 33: Client-Side Router App ================= -->
+<section>
+<h3>Task 33: Client-Side Router App</h3>
+<button onclick="navigate('home')">Home</button>
+<button onclick="navigate('about')">About</button>
+<button onclick="navigate('contact')">Contact</button>
+<div id="routerContent" style="margin-top:10px; padding:10px; border:1px solid #ddd;"></div>
+</section>
+
+<!-- ================= TASK 34: Form Rules Engine ================= -->
+<section>
+<h3>Task 34: Form Rules Engine</h3>
+<input id="rulesAge" placeholder="Age" type="number">
+<label><input type="checkbox" id="rulesAgree"> Agree to terms</label>
+<button onclick="runRulesEngine()">Submit</button>
+<p id="rulesMsg"></p>
+</section>
+
+<!-- ================= TASK 35: Dashboard Layout with Dynamic Widgets ================= -->
+<section>
+<h3>Task 35: Dashboard Layout with Dynamic Widgets</h3>
+<button onclick="addWidget()">Add Widget</button>
+<div id="dashboard" style="margin-top:10px;"></div>
+</section>
+
+<!-- ================= TASK 36: Offline-First Form App ================= -->
+<section>
+<h3>Task 36: Offline-First Form App</h3>
+<input id="offlineName" placeholder="Name">
+<input id="offlineEmail" placeholder="Email">
+<button onclick="saveOffline()">Save Offline</button>
+<button onclick="loadOffline()">Load Offline</button>
+<p id="offlineMsg"></p>
+</section>
+
+<!-- ================= TASK 37: Session Expiry Warning ================= -->
+<section>
+<h3>Task 37: Session Expiry Warning</h3>
+<p id="sessionMsg"></p>
+</section>
+
+<!-- ================= TASK 38: Dynamic Content Loader ================= -->
+<section>
+<h3>Task 38: Dynamic Content Loader</h3>
+<button onclick="loadContent()">Load Content</button>
+<div id="dynamicContent" style="margin-top:10px; border:1px solid #ddd; padding:10px;"></div>
+</section>
+
+<!-- ================= TASK 39: Keyboard Accessibility ================= -->
+<section>
+<h3>Task 39: Keyboard Accessibility</h3>
+<button id="keyBtn">Press Enter or Space</button>
+<p id="keyMsg"></p>
+</section>
+
+<!-- ================= TASK 40: Theme Customization Dashboard ================= -->
+<section>
+<h3>Task 40: Theme Customization Dashboard</h3>
+<label>Background:
+<select id="themeBg" onchange="applyTheme()">
+  <option value="#f4f6f8">Default</option>
+  <option value="#f0e68c">Khaki</option>
+  <option value="#d3d3d3">Light Gray</option>
+</select>
+</label>
+<label>Text Color:
+<select id="themeText" onchange="applyTheme()">
+  <option value="#000000">Black</option>
+  <option value="#ff0000">Red</option>
+  <option value="#0000ff">Blue</option>
+</select>
+</label>
+</section>
+
+<div class="toast" id="toastBox"></div>
+
+<script>
+/* ===== TASK 31: State Management Mini-App ===== */
+let stateItems=[];
+function addStateItem(){
+  const val=document.getElementById("stateInput").value.trim();
+  if(!val) return;
+  stateItems.push(val);
+  renderStateList();
+  document.getElementById("stateInput").value="";
+}
+function renderStateList(){
+  const ul=document.getElementById("stateList");
+  ul.innerHTML="";
+  stateItems.forEach((v,i)=>{
+    const li=document.createElement("li");
+    li.textContent=v;
+    const del=document.createElement("button");
+    del.textContent="Delete";
+    del.onclick=()=>{ stateItems.splice(i,1); renderStateList(); };
+    li.appendChild(del);
+    ul.appendChild(li);
+  });
+}
+
+/* ===== TASK 32: Role-Based UI Rendering ===== */
+function renderRoleUI(){
+  const role=document.getElementById("roleSelect").value;
+  const container=document.getElementById("roleUI");
+  container.innerHTML="";
+  if(role==="Admin") container.textContent="Admin Panel: Full Access";
+  else if(role==="User") container.textContent="User Dashboard: Limited Access";
+  else if(role==="Guest") container.textContent="Guest View: Read-only";
+}
+
+/* ===== TASK 33: Client-Side Router App ===== */
+function navigate(page){
+  const content=document.getElementById("routerContent");
+  if(page==="home") content.textContent="Welcome to Home Page";
+  else if(page==="about") content.textContent="About Us Page Content";
+  else if(page==="contact") content.textContent="Contact Page: Email us at xyz@example.com";
+}
+
+/* ===== TASK 34: Form Rules Engine ===== */
+function runRulesEngine(){
+  const age=parseInt(document.getElementById("rulesAge").value);
+  const agree=document.getElementById("rulesAgree").checked;
+  let msg="";
+  if(isNaN(age) || age<18) msg="Age must be 18+";
+  else if(!agree) msg="Must agree to terms";
+  else msg="Form passed rules!";
+  document.getElementById("rulesMsg").textContent=msg;
+}
+
+/* ===== TASK 35: Dashboard Layout with Dynamic Widgets ===== */
+function addWidget(){
+  const dashboard=document.getElementById("dashboard");
+  const div=document.createElement("div");
+  div.className="widget";
+  div.textContent="Widget "+(dashboard.children.length+1);
+  dashboard.appendChild(div);
+}
+
+/* ===== TASK 36: Offline-First Form App ===== */
+function saveOffline(){
+  const name=document.getElementById("offlineName").value;
+  const email=document.getElementById("offlineEmail").value;
+  localStorage.setItem("offlineName",name);
+  localStorage.setItem("offlineEmail",email);
+  document.getElementById("offlineMsg").textContent="Saved offline!";
+}
+function loadOffline(){
+  document.getElementById("offlineName").value=localStorage.getItem("offlineName")||"";
+  document.getElementById("offlineEmail").value=localStorage.getItem("offlineEmail")||"";
+  document.getElementById("offlineMsg").textContent="Loaded from offline storage!";
+}
+
+/* ===== TASK 37: Session Expiry Warning ===== */
+let sessionTime=10; // seconds for demo
+const sessionMsg=document.getElementById("sessionMsg");
+function sessionTick(){
+  if(sessionTime<=0){
+    sessionMsg.textContent="Session expired! Please refresh.";
+    clearInterval(sessionInterval);
+  } else {
+    sessionMsg.textContent="Session expires in "+sessionTime+"s";
+    sessionTime--;
+  }
+}
+const sessionInterval=setInterval(sessionTick,1000);
+
+/* ===== TASK 38: Dynamic Content Loader ===== */
+function loadContent(){
+  const container=document.getElementById("dynamicContent");
+  container.innerHTML="<p>Dynamic content loaded at "+new Date().toLocaleTimeString()+"</p>";
+}
+
+/* ===== TASK 39: Keyboard Accessibility ===== */
+const keyBtn=document.getElementById("keyBtn");
+keyBtn.addEventListener("keydown",(e)=>{
+  if(e.key==="Enter" || e.key===" ") showToast("Button activated via keyboard!");
+});
+keyBtn.addEventListener("click",()=> showToast("Button clicked!"));
+
+/* ===== TASK 40: Theme Customization Dashboard ===== */
+function applyTheme(){
+  document.body.style.backgroundColor=document.getElementById("themeBg").value;
+  document.body.style.color=document.getElementById("themeText").value;
+}
+
+/* ===== Toast ===== */
+function showToast(msg){
+  const t=document.getElementById("toastBox");
+  t.textContent=msg;
+  t.style.display="block";
+  setTimeout(()=>{t.style.display="none";},2000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 11-20</title>
+<style>
+body { font-family: Arial,sans-serif; background:#f4f6f8; padding:20px; margin:0; }
+section { background:#fff; padding:20px; margin-bottom:25px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+h3 { margin-bottom:15px; color:#333; }
+input, select, button, textarea { padding:6px 10px; margin:5px 5px 5px 0; width:auto; max-width:200px; display:inline-block; box-sizing:border-box; border-radius:4px; border:1px solid #ccc; }
+button { background:#4caf50; color:#fff; border:none; cursor:pointer; }
+table { width:100%; border-collapse: collapse; margin-top:10px;}
+th, td { border:1px solid #ddd; padding:8px; text-align:left;}
+th { background:#f2f2f2; cursor:pointer; }
+.toast { position: fixed; bottom:20px; right:20px; background:#333; color:#fff; padding:10px 15px; border-radius:4px; display:none; }
+img.preview { max-width:100px; max-height:100px; display:block; margin-top:5px; }
+.tabs button { padding:8px 12px; margin-right:5px; border:none; background:#ccc; cursor:pointer; border-radius:4px;}
+.tabs button.active { background:#4caf50; color:#fff; }
+.tab-content { display:none; margin-top:10px; }
+.tab-content.active { display:block; }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 11: CRUD App ================= -->
+<section>
+<h3>Task 11: CRUD App (localStorage)</h3>
+<input id="crudName" placeholder="Name">
+<input id="crudEmail" placeholder="Email">
+<button onclick="crudAdd()">Add</button>
+<table id="crudTable">
+<tr><th>Name</th><th>Email</th><th>Actions</th></tr>
+</table>
+</section>
+
+<!-- ================= TASK 12: Sortable & Searchable Table ================= -->
+<section>
+<h3>Task 12: Sortable & Searchable Table</h3>
+<input id="search12" placeholder="Search name..." oninput="searchTable12()">
+<table id="table12">
+<tr><th onclick="sortTable12(0)">Name ▲▼</th><th onclick="sortTable12(1)">Age ▲▼</th></tr>
+<tr><td>Mani</td><td>25</td></tr>
+<tr><td>Rahul</td><td>30</td></tr>
+<tr><td>Priya</td><td>22</td></tr>
+<tr><td>Anjali</td><td>28</td></tr>
+</table>
+</section>
+
+<!-- ================= TASK 13: Conditional Form Fields ================= -->
+<section>
+<h3>Task 13: Form with Conditional Fields</h3>
+<select id="condSelect" onchange="showConditional()">
+<option value="">Select type</option>
+<option value="student">Student</option>
+<option value="employee">Employee</option>
+</select>
+<input id="studentField" placeholder="School Name" class="hidden">
+<input id="employeeField" placeholder="Company Name" class="hidden">
+</section>
+
+<!-- ================= TASK 14: Notification Toast ================= -->
+<section>
+<h3>Task 14: Notification Toast</h3>
+<button onclick="showToast('This is a toast message!')">Show Toast</button>
+<div class="toast" id="toast14"></div>
+</section>
+
+<!-- ================= TASK 15: Image Upload & Preview ================= -->
+<section>
+<h3>Task 15: Image Upload & Preview</h3>
+<input type="file" id="imgInput" onchange="previewImage(event)">
+<img class="preview" id="imgPreview">
+</section>
+
+<!-- ================= TASK 16: Pagination ================= -->
+<section>
+<h3>Task 16: Pagination</h3>
+<ul id="pagList"></ul>
+<div id="pagination"></div>
+</section>
+
+<!-- ================= TASK 17: Form Auto-Save ================= -->
+<section>
+<h3>Task 17: Form Auto-Save</h3>
+<input id="autoName" placeholder="Name">
+<input id="autoEmail" placeholder="Email">
+<p id="autoStatus"></p>
+</section>
+
+<!-- ================= TASK 18: Tab Switching ================= -->
+<section>
+<h3>Task 18: Tab Switching</h3>
+<div class="tabs">
+<button class="tabBtn active" onclick="showTab(0)">Tab 1</button>
+<button class="tabBtn" onclick="showTab(1)">Tab 2</button>
+<button class="tabBtn" onclick="showTab(2)">Tab 3</button>
+</div>
+<div class="tab-content active">Content for Tab 1</div>
+<div class="tab-content">Content for Tab 2</div>
+<div class="tab-content">Content for Tab 3</div>
+</section>
+
+<!-- ================= TASK 19: Role-Based UI ================= -->
+<section>
+<h3>Task 19: Role-Based UI</h3>
+<select id="roleSelect" onchange="showRoleUI()">
+<option value="">Select Role</option>
+<option value="admin">Admin</option>
+<option value="user">User</option>
+</select>
+<div id="adminUI" class="hidden">Admin Controls: [Edit, Delete, Settings]</div>
+<div id="userUI" class="hidden">User Controls: [View, Comment]</div>
+</section>
+
+<!-- ================= TASK 20: Cart Logic (UI Only) ================= -->
+<section>
+<h3>Task 20: Cart Logic (UI Only)</h3>
+<ul id="cartList">
+<li>Item 1 <button onclick="addToCart(this)">Add to Cart</button></li>
+<li>Item 2 <button onclick="addToCart(this)">Add to Cart</button></li>
+<li>Item 3 <button onclick="addToCart(this)">Add to Cart</button></li>
+</ul>
+<p>Cart Items: <span id="cartCount">0</span></p>
+</section>
+
+<script>
+/* ===== TASK 11: CRUD App ===== */
+function loadCRUD(){
+    const data = JSON.parse(localStorage.getItem("crudData")||"[]");
+    const table = document.getElementById("crudTable");
+    table.innerHTML="<tr><th>Name</th><th>Email</th><th>Actions</th></tr>";
+    data.forEach((item,i)=>{
+        const row = table.insertRow();
+        row.insertCell(0).textContent=item.name;
+        row.insertCell(1).textContent=item.email;
+        const actions=row.insertCell(2);
+        const del=document.createElement("button");
+        del.textContent="Delete";
+        del.onclick=()=>{ data.splice(i,1); localStorage.setItem("crudData",JSON.stringify(data)); loadCRUD();}
+        actions.appendChild(del);
+    });
+}
+function crudAdd(){
+    const name=document.getElementById("crudName").value.trim();
+    const email=document.getElementById("crudEmail").value.trim();
+    if(!name||!email) return;
+    const data=JSON.parse(localStorage.getItem("crudData")||"[]");
+    data.push({name,email});
+    localStorage.setItem("crudData",JSON.stringify(data));
+    document.getElementById("crudName").value="";
+    document.getElementById("crudEmail").value="";
+    loadCRUD();
+}
+loadCRUD();
+
+/* ===== TASK 12: Sortable & Searchable Table ===== */
+let asc=true;
+function sortTable12(n){
+    const table=document.getElementById("table12");
+    let rows=[...table.rows].slice(1);
+    rows.sort((a,b)=>{
+        return asc?a.cells[n].textContent.localeCompare(b.cells[n].textContent):
+                   b.cells[n].textContent.localeCompare(a.cells[n].textContent);
+    });
+    rows.forEach(r=>table.appendChild(r));
+    asc=!asc;
+}
+function searchTable12(){
+    const val=document.getElementById("search12").value.toLowerCase();
+    document.querySelectorAll("#table12 tr").forEach((tr,i)=>{
+        if(i===0) return;
+        const text=tr.cells[0].textContent.toLowerCase();
+        tr.style.display=text.includes(val)?"":"none";
+    });
+}
+
+/* ===== TASK 13: Conditional Fields ===== */
+function showConditional(){
+    const v=document.getElementById("condSelect").value;
+    document.getElementById("studentField").classList.toggle("hidden",v!=="student");
+    document.getElementById("employeeField").classList.toggle("hidden",v!=="employee");
+}
+
+/* ===== TASK 14: Toast ===== */
+function showToast(msg){
+    const t=document.getElementById("toast14");
+    t.textContent=msg;
+    t.style.display="block";
+    setTimeout(()=>{t.style.display="none";},2000);
+}
+
+/* ===== TASK 15: Image Preview ===== */
+function previewImage(e){
+    const img=document.getElementById("imgPreview");
+    img.src=URL.createObjectURL(e.target.files[0]);
+}
+
+/* ===== TASK 16: Pagination ===== */
+const pagData=["Item 1","Item 2","Item 3","Item 4","Item 5","Item 6","Item 7","Item 8","Item 9","Item 10"];
+let pagPage=1;
+const pagPerPage=3;
+function renderPagination(){
+    const list=document.getElementById("pagList");
+    const pages=document.getElementById("pagination");
+    list.innerHTML="";
+    const start=(pagPage-1)*pagPerPage;
+    const end=start+pagPerPage;
+    pagData.slice(start,end).forEach(item=>{
+        const li=document.createElement("li"); li.textContent=item; list.appendChild(li);
+    });
+    pages.innerHTML="";
+    const total=Math.ceil(pagData.length/pagPerPage);
+    for(let i=1;i<=total;i++){
+        const btn=document.createElement("button"); btn.textContent=i;
+        if(i===pagPage) btn.style.background="#4caf50"; 
+        btn.onclick=(()=>{pagPage=i; renderPagination();});
+        pages.appendChild(btn);
+    }
+}
+renderPagination();
+
+/* ===== TASK 17: Form Auto-Save ===== */
+const autoName=document.getElementById("autoName");
+const autoEmail=document.getElementById("autoEmail");
+autoName.value=localStorage.getItem("autoName")||"";
+autoEmail.value=localStorage.getItem("autoEmail")||"";
+function autoSave(){
+    localStorage.setItem("autoName",autoName.value);
+    localStorage.setItem("autoEmail",autoEmail.value);
+    document.getElementById("autoStatus").textContent="Auto-saved";
+}
+autoName.addEventListener("input",autoSave);
+autoEmail.addEventListener("input",autoSave);
+
+/* ===== TASK 18: Tabs ===== */
+function showTab(i){
+    document.querySelectorAll(".tabBtn").forEach((b,idx)=>b.classList.toggle("active",idx===i));
+    document.querySelectorAll(".tab-content").forEach((c,idx)=>c.classList.toggle("active",idx===i));
+}
+
+/* ===== TASK 19: Role-Based UI ===== */
+function showRoleUI(){
+    const role=document.getElementById("roleSelect").value;
+    document.getElementById("adminUI").classList.toggle("hidden",role!=="admin");
+    document.getElementById("userUI").classList.toggle("hidden",role!=="user");
+}
+
+/* ===== TASK 20: Cart Logic ===== */
+let cartCount=0;
+function addToCart(btn){
+    cartCount++;
+    document.getElementById("cartCount").textContent=cartCount;
+}
+</script>
+
+</body>
+</html>

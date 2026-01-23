@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 41-50</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    padding:20px;
+    margin:0;
+}
+section {
+    background:#fff;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+h3 { margin-bottom:15px; color:#333; }
+input, select, button, textarea { padding:6px 10px; margin:5px 5px 5px 0; width:auto; max-width:200px; border-radius:4px; border:1px solid #ccc; }
+button { background:#4caf50; color:#fff; border:none; cursor:pointer; }
+button:hover { opacity:0.9; }
+ul li { padding:5px; margin:2px 0; border-radius:4px; list-style:none; cursor:pointer; }
+
+/* ================= TASK 44: Sidebar ================= */
+#sidebar {
+    width:200px;
+    background:#2196F3;
+    color:#fff;
+    padding:15px;
+    position:fixed;
+    top:20px;
+    left:-220px;
+    transition:0.3s;
+    border-radius:10px;
+}
+#sidebar.show { left:20px; }
+#sidebar ul { padding:0; }
+#sidebar ul li { padding:10px; }
+.active-menu { background:#4caf50; }
+
+/* ================= TASK 43: Image Hover ================= */
+#hoverImg { width:200px; height:150px; transition:0.3s; }
+#hoverImg:hover { opacity:0.7; cursor:pointer; }
+
+/* ================= TASK 48: Notification Box ================= */
+#notif48 {
+    background:#4caf50;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:4px;
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 41 ================= -->
+<section style="border-left:5px solid #4caf50;">
+<h3>Task 41: Enable Submit on Checkbox</h3>
+<label><input type="checkbox" id="agree41" onclick="toggleSubmit41()"> I agree</label>
+<br>
+<button id="submit41" disabled>Submit</button>
+</section>
+
+<!-- ================= TASK 42 ================= -->
+<section style="border-left:5px solid #2196F3;">
+<h3>Task 42: Show Success Message</h3>
+<form onsubmit="showSuccess42(); return false;">
+<input type="text" placeholder="Enter Name" required>
+<button type="submit">Submit</button>
+</form>
+<p id="msg42" style="color:green;"></p>
+</section>
+
+<!-- ================= TASK 43 ================= -->
+<section style="border-left:5px solid #FF9800;">
+<h3>Task 43: Image Change on Hover</h3>
+<img id="hoverImg" src="image1.webp" 
+onmouseover="this.src='image2.avif'" 
+onmouseout="this.src='image1.webp'">
+</section>
+
+<!-- ================= TASK 44 ================= -->
+<section style="border-left:5px solid #9C27B0;">
+<h3>Task 44: Sidebar Show/Hide</h3>
+<button onclick="toggleSidebar44()">Toggle Sidebar</button>
+<div id="sidebar">
+<ul>
+<li class="active-menu">Home</li>
+<li>Profile</li>
+<li>Settings</li>
+</ul>
+</div>
+</section>
+
+<!-- ================= TASK 45 ================= -->
+<section style="border-left:5px solid #f44336;">
+<h3>Task 45: Browser Width</h3>
+<p>Current window width: <span id="width45"></span> px</p>
+</section>
+
+<!-- ================= TASK 46 ================= -->
+<section style="border-left:5px solid #009688;">
+<h3>Task 46: Email Validation</h3>
+<input type="email" id="email46" placeholder="Enter Email">
+<button onclick="validateEmail46()">Check Email</button>
+<p id="msg46" style="color:red;"></p>
+</section>
+
+<!-- ================= TASK 47 ================= -->
+<section style="border-left:5px solid #3F51B5;">
+<h3>Task 47: Auto-Focus Input</h3>
+<input type="text" id="focus47" placeholder="Focus on page load">
+</section>
+
+<!-- ================= TASK 48 ================= -->
+<section style="border-left:5px solid #795548;">
+<h3>Task 48: Notification Message Box</h3>
+<button onclick="showNotif48('Hello! This is a notification.')">Show Notification</button>
+<div id="notif48"></div>
+</section>
+
+<!-- ================= TASK 49 ================= -->
+<section style="border-left:5px solid #E91E63;">
+<h3>Task 49: Highlight Active Menu Item</h3>
+<ul id="menu49">
+<li onclick="highlightMenu49(this)">Home</li>
+<li onclick="highlightMenu49(this)">About</li>
+<li onclick="highlightMenu49(this)">Contact</li>
+</ul>
+</section>
+
+<!-- ================= TASK 50 ================= -->
+<section style="border-left:5px solid #607D8B;">
+<h3>Task 50: Small Page Combining Form, Button, Output</h3>
+<input type="text" id="input50" placeholder="Enter Text">
+<button onclick="showOutput50()">Show Output</button>
+<p>Output: <span id="output50"></span></p>
+</section>
+
+<script>
+/* ===== TASK 41 ===== */
+function toggleSubmit41(){
+    document.getElementById('submit41').disabled = !document.getElementById('agree41').checked;
+}
+
+/* ===== TASK 42 ===== */
+function showSuccess42(){
+    document.getElementById('msg42').textContent = "Form submitted successfully!";
+}
+
+/* ===== TASK 44 ===== */
+function toggleSidebar44(){
+    document.getElementById('sidebar').classList.toggle('show');
+}
+
+/* ===== TASK 45 ===== */
+function updateWidth45(){
+    document.getElementById('width45').textContent = window.innerWidth;
+}
+window.addEventListener('resize', updateWidth45);
+window.addEventListener('load', updateWidth45);
+
+/* ===== TASK 46 ===== */
+function validateEmail46(){
+    const email = document.getElementById('email46').value;
+    const msg = document.getElementById('msg46');
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(regex.test(email)){
+        msg.style.color='green';
+        msg.textContent="Valid Email!";
+    } else {
+        msg.style.color='red';
+        msg.textContent="Invalid Email!";
+    }
+}
+
+/* ===== TASK 47 ===== */
+window.addEventListener('load', ()=>{
+    document.getElementById('focus47').focus();
+});
+
+/* ===== TASK 48 ===== */
+function showNotif48(msg){
+    const box=document.getElementById('notif48');
+    box.textContent=msg;
+    box.style.display='block';
+    setTimeout(()=>{ box.style.display='none'; },2000);
+}
+
+/* ===== TASK 49 ===== */
+function highlightMenu49(el){
+    document.querySelectorAll('#menu49 li').forEach(li=>li.classList.remove('active-menu'));
+    el.classList.add('active-menu');
+}
+
+/* ===== TASK 50 ===== */
+function showOutput50(){
+    const val=document.getElementById('input50').value;
+    document.getElementById('output50').textContent = val;
+}
+</script>
+</body>
+</html>

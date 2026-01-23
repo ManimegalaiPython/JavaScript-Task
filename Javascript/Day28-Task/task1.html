@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 1-10</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+    margin: 0;
+}
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h3 { margin-bottom: 15px; color: #333; }
+input, select, button, textarea {
+    padding: 6px 10px;
+    margin: 5px 5px 5px 0;
+    width: auto;
+    max-width: 200px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+button { background: #4caf50; color: #fff; border: none; cursor: pointer; }
+button:hover { opacity: 0.9; }
+#task7:hover { color: red; cursor: pointer; }
+img { max-width: 200px; display: none; margin-top: 10px; }
+.error { color: red; }
+.success { color: green; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 1 ================= -->
+<section style="border-left: 5px solid #4caf50;">
+<h3>Task 1: Alert Button</h3>
+<button onclick="alert('Hello! You clicked the button!')">Click Me</button>
+</section>
+
+<!-- ================= TASK 2 ================= -->
+<section style="border-left: 5px solid #2196F3;">
+<h3>Task 2: Display Name</h3>
+<form onsubmit="displayName(event)">
+<input type="text" id="name2" placeholder="Enter your name">
+<button type="submit">Submit</button>
+</form>
+<p id="displayName2"></p>
+</section>
+
+<!-- ================= TASK 3 ================= -->
+<section style="border-left: 5px solid #FF9800;">
+<h3>Task 3: Change Background Color</h3>
+<button onclick="document.body.style.background='#FFD700'">Change Background</button>
+</section>
+
+<!-- ================= TASK 4 ================= -->
+<section style="border-left: 5px solid #9C27B0;">
+<h3>Task 4: Show/Hide Paragraph</h3>
+<p id="para4">This is a toggle paragraph.</p>
+<button onclick="togglePara4()">Show/Hide</button>
+</section>
+
+<!-- ================= TASK 5 ================= -->
+<section style="border-left: 5px solid #f44336;">
+<h3>Task 5: Counter</h3>
+<button onclick="decrement5()">-</button>
+<span id="counter5">0</span>
+<button onclick="increment5()">+</button>
+</section>
+
+<!-- ================= TASK 6 ================= -->
+<section style="border-left: 5px solid #009688;">
+<h3>Task 6: Display Today's Date</h3>
+<p id="date6"></p>
+</section>
+
+<!-- ================= TASK 7 ================= -->
+<section style="border-left: 5px solid #3F51B5;">
+<h3>Task 7: Change Text Color on Hover</h3>
+<p id="task7">Hover over this text to change its color.</p>
+</section>
+
+<!-- ================= TASK 8 ================= -->
+<section style="border-left: 5px solid #795548;">
+<h3>Task 8: Show Image on Button Click</h3>
+<button onclick="document.getElementById('img8').style.display='block'">Show Image</button>
+<img id="img8" src="image1.webp" alt="Placeholder Image">
+</section>
+
+<!-- ================= TASK 9 ================= -->
+<section style="border-left: 5px solid #E91E63;">
+<h3>Task 9: Simple Login Form</h3>
+<input type="text" id="user9" placeholder="Username">
+<input type="password" id="pass9" placeholder="Password">
+<button onclick="login9()">Login</button>
+<p id="msg9" class="error"></p>
+</section>
+
+<!-- ================= TASK 10 ================= -->
+<section style="border-left: 5px solid #607D8B;">
+<h3>Task 10: Welcome Message</h3>
+<input type="text" id="user10" placeholder="Enter your name">
+<button onclick="welcome10()">Welcome</button>
+<p id="msg10" class="success"></p>
+</section>
+
+<script>
+/* ===== TASK 2 ===== */
+function displayName(e){
+    e.preventDefault();
+    const name=document.getElementById('name2').value;
+    document.getElementById('displayName2').textContent = name ? `Hello, ${name}!` : 'Please enter your name.';
+}
+
+/* ===== TASK 4 ===== */
+function togglePara4(){
+    const p=document.getElementById('para4');
+    p.style.display = (p.style.display==='none') ? 'block' : 'none';
+}
+
+/* ===== TASK 5 ===== */
+let count5=0;
+function increment5(){ count5++; document.getElementById('counter5').textContent=count5; }
+function decrement5(){ count5--; document.getElementById('counter5').textContent=count5; }
+
+/* ===== TASK 6 ===== */
+document.getElementById('date6').textContent = "Today's Date: "+new Date().toLocaleDateString();
+
+/* ===== TASK 9 ===== */
+function login9(){
+    const user=document.getElementById('user9').value;
+    const pass=document.getElementById('pass9').value;
+    const msg=document.getElementById('msg9');
+    if(!user || !pass){
+        msg.textContent="Username and password cannot be empty.";
+    } else {
+        msg.textContent="Login successful!";
+        msg.className="success";
+    }
+}
+
+/* ===== TASK 10 ===== */
+function welcome10(){
+    const name=document.getElementById('user10').value;
+    document.getElementById('msg10').textContent = name ? `Welcome, ${name}!` : "Please enter your name.";
+}
+</script>
+
+</body>
+</html>

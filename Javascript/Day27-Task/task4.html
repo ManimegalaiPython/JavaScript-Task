@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 31-40</title>
+<style>
+/* ================= Global Styles ================= */
+body {
+    font-family: Arial,sans-serif;
+    background:#f4f6f8;
+    padding:20px;
+    margin:0;
+}
+section {
+    background:#fff;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+h3 { margin-bottom:15px; color:#333; }
+input, select, button, textarea {
+    padding:6px 10px;
+    margin:5px 5px 5px 0;
+    width:auto;
+    max-width:200px;
+    display:inline-block;
+    box-sizing:border-box;
+    border-radius:4px;
+    border:1px solid #ccc;
+}
+button { background:#4caf50; color:#fff; border:none; cursor:pointer; }
+ul { padding-left:20px; }
+li { margin-bottom:5px; }
+.toast { position: fixed; bottom: 20px; right: 20px; background:#333; color:#fff; padding:10px 15px; border-radius:4px; display:none; }
+.hidden { display:none; }
+.progress-bar { width: 100%; background:#ddd; border-radius:5px; margin-top:5px; }
+.progress-fill { height:15px; background:#4caf50; width:0%; border-radius:5px; }
+
+/* Responsive Navbar */
+.navbar { display:flex; justify-content:space-between; align-items:center; background:#4caf50; color:#fff; padding:10px; }
+.nav-links { display:flex; gap:10px; }
+.nav-links a { color:#fff; text-decoration:none; }
+.nav-toggle { display:none; cursor:pointer; }
+@media(max-width:600px){ .nav-links { display:none; flex-direction:column; background:#4caf50; position:absolute; top:40px; left:0; width:100%; } .nav-links.show { display:flex; } .nav-toggle { display:block; } }
+
+/* Tabs */
+.tabs button { padding: 6px 10px; margin-right:5px; border:none; background:#ccc; cursor:pointer; border-radius:4px;}
+.tabs button.active { background:#4caf50; color:#fff; }
+.tab-content { display:none; margin-top:10px;}
+.tab-content.active { display:block; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 31: User Activity Log ================= -->
+<section>
+<h3>Task 31: User Activity Log</h3>
+<button onclick="logActivity31('Button clicked')">Click Me</button>
+<ul id="activityLog31"></ul>
+</section>
+
+<!-- ================= TASK 32: Dashboard Notification Center ================= -->
+<section>
+<h3>Task 32: Notification Center</h3>
+<button onclick="showToast32('New notification!')">Show Notification</button>
+<div class="toast" id="toast32"></div>
+</section>
+
+<!-- ================= TASK 33: State Management Mini-App ================= -->
+<section>
+<h3>Task 33: State Management Mini-App</h3>
+<p>Counter: <span id="stateCount">0</span></p>
+<button onclick="incrementState()">Increment</button>
+<button onclick="decrementState()">Decrement</button>
+</section>
+
+<!-- ================= TASK 34: Responsive Navbar ================= -->
+<section>
+<h3>Task 34: Responsive Navbar</h3>
+<div class="navbar">
+<span>Logo</span>
+<div class="nav-toggle" onclick="toggleNav()">☰</div>
+<div class="nav-links" id="navLinks">
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+</div>
+</section>
+
+<!-- ================= TASK 35: Form Submission History ================= -->
+<section>
+<h3>Task 35: Form Submission History</h3>
+<input id="formName35" placeholder="Name">
+<input id="formEmail35" placeholder="Email">
+<button onclick="submitForm35()">Submit</button>
+<ul id="formHistory35"></ul>
+</section>
+
+<!-- ================= TASK 36: Settings Dashboard with Auto-Save ================= -->
+<section>
+<h3>Task 36: Settings Dashboard Auto-Save</h3>
+<label>Theme:
+<select id="theme36" onchange="updateSettings36()">
+<option>Light</option>
+<option>Dark</option>
+</select></label><br>
+<label>Notifications:
+<select id="notif36" onchange="updateSettings36()">
+<option>On</option>
+<option>Off</option>
+</select></label>
+<p>Current Settings: <span id="settings36"></span></p>
+</section>
+
+<!-- ================= TASK 37: Dynamic Content Loader ================= -->
+<section>
+<h3>Task 37: Dynamic Content Loader</h3>
+<button onclick="loadContent37()">Load Content</button>
+<div id="content37"></div>
+</section>
+
+<!-- ================= TASK 38: Progress Tracking ================= -->
+<section>
+<h3>Task 38: Progress Tracking</h3>
+<button onclick="increaseProgress38()">Increase Progress</button>
+<div class="progress-bar">
+<div class="progress-fill" id="progress38"></div>
+</div>
+</section>
+
+<!-- ================= TASK 39: Form Rules Engine ================= -->
+<section>
+<h3>Task 39: Form Rules Engine</h3>
+<select id="ruleSelect39" onchange="applyRules39()">
+<option value="">Select Option</option>
+<option value="A">Option A</option>
+<option value="B">Option B</option>
+</select>
+<input id="ruleField39" placeholder="Extra Field" class="hidden">
+</section>
+
+<!-- ================= TASK 40: Search and Highlight ================= -->
+<section>
+<h3>Task 40: Search and Highlight</h3>
+<input id="searchInput40" placeholder="Search text...">
+<p id="text40">This is a sample text for highlighting search terms like JavaScript or HTML.</p>
+</section>
+
+<script>
+/* ================= TASK 31 ================= */
+function logActivity31(msg){
+    const li=document.createElement("li");
+    li.textContent=msg+" at "+new Date().toLocaleTimeString();
+    document.getElementById("activityLog31").appendChild(li);
+}
+
+/* ================= TASK 32 ================= */
+function showToast32(msg){
+    const t=document.getElementById("toast32");
+    t.textContent=msg;
+    t.style.display="block";
+    setTimeout(()=>{t.style.display="none";},2000);
+}
+
+/* ================= TASK 33 ================= */
+let stateCount=0;
+function incrementState(){ stateCount++; document.getElementById("stateCount").textContent=stateCount;}
+function decrementState(){ stateCount--; document.getElementById("stateCount").textContent=stateCount;}
+
+/* ================= TASK 34 ================= */
+function toggleNav(){
+    document.getElementById("navLinks").classList.toggle("show");
+}
+
+/* ================= TASK 35 ================= */
+function submitForm35(){
+    const name=document.getElementById("formName35").value;
+    const email=document.getElementById("formEmail35").value;
+    if(!name||!email) return;
+    const ul=document.getElementById("formHistory35");
+    const li=document.createElement("li");
+    li.textContent=`${name} (${email})`;
+    ul.appendChild(li);
+    document.getElementById("formName35").value="";
+    document.getElementById("formEmail35").value="";
+}
+
+/* ================= TASK 36 ================= */
+function updateSettings36(){
+    const theme=document.getElementById("theme36").value;
+    const notif=document.getElementById("notif36").value;
+    localStorage.setItem("theme36",theme);
+    localStorage.setItem("notif36",notif);
+    document.getElementById("settings36").textContent=`Theme: ${theme}, Notifications: ${notif}`;
+}
+// Load saved settings
+window.addEventListener("load", ()=>{
+    document.getElementById("theme36").value=localStorage.getItem("theme36")||"Light";
+    document.getElementById("notif36").value=localStorage.getItem("notif36")||"On";
+    updateSettings36();
+});
+
+/* ================= TASK 37 ================= */
+function loadContent37(){
+    const div=document.getElementById("content37");
+    div.innerHTML="<p>Dynamic content loaded at "+new Date().toLocaleTimeString()+"</p>";
+}
+
+/* ================= TASK 38 ================= */
+let progressVal38=0;
+function increaseProgress38(){
+    progressVal38+=10;
+    if(progressVal38>100) progressVal38=0;
+    document.getElementById("progress38").style.width=progressVal38+"%";
+}
+
+/* ================= TASK 39 ================= */
+function applyRules39(){
+    const val=document.getElementById("ruleSelect39").value;
+    document.getElementById("ruleField39").classList.toggle("hidden",val!=="B");
+}
+
+/* ================= TASK 40 ================= */
+document.getElementById("searchInput40").addEventListener("input",()=>{
+    const val=document.getElementById("searchInput40").value;
+    const textEl=document.getElementById("text40");
+    const text=textEl.textContent;
+    if(!val){ textEl.innerHTML=text; return;}
+    const regex=new RegExp(`(${val})`,"gi");
+    textEl.innerHTML=text.replace(regex,'<mark>$1</mark>');
+});
+</script>
+
+</body>
+</html>

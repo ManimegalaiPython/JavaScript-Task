@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice Tasks 31-40</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+
+section {
+    background:#fff;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    max-width:500px;
+    margin:auto;
+}
+
+h3 {
+    margin-bottom:15px;
+    color:#333;
+}
+
+input {
+    padding:8px 12px;
+    margin-bottom:10px;
+    width:calc(100% - 30px);
+    border-radius:5px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+button {
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    background:#4caf50;
+    color:#fff;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+button:hover { opacity:0.9; }
+
+.output {
+    display:block;
+    padding:10px;
+    background:#f0f0f0;
+    border-radius:5px;
+    min-height:20px;
+    font-weight:bold;
+    color:#333;
+}
+
+/* Task-specific border colors */
+#task31 { border-left:5px solid #4caf50; }
+#task32 { border-left:5px solid #2196F3; }
+#task33 { border-left:5px solid #FF9800; }
+#task34 { border-left:5px solid #9C27B0; }
+#task35 { border-left:5px solid #f44336; }
+#task36 { border-left:5px solid #009688; }
+#task37 { border-left:5px solid #3F51B5; }
+#task38 { border-left:5px solid #795548; }
+#task39 { border-left:5px solid #E91E63; }
+#task40 { border-left:5px solid #607D8B; }
+
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 31 ================= -->
+<section id="task31">
+<h3>31. Flatten Nested Array</h3>
+<input type="text" id="arr31" placeholder="Enter nested array, e.g., 1,2,[3,4],5">
+<button onclick="flatten31()">Flatten</button>
+<span id="out31" class="output"></span>
+</section>
+
+<!-- ================= TASK 32 ================= -->
+<section id="task32">
+<h3>32. Display Only Truthy Values</h3>
+<input type="text" id="arr32" placeholder="Enter array with mixed values, e.g., 0,1,'',true,false,'abc'">
+<button onclick="truthy32()">Show</button>
+<span id="out32" class="output"></span>
+</section>
+
+<!-- ================= TASK 33 ================= -->
+<section id="task33">
+<h3>33. Common Values Between Two Arrays</h3>
+<input type="text" id="arr33a" placeholder="Array 1 (comma separated)">
+<input type="text" id="arr33b" placeholder="Array 2 (comma separated)">
+<button onclick="common33()">Show</button>
+<span id="out33" class="output"></span>
+</section>
+
+<!-- ================= TASK 34 ================= -->
+<section id="task34">
+<h3>34. Rotate Array by K Positions</h3>
+<input type="text" id="arr34" placeholder="Array elements (comma separated)">
+<input type="number" id="k34" placeholder="Enter K">
+<button onclick="rotate34()">Rotate</button>
+<span id="out34" class="output"></span>
+</section>
+
+<!-- ================= TASK 35 ================= -->
+<section id="task35">
+<h3>35. Longest Word in Sentence</h3>
+<input type="text" id="sentence35" placeholder="Enter sentence">
+<button onclick="longestWord35()">Show</button>
+<span id="out35" class="output"></span>
+</section>
+
+<!-- ================= TASK 36 ================= -->
+<section id="task36">
+<h3>36. Title Case Sentence</h3>
+<input type="text" id="sentence36" placeholder="Enter sentence">
+<button onclick="titleCase36()">Convert</button>
+<span id="out36" class="output"></span>
+</section>
+
+<!-- ================= TASK 37 ================= -->
+<section id="task37">
+<h3>37. Check if All Characters Are Unique</h3>
+<input type="text" id="str37" placeholder="Enter string">
+<button onclick="unique37()">Check</button>
+<span id="out37" class="output"></span>
+</section>
+
+<!-- ================= TASK 38 ================= -->
+<section id="task38">
+<h3>38. Group Array Values by Type</h3>
+<input type="text" id="arr38" placeholder="Enter mixed array, e.g., 1,'a',true,2,'b',false">
+<button onclick="group38()">Group</button>
+<span id="out38" class="output"></span>
+</section>
+
+<!-- ================= TASK 39 ================= -->
+<section id="task39">
+<h3>39. Find Missing Number in Sequence</h3>
+<input type="text" id="arr39" placeholder="Enter sequence, e.g., 1,2,3,5">
+<button onclick="missing39()">Find</button>
+<span id="out39" class="output"></span>
+</section>
+
+<!-- ================= TASK 40 ================= -->
+<section id="task40">
+<h3>40. Character Frequency in String</h3>
+<input type="text" id="str40" placeholder="Enter string">
+<button onclick="freq40()">Show</button>
+<span id="out40" class="output"></span>
+</section>
+
+<script>
+/* ===== TASK 31 ===== */
+function flatten31(){
+    try{
+        const input = document.getElementById('arr31').value;
+        // replace brackets with array
+        let arr = input.replace(/\[|\]/g,"").split(',').map(v=>isNaN(v)?v.trim():Number(v));
+        document.getElementById('out31').textContent = "Flattened: " + arr.join(", ");
+    }catch(e){document.getElementById('out31').textContent="Invalid input";}
+}
+
+/* ===== TASK 32 ===== */
+function truthy32(){
+    const arr = document.getElementById('arr32').value.split(',').map(v=>{
+        v=v.trim();
+        if(v==="false") return false;
+        if(v==="true") return true;
+        if(!isNaN(v)) return Number(v);
+        return v;
+    });
+    const truthy = arr.filter(Boolean);
+    document.getElementById('out32').textContent = "Truthy: " + truthy.join(", ");
+}
+
+/* ===== TASK 33 ===== */
+function common33(){
+    const arr1 = document.getElementById('arr33a').value.split(',').map(v=>v.trim());
+    const arr2 = document.getElementById('arr33b').value.split(',').map(v=>v.trim());
+    const common = arr1.filter(v=>arr2.includes(v));
+    document.getElementById('out33').textContent = "Common: " + common.join(", ");
+}
+
+/* ===== TASK 34 ===== */
+function rotate34(){
+    let arr = document.getElementById('arr34').value.split(',').map(Number);
+    let k = Number(document.getElementById('k34').value);
+    if(arr.some(isNaN) || isNaN(k)){ document.getElementById('out34').textContent="Enter valid inputs"; return; }
+    k = k % arr.length;
+    arr = arr.slice(-k).concat(arr.slice(0,-k));
+    document.getElementById('out34').textContent = "Rotated: " + arr.join(", ");
+}
+
+/* ===== TASK 35 ===== */
+function longestWord35(){
+    const words = document.getElementById('sentence35').value.split(/\s+/);
+    if(words.length===0){ document.getElementById('out35').textContent="Enter sentence"; return; }
+    const longest = words.reduce((a,b)=>a.length>=b.length?a:b);
+    document.getElementById('out35').textContent = "Longest word: " + longest;
+}
+
+/* ===== TASK 36 ===== */
+function titleCase36(){
+    const sentence = document.getElementById('sentence36').value.toLowerCase();
+    const title = sentence.split(/\s+/).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
+    document.getElementById('out36').textContent = title;
+}
+
+/* ===== TASK 37 ===== */
+function unique37(){
+    const str = document.getElementById('str37').value;
+    const set = new Set(str.split(''));
+    document.getElementById('out37').textContent = (set.size===str.length) ? "All characters unique" : "Duplicates found";
+}
+
+/* ===== TASK 38 ===== */
+function group38(){
+    const arr = document.getElementById('arr38').value.split(',').map(v=>{
+        v=v.trim();
+        if(v==="true") return true;
+        if(v==="false") return false;
+        if(!isNaN(v)) return Number(v);
+        return v;
+    });
+    const grouped = arr.reduce((acc,val)=>{
+        const type = typeof val;
+        if(!acc[type]) acc[type]=[];
+        acc[type].push(val);
+        return acc;
+    },{});
+    document.getElementById('out38').textContent = JSON.stringify(grouped);
+}
+
+/* ===== TASK 39 ===== */
+function missing39(){
+    const arr = document.getElementById('arr39').value.split(',').map(Number).sort((a,b)=>a-b);
+    if(arr.some(isNaN)){ document.getElementById('out39').textContent="Enter valid numbers"; return; }
+    let missing = null;
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i+1]-arr[i]!==1){ missing=arr[i]+1; break; }
+    }
+    document.getElementById('out39').textContent = missing!==null ? "Missing: " + missing : "No missing number";
+}
+
+/* ===== TASK 40 ===== */
+function freq40(){
+    const str = document.getElementById('str40').value;
+    const freq = {};
+    for(let c of str) freq[c] = (freq[c]||0)+1;
+    document.getElementById('out40').textContent = JSON.stringify(freq);
+}
+</script>
+
+</body>
+</html>

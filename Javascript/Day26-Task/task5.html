@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 41-50 Apps</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+section {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+input, select, button, textarea {
+  padding: 6px 10px;
+  margin: 5px 5px 5px 0;
+  width: auto;
+  max-width: 200px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+.widget {
+  background: #e0e0e0;
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  display: none;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.tabContent {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 41: Mini Admin Panel ================= -->
+<section>
+<h3>Task 41: Mini Admin Panel</h3>
+<input id="adminUser" placeholder="Add User">
+<select id="adminRole">
+  <option>Admin</option>
+  <option>User</option>
+  <option>Guest</option>
+</select>
+<button onclick="addAdminUser()">Add User</button>
+<table id="adminTable">
+<tr><th>Name</th><th>Role</th><th>Actions</th></tr>
+</table>
+</section>
+
+<!-- ================= TASK 42: User Onboarding Flow ================= -->
+<section>
+<h3>Task 42: User Onboarding Flow</h3>
+<div id="onboardStep1">
+<input id="onboardName" placeholder="Name"><br>
+<input id="onboardEmail" placeholder="Email"><br>
+<button onclick="nextOnboardStep()">Next</button>
+</div>
+<div id="onboardStep2" style="display:none">
+<label><input type="checkbox" id="onboardAgree"> Agree to Terms</label><br>
+<button onclick="prevOnboardStep()">Previous</button>
+<button onclick="finishOnboarding()">Finish</button>
+</div>
+<p id="onboardMsg"></p>
+</section>
+
+<!-- ================= TASK 43: Reporting Dashboard ================= -->
+<section>
+<h3>Task 43: Reporting Dashboard (Static Data)</h3>
+<table>
+<tr><th>Report</th><th>Status</th><th>Value</th></tr>
+<tr><td>Sales</td><td>Completed</td><td>5000</td></tr>
+<tr><td>Users</td><td>Active</td><td>1200</td></tr>
+<tr><td>Revenue</td><td>Pending</td><td>3000</td></tr>
+</table>
+</section>
+
+<!-- ================= TASK 44: Form-Based Workflow ================= -->
+<section>
+<h3>Task 44: Form-Based Workflow</h3>
+<input id="workflowName" placeholder="Task Name">
+<select id="workflowStatus">
+<option>Pending</option>
+<option>In Progress</option>
+<option>Completed</option>
+</select>
+<button onclick="addWorkflow()">Add Task</button>
+<ul id="workflowList"></ul>
+</section>
+
+<!-- ================= TASK 45: Dashboard Error Handling ================= -->
+<section>
+<h3>Task 45: Dashboard Error Handling</h3>
+<button onclick="simulateError()">Simulate Error</button>
+<p id="errorMsg"></p>
+</section>
+
+<!-- ================= TASK 46: Search + Filter Dashboard ================= -->
+<section>
+<h3>Task 46: Search + Filter Dashboard</h3>
+<input id="searchFilterInput" placeholder="Search tasks..." oninput="searchFilterDashboard()">
+<select id="filterStatus" onchange="searchFilterDashboard()">
+<option>All</option>
+<option>Pending</option>
+<option>Completed</option>
+<option>In Progress</option>
+</select>
+<ul id="dashboardTasks">
+<li data-status="Pending">Task A [Pending]</li>
+<li data-status="Completed">Task B [Completed]</li>
+<li data-status="In Progress">Task C [In Progress]</li>
+<li data-status="Pending">Task D [Pending]</li>
+</ul>
+</section>
+
+<!-- ================= TASK 47: User Preferences Management ================= -->
+<section>
+<h3>Task 47: User Preferences Management</h3>
+<label>Theme:
+<select id="prefTheme" onchange="updatePreferences()">
+<option>Light</option>
+<option>Dark</option>
+</select></label>
+<label>Notifications:
+<select id="prefNotif" onchange="updatePreferences()">
+<option>On</option>
+<option>Off</option>
+</select></label>
+<button onclick="restorePreferences()">Restore Defaults</button>
+<p>Current Preferences: <span id="prefDisplay"></span></p>
+</section>
+
+<!-- ================= TASK 48: UI Component Library Demo ================= -->
+<section>
+<h3>Task 48: UI Component Library Demo</h3>
+<div id="uiComponents">
+<button class="demoBtn">Demo Button</button>
+<input placeholder="Demo Input">
+<select><option>Option 1</option><option>Option 2</option></select>
+</div>
+</section>
+
+<!-- ================= TASK 49: Performance-Optimized List ================= -->
+<section>
+<h3>Task 49: Performance-Optimized List</h3>
+<button onclick="populateLargeList()">Populate 1000 Items</button>
+<ul id="largeList" style="max-height:200px;overflow:auto;"></ul>
+</section>
+
+<!-- ================= TASK 50: Company-Ready Frontend Mini-App ================= -->
+<section>
+<h3>Task 50: Company-Ready Mini-App</h3>
+<input id="compName" placeholder="Employee Name">
+<input id="compEmail" placeholder="Employee Email">
+<select id="compRole">
+<option>Admin</option>
+<option>User</option>
+<option>Guest</option>
+</select>
+<button onclick="addCompanyEntry()">Add Entry</button>
+<ul id="compList"></ul>
+</section>
+
+<div class="toast" id="toastBox"></div>
+
+<script>
+/* ===== TASK 41 ===== */
+function addAdminUser(){
+  const name=document.getElementById("adminUser").value.trim();
+  const role=document.getElementById("adminRole").value;
+  if(!name) return;
+  const table=document.getElementById("adminTable");
+  const row=table.insertRow();
+  row.insertCell(0).textContent=name;
+  row.insertCell(1).textContent=role;
+  const del=row.insertCell(2);
+  const btn=document.createElement("button");
+  btn.textContent="Delete";
+  btn.onclick=()=>row.remove();
+  del.appendChild(btn);
+  document.getElementById("adminUser").value="";
+}
+
+/* ===== TASK 42 ===== */
+let onboardStep=1;
+function nextOnboardStep(){
+  document.getElementById("onboardStep1").style.display="none";
+  document.getElementById("onboardStep2").style.display="block";
+}
+function prevOnboardStep(){
+  document.getElementById("onboardStep2").style.display="none";
+  document.getElementById("onboardStep1").style.display="block";
+}
+function finishOnboarding(){
+  const name=document.getElementById("onboardName").value;
+  const email=document.getElementById("onboardEmail").value;
+  const agree=document.getElementById("onboardAgree").checked;
+  const msg=document.getElementById("onboardMsg");
+  if(!name || !email) msg.textContent="Name and Email required!";
+  else if(!agree) msg.textContent="You must agree to terms!";
+  else msg.textContent="User onboarded successfully!";
+}
+
+/* ===== TASK 44 ===== */
+function addWorkflow(){
+  const name=document.getElementById("workflowName").value.trim();
+  const status=document.getElementById("workflowStatus").value;
+  if(!name) return;
+  const li=document.createElement("li");
+  li.textContent=name+" ["+status+"]";
+  li.dataset.status=status;
+  document.getElementById("workflowList").appendChild(li);
+  document.getElementById("workflowName").value="";
+}
+
+/* ===== TASK 45 ===== */
+function simulateError(){
+  try{
+    throw new Error("Simulated dashboard error!");
+  } catch(e){
+    document.getElementById("errorMsg").textContent=e.message;
+  }
+}
+
+/* ===== TASK 46 ===== */
+function searchFilterDashboard(){
+  const search=document.getElementById("searchFilterInput").value.toLowerCase();
+  const filter=document.getElementById("filterStatus").value;
+  const items=document.querySelectorAll("#dashboardTasks li");
+  items.forEach(li=>{
+    const matchesSearch=li.textContent.toLowerCase().includes(search);
+    const matchesFilter=(filter==="All" || li.dataset.status===filter);
+    li.style.display=(matchesSearch && matchesFilter)?"list-item":"none";
+  });
+}
+
+/* ===== TASK 47 ===== */
+const defaultPreferences={theme:"Light", notifications:"On"};
+function updatePreferences(){
+  const theme=document.getElementById("prefTheme").value;
+  const notif=document.getElementById("prefNotif").value;
+  document.getElementById("prefDisplay").textContent="Theme: "+theme+", Notifications: "+notif;
+}
+function restorePreferences(){
+  document.getElementById("prefTheme").value=defaultPreferences.theme;
+  document.getElementById("prefNotif").value=defaultPreferences.notifications;
+  updatePreferences();
+}
+updatePreferences();
+
+/* ===== TASK 49 ===== */
+function populateLargeList(){
+  const ul=document.getElementById("largeList");
+  ul.innerHTML="";
+  const fragment=document.createDocumentFragment();
+  for(let i=1;i<=1000;i++){
+    const li=document.createElement("li");
+    li.textContent="Item "+i;
+    fragment.appendChild(li);
+  }
+  ul.appendChild(fragment);
+}
+
+/* ===== TASK 50 ===== */
+function addCompanyEntry(){
+  const name=document.getElementById("compName").value.trim();
+  const email=document.getElementById("compEmail").value.trim();
+  const role=document.getElementById("compRole").value;
+  if(!name || !email) return;
+  const li=document.createElement("li");
+  li.textContent=name+" | "+email+" | "+role;
+  document.getElementById("compList").appendChild(li);
+  document.getElementById("compName").value="";
+  document.getElementById("compEmail").value="";
+}
+
+/* ===== TASK 38 Toast for demo ===== */
+function showToast(msg){
+  const t=document.getElementById("toastBox");
+  t.textContent=msg;
+  t.style.display="block";
+  setTimeout(()=>{t.style.display="none";},2000);
+}
+</script>
+</body>
+</html>

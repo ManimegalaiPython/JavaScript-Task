@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice Tasks 11-20</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    padding:20px;
+}
+section {
+    background:#fff;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    max-width:500px;
+    margin:auto;
+}
+h3 { margin-bottom:15px; color:#333; }
+input { padding:8px 12px; margin-bottom:10px; width:calc(100% - 30px); border-radius:5px; border:1px solid #ccc; box-sizing:border-box; }
+button { padding:8px 15px; border:none; border-radius:5px; background:#4caf50; color:#fff; cursor:pointer; margin-bottom:10px; }
+button:hover { opacity:0.9; }
+.output { display:block; padding:10px; background:#f0f0f0; border-radius:5px; min-height:20px; font-weight:bold; color:#333; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 11 ================= -->
+<section style="border-left:5px solid #4caf50;">
+<h3>11. First N Fibonacci Numbers</h3>
+<input type="number" id="num11" placeholder="Enter N">
+<button onclick="fibonacci11()">Show</button>
+<span id="out11" class="output"></span>
+</section>
+
+<!-- ================= TASK 12 ================= -->
+<section style="border-left:5px solid #2196F3;">
+<h3>12. Check Prime Number</h3>
+<input type="number" id="num12" placeholder="Enter number">
+<button onclick="prime12()">Check</button>
+<span id="out12" class="output"></span>
+</section>
+
+<!-- ================= TASK 13 ================= -->
+<section style="border-left:5px solid #FF9800;">
+<h3>13. Total Digit Count</h3>
+<input type="number" id="num13" placeholder="Enter number">
+<button onclick="digitCount13()">Count</button>
+<span id="out13" class="output"></span>
+</section>
+
+<!-- ================= TASK 14 ================= -->
+<section style="border-left:5px solid #9C27B0;">
+<h3>14. Sum of Digits</h3>
+<input type="number" id="num14" placeholder="Enter number">
+<button onclick="sumDigits14()">Sum</button>
+<span id="out14" class="output"></span>
+</section>
+
+<!-- ================= TASK 15 ================= -->
+<section style="border-left:5px solid #f44336;">
+<h3>15. Celsius to Fahrenheit</h3>
+<input type="number" id="c15" placeholder="Enter Celsius">
+<button onclick="cToF15()">Convert</button>
+<span id="out15" class="output"></span>
+</section>
+
+<!-- ================= TASK 16 ================= -->
+<section style="border-left:5px solid #009688;">
+<h3>16. Average of Numbers</h3>
+<input type="text" id="arr16" placeholder="Enter numbers separated by comma">
+<button onclick="average16()">Calculate</button>
+<span id="out16" class="output"></span>
+</section>
+
+<!-- ================= TASK 17 ================= -->
+<section style="border-left:5px solid #3F51B5;">
+<h3>17. Highest Value in List</h3>
+<input type="text" id="arr17" placeholder="Enter numbers separated by comma">
+<button onclick="highest17()">Show</button>
+<span id="out17" class="output"></span>
+</section>
+
+<!-- ================= TASK 18 ================= -->
+<section style="border-left:5px solid #795548;">
+<h3>18. Lowest Value in List</h3>
+<input type="text" id="arr18" placeholder="Enter numbers separated by comma">
+<button onclick="lowest18()">Show</button>
+<span id="out18" class="output"></span>
+</section>
+
+<!-- ================= TASK 19 ================= -->
+<section style="border-left:5px solid #E91E63;">
+<h3>19. Count Even Numbers in Array</h3>
+<input type="text" id="arr19" placeholder="Enter numbers separated by comma">
+<button onclick="countEven19()">Count</button>
+<span id="out19" class="output"></span>
+</section>
+
+<!-- ================= TASK 20 ================= -->
+<section style="border-left:5px solid #607D8B;">
+<h3>20. Display Unique Values</h3>
+<input type="text" id="arr20" placeholder="Enter numbers separated by comma">
+<button onclick="unique20()">Show</button>
+<span id="out20" class="output"></span>
+</section>
+
+<script>
+/* ===== TASK 11 ===== */
+function fibonacci11(){
+    const n = Number(document.getElementById('num11').value);
+    if(isNaN(n)||n<1){ document.getElementById('out11').textContent="Enter a positive number!"; return; }
+    let a=0,b=1,fib=[a];
+    for(let i=1;i<n;i++){ fib.push(b); [a,b]=[b,a+b]; }
+    document.getElementById('out11').textContent = fib.join(", ");
+}
+
+/* ===== TASK 12 ===== */
+function prime12(){
+    const n = Number(document.getElementById('num12').value);
+    if(isNaN(n)||n<2){ document.getElementById('out12').textContent="Not prime"; return; }
+    for(let i=2;i<=Math.sqrt(n);i++){ if(n%i===0){ document.getElementById('out12').textContent="Not prime"; return; } }
+    document.getElementById('out12').textContent="Prime";
+}
+
+/* ===== TASK 13 ===== */
+function digitCount13(){
+    const n = document.getElementById('num13').value;
+    document.getElementById('out13').textContent = n.length;
+}
+
+/* ===== TASK 14 ===== */
+function sumDigits14(){
+    const n = document.getElementById('num14').value;
+    const sum = n.split("").reduce((acc,d)=>acc+Number(d),0);
+    document.getElementById('out14').textContent = sum;
+}
+
+/* ===== TASK 15 ===== */
+function cToF15(){
+    const c = Number(document.getElementById('c15').value);
+    const f = (c*9/5)+32;
+    document.getElementById('out15').textContent = f.toFixed(2) + " °F";
+}
+
+/* ===== TASK 16 ===== */
+function average16(){
+    const arr = document.getElementById('arr16').value.split(",").map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out16').textContent="Enter valid numbers!"; return; }
+    const avg = arr.reduce((a,b)=>a+b,0)/arr.length;
+    document.getElementById('out16').textContent = "Average: " + avg.toFixed(2);
+}
+
+/* ===== TASK 17 ===== */
+function highest17(){
+    const arr = document.getElementById('arr17').value.split(",").map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out17').textContent="Enter valid numbers!"; return; }
+    document.getElementById('out17').textContent = "Highest: " + Math.max(...arr);
+}
+
+/* ===== TASK 18 ===== */
+function lowest18(){
+    const arr = document.getElementById('arr18').value.split(",").map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out18').textContent="Enter valid numbers!"; return; }
+    document.getElementById('out18').textContent = "Lowest: " + Math.min(...arr);
+}
+
+/* ===== TASK 19 ===== */
+function countEven19(){
+    const arr = document.getElementById('arr19').value.split(",").map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out19').textContent="Enter valid numbers!"; return; }
+    const count = arr.filter(n=>n%2===0).length;
+    document.getElementById('out19').textContent = "Even numbers: " + count;
+}
+
+/* ===== TASK 20 ===== */
+function unique20(){
+    const arr = document.getElementById('arr20').value.split(",").map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out20').textContent="Enter valid numbers!"; return; }
+    const unique = [...new Set(arr)];
+    document.getElementById('out20').textContent = "Unique values: " + unique.join(", ");
+}
+</script>
+
+</body>
+</html>

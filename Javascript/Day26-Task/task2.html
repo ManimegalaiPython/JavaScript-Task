@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 11-20 Fixed</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
+  section { background:#fff; padding:15px; margin-bottom:25px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+  h3 { margin-bottom:10px; color:#333; }
+
+  /* Reduced width inputs/buttons */
+  input, select, button, textarea {
+    padding:6px 10px;
+    margin:5px 5px 5px 0;
+    width:auto;
+    max-width:200px;
+    display:inline-block;
+    box-sizing:border-box;
+    border-radius:4px;
+    border:1px solid #ccc;
+  }
+  button { background:#4caf50; color:#fff; border:none; cursor:pointer; }
+
+  ul { padding-left:20px; margin-top:5px; }
+  li { list-style:none; padding:3px 6px; border:1px solid #ddd; margin-bottom:2px; cursor:pointer; border-radius:4px; max-width:200px; }
+  table { width:100%; border-collapse: collapse; margin-top:10px; }
+  th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+  th { background:#f2f2f2; }
+    /* Task 16 suggestions dropdown */
+  #suggestList { 
+    border: 1px solid #ccc; 
+    max-width:200px; 
+    padding:0; 
+    margin-top:2px; 
+    list-style:none; 
+    background:#fff;
+    position: absolute; 
+    z-index: 10;
+  }
+  #suggestList li { padding:5px; cursor:pointer; border-bottom:1px solid #eee; }
+  #suggestList li:hover { background:#f2f2f2; }
+
+  /* Modal */
+  .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; }
+  .modal-content { background:#fff; padding:20px; border-radius:6px; min-width:300px; }
+
+  /* Multi-step form */
+  .step { display:none; }
+  .progress { margin-bottom:10px; }
+  .progress div { height:10px; background:#4caf50; width:0%; }
+  
+  /* Toast */
+  .toast { position:fixed; bottom:20px; right:20px; background:#333; color:#fff; padding:10px 15px; border-radius:4px; display:none; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 11 ================= -->
+<section>
+<h3>Task 11: Task Management</h3>
+<input id="taskInput" placeholder="Task name">
+<select id="taskStatus"><option>Pending</option><option>Completed</option></select>
+<button onclick="addTask()">Add Task</button>
+<p>Filter: <select onchange="filterTasks(this.value)">
+  <option>All</option><option>Pending</option><option>Completed</option>
+</select></p>
+<ul id="taskList"></ul>
+</section>
+
+<!-- ================= TASK 12 ================= -->
+<section>
+<h3>Task 12: Notes App</h3>
+<textarea id="noteArea" placeholder="Write notes..." rows="4" cols="40"></textarea>
+<p>Saved content: <span id="noteStatus"></span></p>
+</section>
+
+<!-- ================= TASK 13 ================= -->
+<section>
+<h3>Task 13: Dynamic Table</h3>
+<input id="tableFilter" placeholder="Filter name..." onkeyup="filterTable()">
+<table id="dynTable">
+<tr><th onclick="sortTable(0)">Name ▲▼</th><th onclick="sortTable(1)">Age ▲▼</th></tr>
+<tr><td>Mani</td><td>25</td></tr>
+<tr><td>Rahul</td><td>30</td></tr>
+<tr><td>Priya</td><td>22</td></tr>
+<tr><td>Anjali</td><td>28</td></tr>
+</table>
+</section>
+
+<!-- ================= TASK 14 ================= -->
+<section>
+<h3>Task 14: Modal</h3>
+<button onclick="openModal()">Open Modal</button>
+<div class="modal" id="modalBox">
+  <div class="modal-content">
+    <p>This is a reusable modal!</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+</section>
+
+<!-- ================= TASK 15 ================= -->
+<section>
+<h3>Task 15: Multi-Step Form</h3>
+<div class="progress"><div id="progressBar"></div></div>
+<div class="step" id="step1">
+  <input placeholder="Step 1: Name"><br>
+  <button onclick="nextStep()">Next</button>
+</div>
+<div class="step" id="step2">
+  <input placeholder="Step 2: Email"><br>
+  <button onclick="prevStep()">Previous</button>
+  <button onclick="nextStep()">Next</button>
+</div>
+<div class="step" id="step3">
+  <input placeholder="Step 3: Age"><br>
+  <button onclick="prevStep()">Previous</button>
+  <button onclick="finishSteps()">Finish</button>
+</div>
+</section>
+
+<!-- ================= TASK 16: Search Suggestions ================= -->
+<section>
+  <h3>Task 16: Search Suggestions</h3>
+  <input id="searchInput" placeholder="Search names...">
+  <ul id="suggestList"></ul>
+</section>
+
+<!-- ================= TASK 17: Settings Dashboard ================= -->
+<section>
+<h3>Task 17: Settings Dashboard</h3>
+<label>Theme:
+<select id="themeSelect" onchange="updateSettings()">
+<option>Light</option>
+<option>Dark</option>
+</select></label><br>
+<label>Notifications:
+<select id="notifSelect" onchange="updateSettings()">
+<option>On</option>
+<option>Off</option>
+</select></label>
+<p>Current Settings: <span id="currentSettings"></span></p>
+</section>
+
+<!-- ================= TASK 18 ================= -->
+<section>
+<h3>Task 18: Form Draft</h3>
+<input id="draftName" placeholder="Name">
+<input id="draftEmail" placeholder="Email">
+<button onclick="saveDraft()">Save Draft</button>
+<button onclick="restoreDraft()">Restore Draft</button>
+</section>
+
+<!-- ================= TASK 19 ================= -->
+<section>
+<h3>Task 19: Activity Logger</h3>
+<button onclick="logActivity('Clicked button')">Click Me</button>
+<ul id="activityLog"></ul>
+</section>
+
+<!-- ================= TASK 20 ================= -->
+<section>
+<h3>Task 20: Toast Notification</h3>
+<button onclick="showToast('This is a notification!')">Show Toast</button>
+<div class="toast" id="toastBox"></div>
+</section>
+
+<script>
+/* ===== TASK 11 ===== */
+function addTask(){
+  const name=document.getElementById("taskInput").value;
+  const status=document.getElementById("taskStatus").value;
+  if(!name) return;
+  const li=document.createElement("li");
+  li.textContent=name+" ["+status+"]";
+  li.dataset.status=status;
+  document.getElementById("taskList").appendChild(li);
+  document.getElementById("taskInput").value="";
+}
+function filterTasks(f){
+  const list=document.getElementById("taskList").children;
+  Array.from(list).forEach(li=>{
+    li.style.display=(f==="All"||li.dataset.status===f)?"list-item":"none";
+  });
+}
+
+/* ===== TASK 12 ===== */
+const noteArea=document.getElementById("noteArea");
+noteArea.addEventListener("input",()=>{
+  localStorage.setItem("note",noteArea.value);
+  document.getElementById("noteStatus").textContent="Saved!";
+});
+window.addEventListener("load",()=>{noteArea.value=localStorage.getItem("note")||"";});
+
+/* ===== TASK 13 ===== */
+function filterTable(){
+  const val=document.getElementById("tableFilter").value.toLowerCase();
+  const rows=[...document.getElementById("dynTable").rows].slice(1);
+  rows.forEach(r=>{
+    r.style.display=r.cells[0].textContent.toLowerCase().includes(val)?"":"none";
+  });
+}
+function sortTable(n){
+  const table=document.getElementById("dynTable");
+  let rows=[...table.rows].slice(1);
+  const asc=table.asc=!table.asc;
+  rows.sort((a,b)=>{
+    return asc ? a.cells[n].textContent.localeCompare(b.cells[n].textContent) : b.cells[n].textContent.localeCompare(a.cells[n].textContent);
+  });
+  rows.forEach(r=>table.appendChild(r));
+}
+
+/* ===== TASK 14 ===== */
+function openModal(){document.getElementById("modalBox").style.display="flex";}
+function closeModal(){document.getElementById("modalBox").style.display="none";}
+
+/* ===== TASK 15 ===== */
+let currentStep=1;
+showStep(currentStep);
+function showStep(n){
+  [...document.querySelectorAll(".step")].forEach((s,i)=>s.style.display=(i+1===n)?"block":"none");
+  document.getElementById("progressBar").style.width=(n/3*100)+"%";
+}
+function nextStep(){if(currentStep<3) currentStep++; showStep(currentStep);}
+function prevStep(){if(currentStep>1) currentStep--; showStep(currentStep);}
+function finishSteps(){alert("Form Completed!");}
+
+/* ===== TASK 16: Search Suggestions ===== */
+/* ===== TASK 16: Search Suggestions ===== */
+const names = ["Mani", "Rahul", "Priya", "Anjali", "Suresh"];
+const searchInput = document.getElementById("searchInput");
+const suggestList = document.getElementById("suggestList");
+
+searchInput.addEventListener("input", () => {
+  const txt = searchInput.value.trim().toLowerCase();
+  suggestList.innerHTML = "";
+  if (!txt) return;
+
+  names.filter(name => name.toLowerCase().includes(txt))
+       .forEach(name => {
+         const li = document.createElement("li");
+         li.textContent = name;
+         li.onclick = () => {
+           searchInput.value = name;
+           suggestList.innerHTML = "";
+         };
+         suggestList.appendChild(li);
+       });
+});
+
+// Hide suggestions if clicking outside
+document.addEventListener("click", (e) => {
+  if (!searchInput.contains(e.target) && !suggestList.contains(e.target)) {
+    suggestList.innerHTML = "";
+  }
+});
+
+/* ===== TASK 17: Settings Dashboard ===== */
+function updateSettings(){
+  const theme = document.getElementById("themeSelect").value;
+  const notif = document.getElementById("notifSelect").value;
+  document.getElementById("currentSettings").textContent = "Theme: "+theme+", Notifications: "+notif;
+}
+// Initialize on page load
+updateSettings();
+
+/* ===== TASK 18 ===== */
+function saveDraft(){
+  localStorage.setItem("draftName",document.getElementById("draftName").value);
+  localStorage.setItem("draftEmail",document.getElementById("draftEmail").value);
+  alert("Draft saved");
+}
+function restoreDraft(){
+  document.getElementById("draftName").value=localStorage.getItem("draftName")||"";
+  document.getElementById("draftEmail").value=localStorage.getItem("draftEmail")||"";
+}
+
+/* ===== TASK 19 ===== */
+function logActivity(act){
+  const li=document.createElement("li");
+  li.textContent=act+" at "+new Date().toLocaleTimeString();
+  document.getElementById("activityLog").appendChild(li);
+}
+
+/* ===== TASK 20 ===== */
+function showToast(msg){
+  const t=document.getElementById("toastBox");
+  t.textContent=msg;
+  t.style.display="block";
+  setTimeout(()=>{t.style.display="none";},2000);
+}
+</script>
+</body>
+</html>

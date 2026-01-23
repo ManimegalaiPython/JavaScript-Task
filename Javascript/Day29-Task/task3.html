@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice Tasks 21-30</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Input fields */
+input {
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    width: calc(100% - 30px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Output display */
+.output {
+    display: block;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    min-height: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Different border colors for each task */
+#task21 { border-left:5px solid #4caf50; }
+#task22 { border-left:5px solid #2196F3; }
+#task23 { border-left:5px solid #FF9800; }
+#task24 { border-left:5px solid #9C27B0; }
+#task25 { border-left:5px solid #f44336; }
+#task26 { border-left:5px solid #009688; }
+#task27 { border-left:5px solid #3F51B5; }
+#task28 { border-left:5px solid #795548; }
+#task29 { border-left:5px solid #E91E63; }
+#task30 { border-left:5px solid #607D8B; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 21 ================= -->
+<section id="task21">
+<h3>21. Leap Year Check</h3>
+<input type="number" id="year21" placeholder="Enter year">
+<button onclick="leapYear21()">Check</button>
+<span id="out21" class="output"></span>
+</section>
+
+<!-- ================= TASK 22 ================= -->
+<section id="task22">
+<h3>22. Sort Numbers Ascending</h3>
+<input type="text" id="arr22" placeholder="Enter numbers separated by comma">
+<button onclick="sort22()">Sort</button>
+<span id="out22" class="output"></span>
+</section>
+
+<!-- ================= TASK 23 ================= -->
+<section id="task23">
+<h3>23. Swap Two Numbers</h3>
+<input type="number" id="a23" placeholder="First number">
+<input type="number" id="b23" placeholder="Second number">
+<button onclick="swap23()">Swap</button>
+<span id="out23" class="output"></span>
+</section>
+
+<!-- ================= TASK 24 ================= -->
+<section id="task24">
+<h3>24. String Length Without .length</h3>
+<input type="text" id="str24" placeholder="Enter string">
+<button onclick="length24()">Show Length</button>
+<span id="out24" class="output"></span>
+</section>
+
+<!-- ================= TASK 25 ================= -->
+<section id="task25">
+<h3>25. Word Count in Sentence</h3>
+<input type="text" id="sentence25" placeholder="Enter sentence">
+<button onclick="wordCount25()">Count</button>
+<span id="out25" class="output"></span>
+</section>
+
+<!-- ================= TASK 26 ================= -->
+<section id="task26">
+<h3>26. Check Anagrams</h3>
+<input type="text" id="word26a" placeholder="First word">
+<input type="text" id="word26b" placeholder="Second word">
+<button onclick="anagram26()">Check</button>
+<span id="out26" class="output"></span>
+</section>
+
+<!-- ================= TASK 27 ================= -->
+<section id="task27">
+<h3>27. Second Largest Number</h3>
+<input type="text" id="arr27" placeholder="Enter numbers separated by comma">
+<button onclick="secondLargest27()">Show</button>
+<span id="out27" class="output"></span>
+</section>
+
+<!-- ================= TASK 28 ================= -->
+<section id="task28">
+<h3>28. Merge Arrays Without Duplicates</h3>
+<input type="text" id="arr28a" placeholder="Array 1 (comma separated)">
+<input type="text" id="arr28b" placeholder="Array 2 (comma separated)">
+<button onclick="mergeUnique28()">Merge</button>
+<span id="out28" class="output"></span>
+</section>
+
+<!-- ================= TASK 29 ================= -->
+<section id="task29">
+<h3>29. Count Each Value in List</h3>
+<input type="text" id="arr29" placeholder="Enter values separated by comma">
+<button onclick="countValues29()">Count</button>
+<span id="out29" class="output"></span>
+</section>
+
+<!-- ================= TASK 30 ================= -->
+<section id="task30">
+<h3>30. First Non-Repeating Character</h3>
+<input type="text" id="word30" placeholder="Enter a word">
+<button onclick="firstNonRepeat30()">Show</button>
+<span id="out30" class="output"></span>
+</section>
+
+<script>
+/* ===== TASK 21 ===== */
+function leapYear21(){
+    const year = Number(document.getElementById('year21').value);
+    if(isNaN(year)){ document.getElementById('out21').textContent="Enter a valid year!"; return; }
+    const leap = (year%4===0 && year%100!==0) || (year%400===0);
+    document.getElementById('out21').textContent = leap ? "Leap Year" : "Not a Leap Year";
+}
+
+/* ===== TASK 22 ===== */
+function sort22(){
+    const arr = document.getElementById('arr22').value.split(',').map(Number);
+    if(arr.some(isNaN)){ document.getElementById('out22').textContent="Enter valid numbers!"; return; }
+    arr.sort((a,b)=>a-b);
+    document.getElementById('out22').textContent = "Sorted: " + arr.join(", ");
+}
+
+/* ===== TASK 23 ===== */
+function swap23(){
+    let a = Number(document.getElementById('a23').value);
+    let b = Number(document.getElementById('b23').value);
+    if(isNaN(a)||isNaN(b)){ document.getElementById('out23').textContent="Enter valid numbers!"; return; }
+    a = a + b; b = a - b; a = a - b;
+    document.getElementById('out23').textContent = `After Swap: First=${a}, Second=${b}`;
+}
+
+/* ===== TASK 24 ===== */
+function length24(){
+    const str = document.getElementById('str24').value;
+    let count = 0;
+    for(let c of str) count++;
+    document.getElementById('out24').textContent = "Length: " + count;
+}
+
+/* ===== TASK 25 ===== */
+function wordCount25(){
+    const sentence = document.getElementById('sentence25').value.trim();
+    const count = sentence ? sentence.split(/\s+/).length : 0;
+    document.getElementById('out25').textContent = "Word Count: " + count;
+}
+
+/* ===== TASK 26 ===== */
+function anagram26(){
+    let a = document.getElementById('word26a').value.replace(/\s+/g,'').toLowerCase();
+    let b = document.getElementById('word26b').value.replace(/\s+/g,'').toLowerCase();
+    if(!a || !b){ document.getElementById('out26').textContent="Enter both words!"; return; }
+    const sortedA = a.split('').sort().join('');
+    const sortedB = b.split('').sort().join('');
+    document.getElementById('out26').textContent = (sortedA === sortedB) ? "Anagrams" : "Not Anagrams";
+}
+
+/* ===== TASK 27 ===== */
+function secondLargest27(){
+    const arr = document.getElementById('arr27').value.split(',').map(Number);
+    if(arr.some(isNaN)||arr.length<2){ document.getElementById('out27').textContent="Enter at least two numbers!"; return; }
+    const unique = [...new Set(arr)].sort((a,b)=>b-a);
+    document.getElementById('out27').textContent = "Second Largest: " + unique[1];
+}
+
+/* ===== TASK 28 ===== */
+function mergeUnique28(){
+    const arr1 = document.getElementById('arr28a').value.split(',').map(Number);
+    const arr2 = document.getElementById('arr28b').value.split(',').map(Number);
+    if(arr1.some(isNaN)||arr2.some(isNaN)){ document.getElementById('out28').textContent="Enter valid numbers!"; return; }
+    const merged = [...new Set([...arr1,...arr2])];
+    document.getElementById('out28').textContent = "Merged Array: " + merged.join(", ");
+}
+
+/* ===== TASK 29 ===== */
+function countValues29(){
+    const arr = document.getElementById('arr29').value.split(',');
+    const countObj = {};
+    arr.forEach(val => { countObj[val] = (countObj[val] || 0) + 1; });
+    let result = '';
+    for(let key in countObj) result += `${key}: ${countObj[key]}, `;
+    document.getElementById('out29').textContent = result.slice(0,-2);
+}
+
+/* ===== TASK 30 ===== */
+function firstNonRepeat30(){
+    const str = document.getElementById('word30').value;
+    let charCount = {};
+    for(let c of str) charCount[c] = (charCount[c] || 0) + 1;
+    const first = Object.keys(charCount).find(k => charCount[k] === 1);
+    document.getElementById('out30').textContent = first ? "First Non-Repeating: " + first : "No unique character";
+}
+</script>
+
+</body>
+</html>

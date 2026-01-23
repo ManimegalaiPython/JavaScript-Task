@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tasks 1-10: Full stack front-end mini apps for registration, login, employee management, student management, dashboards, search, theme toggle, pagination, and profile edit.">
+<meta name="author" content="Your Name">
+<meta name="keywords" content="HTML, CSS, JavaScript, CRUD, Dashboard, Form Validation, LocalStorage, Mini Apps">
+<title>Tasks 1-10 Combined App</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+  }
+  section {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h3 { margin-bottom: 10px; color: #333; }
+
+  /* ========== Input/Button Styles (Reduced Width) ========== */
+  input, select, button {
+    padding: 6px 10px;
+    margin: 5px 5px 5px 0;
+    width: auto;
+    max-width: 200px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  ul { padding-left: 20px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+  th { background: #f2f2f2; }
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 1: User Registration ================= -->
+<section>
+<h3>Task 1: User Registration App</h3>
+<input id="regName" placeholder="Full Name">
+<input id="regEmail" placeholder="Email">
+<input id="regPass" type="password" placeholder="Password (min 6 chars)">
+<input id="regAge" type="number" placeholder="Age (18+)" min="18">
+<select id="regGender">
+  <option value="">Select Gender</option>
+  <option>Male</option>
+  <option>Female</option>
+  <option>Other</option>
+</select>
+<button onclick="registerUser()">Register</button>
+<p id="regMsg"></p>
+</section>
+
+<!-- ================= TASK 2: Login App ================= -->
+<section>
+<h3>Task 2: Login App</h3>
+<input id="loginUser" placeholder="Username">
+<input id="loginPass" type="password" placeholder="Password">
+<button onclick="loginUser()">Login</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- ================= TASK 3: Dynamic Employee List ================= -->
+<section>
+<h3>Task 3: Dynamic Employee List</h3>
+<input id="empName" placeholder="Employee Name">
+<input id="empDept" placeholder="Department">
+<input id="empRole" placeholder="Role">
+<button onclick="addEmployee()">Add Employee</button>
+<table id="empTable">
+  <tr><th>Name</th><th>Dept</th><th>Role</th></tr>
+</table>
+</section>
+
+<!-- ================= TASK 4: Student Management ================= -->
+<section>
+<h3>Task 4: Student Management Mini App</h3>
+<input id="stuName" placeholder="Student Name">
+<input id="stuRoll" placeholder="Roll Number">
+<input id="stuMark" type="number" placeholder="Marks">
+<button onclick="addStudent()">Add Student</button>
+<table id="stuTable">
+<tr><th>Name</th><th>Roll</th><th>Marks</th></tr>
+</table>
+</section>
+
+<!-- ================= TASK 5: Reusable Form Validation ================= -->
+<section>
+<h3>Task 5: Form Validation System</h3>
+<input id="valName" placeholder="Name">
+<input id="valEmail" placeholder="Email">
+<input id="valAge" type="number" placeholder="Age">
+<button onclick="validateForm()">Validate</button>
+<p id="valMsg"></p>
+</section>
+
+<!-- ================= TASK 6: Simple Dashboard ================= -->
+<section>
+<h3>Task 6: Simple Dashboard UI</h3>
+<p>Users: <span id="dashUsers">120</span></p>
+<p>Orders: <span id="dashOrders">45</span></p>
+<p>Revenue: ₹<span id="dashRevenue">5000</span></p>
+</section>
+
+<!-- ================= TASK 7: Search Filter ================= -->
+<section>
+<h3>Task 7: Search Filter App</h3>
+<input onkeyup="filterEmployees(this.value)" placeholder="Search employee...">
+<ul id="empListFilter">
+  <li>Mani Kumar</li>
+  <li>Rahul Sharma</li>
+  <li>Anjali Singh</li>
+  <li>Priya Patel</li>
+</ul>
+</section>
+
+<!-- ================= TASK 8: Theme Toggle ================= -->
+<section>
+<h3>Task 8: Theme Toggle App</h3>
+<button onclick="toggleTheme()">Toggle Light/Dark</button>
+</section>
+
+<!-- ================= TASK 9: Pagination Logic ================= -->
+<section>
+<h3>Task 9: Pagination Logic App</h3>
+<ul id="pagList"></ul>
+<div>
+  <button onclick="prevPage()">Prev</button>
+  <button onclick="nextPage()">Next</button>
+</div>
+<p>Page: <span id="pageNum">1</span></p>
+</section>
+
+<!-- ================= TASK 10: Profile Edit & Save ================= -->
+<section>
+<h3>Task 10: Profile Edit & Save</h3>
+<input id="profName" placeholder="Name">
+<input id="profEmail" placeholder="Email">
+<input id="profPhone" placeholder="Phone">
+<button onclick="saveProfile()">Save Profile</button>
+<button onclick="loadProfile()">Load Profile</button>
+</section>
+
+<script>
+/* ================= TASK 1 ================= */
+function registerUser(){
+  const name=regName.value.trim(), email=regEmail.value.trim(), pass=regPass.value, age=parseInt(regAge.value), gender=regGender.value;
+  let msg="";
+  if(!name) msg="Name required";
+  else if(!email.includes("@")) msg="Invalid email";
+  else if(pass.length<6) msg="Password min 6 chars";
+  else if(age<18) msg="Age must be 18+";
+  else if(!gender) msg="Select gender";
+  else msg="Registration Successful!";
+  regMsg.textContent=msg;
+}
+
+/* ================= TASK 2 ================= */
+let loginAttempts=0;
+function loginUser(){
+  const u=loginUser.value, p=loginPass.value;
+  const correctUser="admin", correctPass="12345";
+  if(u===correctUser && p===correctPass){
+    loginMsg.textContent="Login Successful!";
+    loginAttempts=0;
+  }else{
+    loginAttempts++;
+    loginMsg.textContent="Incorrect! Attempt "+loginAttempts;
+    if(loginAttempts>=3) loginMsg.textContent="Login blocked after 3 attempts";
+  }
+}
+
+/* ================= TASK 3 ================= */
+function addEmployee(){
+  const name=empName.value, dept=empDept.value, role=empRole.value;
+  if(!name || !dept || !role) return alert("All fields required");
+  const table=empTable;
+  const row=table.insertRow();
+  row.insertCell(0).textContent=name;
+  row.insertCell(1).textContent=dept;
+  row.insertCell(2).textContent=role;
+  empName.value=empDept.value=empRole.value="";
+}
+
+/* ================= TASK 4 ================= */
+function addStudent(){
+  const n=stuName.value, r=stuRoll.value, m=stuMark.value;
+  if(!n||!r||!m) return alert("All fields required");
+  const row=stuTable.insertRow();
+  row.insertCell(0).textContent=n;
+  row.insertCell(1).textContent=r;
+  row.insertCell(2).textContent=m;
+  stuName.value=stuRoll.value=stuMark.value="";
+}
+
+/* ================= TASK 5 ================= */
+function checkEmpty(val){return val.trim()!=="";}
+function validateForm(){
+  const n=valName.value.trim(), e=valEmail.value.trim(), a=valAge.value;
+  let msg="";
+  if(!checkEmpty(n)) msg="Name required";
+  else if(!e.includes("@")) msg="Email invalid";
+  else if(a<0) msg="Age invalid";
+  else msg="Validation Successful!";
+  valMsg.textContent=msg;
+}
+
+/* ================= TASK 7 ================= */
+function filterEmployees(txt){
+  const list=[...empListFilter.children];
+  list.forEach(li=>li.style.display=li.textContent.toLowerCase().includes(txt.toLowerCase())?"block":"none");
+}
+
+/* ================= TASK 8 ================= */
+function toggleTheme(){
+  if(localStorage.getItem("theme")==="dark"){document.body.style.background="#f4f6f8";localStorage.setItem("theme","light");}
+  else{document.body.style.background="#222";localStorage.setItem("theme","dark");}
+}
+if(localStorage.getItem("theme")==="dark") document.body.style.background="#222";
+
+/* ================= TASK 9 ================= */
+let page=1, pageSize=5;
+const pagData=["Item1","Item2","Item3","Item4","Item5","Item6","Item7","Item8","Item9","Item10"];
+function renderPage(){pagList.innerHTML="";const start=(page-1)*pageSize;const end=Math.min(start+pageSize,pagData.length);for(let i=start;i<end;i++)pagList.innerHTML+=`<li>${pagData[i]}</li>`;pageNum.textContent=page;}
+function nextPage(){if(page*pageSize<pagData.length) page++; renderPage();}
+function prevPage(){if(page>1) page--; renderPage();}
+renderPage();
+
+/* ================= TASK 10 ================= */
+function saveProfile(){localStorage.setItem("profName",profName.value);localStorage.setItem("profEmail",profEmail.value);localStorage.setItem("profPhone",profPhone.value);alert("Profile Saved");}
+function loadProfile(){profName.value=localStorage.getItem("profName")||"";profEmail.value=localStorage.getItem("profEmail")||"";profPhone.value=localStorage.getItem("profPhone")||"";}
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 21-30 Apps</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  padding: 20px;
+}
+
+section {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+input, select, button, textarea {
+  padding: 6px 10px;
+  margin: 5px 5px 5px 0;
+  width: auto;
+  max-width: 200px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+tr.editing {
+  background: #ffeaa7;
+}
+
+.highlight {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 21: CRUD App ================= -->
+<section>
+<h3>Task 21: CRUD App without page reload</h3>
+<input id="crudName" placeholder="Name">
+<input id="crudAge" placeholder="Age" type="number">
+<button onclick="addCrud()">Add</button>
+<table id="crudTable">
+  <tr><th>Name</th><th>Age</th><th>Actions</th></tr>
+</table>
+</section>
+
+<!-- ================= TASK 22: Dynamic Dropdown Dependency ================= -->
+<section>
+<h3>Task 22: Dynamic Dropdown Dependency</h3>
+<label>Country:
+<select id="countrySelect" onchange="updateStates()">
+  <option value="">Select</option>
+  <option value="India">India</option>
+  <option value="USA">USA</option>
+</select>
+</label>
+<label>State:
+<select id="stateSelect">
+  <option value="">Select</option>
+</select>
+</label>
+</section>
+
+<!-- ================= TASK 23: Form with Conditional Validation ================= -->
+<section>
+<h3>Task 23: Conditional Validation Form</h3>
+<input id="condAge" placeholder="Age" type="number">
+<label><input type="checkbox" id="agreeTerms"> Agree to terms</label>
+<button onclick="validateCondForm()">Submit</button>
+<p id="condMsg"></p>
+</section>
+
+<!-- ================= TASK 24: Table Row Edit & Update ================= -->
+<section>
+<h3>Task 24: Table Row Edit & Update</h3>
+<table id="editTable">
+<tr><th>Name</th><th>Age</th><th>Actions</th></tr>
+<tr><td>John</td><td>25</td><td><button onclick="editRow(this)">Edit</button></td></tr>
+<tr><td>Mary</td><td>30</td><td><button onclick="editRow(this)">Edit</button></td></tr>
+</table>
+</section>
+
+<!-- ================= TASK 25: Prevent Duplicate Entry ================= -->
+<section>
+<h3>Task 25: Prevent Duplicate Entry</h3>
+<input id="dupInput" placeholder="Enter unique value">
+<button onclick="addUnique()">Add</button>
+<ul id="dupList"></ul>
+</section>
+
+<!-- ================= TASK 26: Live Search & Highlight ================= -->
+<section>
+<h3>Task 26: Live Search & Highlight</h3>
+<input id="searchHighlight" placeholder="Search names..." oninput="highlightSearch()">
+<ul id="highlightList">
+<li>Mani</li>
+<li>Rahul</li>
+<li>Priya</li>
+<li>Anjali</li>
+<li>Suresh</li>
+</ul>
+</section>
+
+<!-- ================= TASK 27: Tab Switching System ================= -->
+<section>
+<h3>Task 27: Tab Switching System</h3>
+<div>
+  <button onclick="switchTab(1)">Tab 1</button>
+  <button onclick="switchTab(2)">Tab 2</button>
+  <button onclick="switchTab(3)">Tab 3</button>
+</div>
+<div id="tab1" class="tabContent">Content for Tab 1</div>
+<div id="tab2" class="tabContent" style="display:none">Content for Tab 2</div>
+<div id="tab3" class="tabContent" style="display:none">Content for Tab 3</div>
+</section>
+
+<!-- ================= TASK 28: Client-Side Data Store ================= -->
+<section>
+<h3>Task 28: Client-Side Data Store Manager</h3>
+<input id="storeKey" placeholder="Key">
+<input id="storeValue" placeholder="Value">
+<button onclick="storeData()">Store</button>
+<button onclick="loadData()">Load</button>
+<p>Stored Value: <span id="storeOutput"></span></p>
+</section>
+
+<!-- ================= TASK 29: Dashboard Summary Generator ================= -->
+<section>
+<h3>Task 29: Dashboard Summary Generator</h3>
+<input id="dashNum1" placeholder="Number 1" type="number">
+<input id="dashNum2" placeholder="Number 2" type="number">
+<button onclick="generateSummary()">Generate Summary</button>
+<p id="dashSummary"></p>
+</section>
+
+<!-- ================= TASK 30: Reusable Form Component System ================= -->
+<section>
+<h3>Task 30: Reusable Form Component System</h3>
+<div id="formContainer"></div>
+<button onclick="addFormComponent()">Add Input Field</button>
+</section>
+
+<script>
+/* ===== TASK 21: CRUD App ===== */
+function addCrud(){
+  const name=document.getElementById("crudName").value;
+  const age=document.getElementById("crudAge").value;
+  if(!name || !age) return;
+  const table=document.getElementById("crudTable");
+  const row=table.insertRow();
+  row.insertCell(0).textContent=name;
+  row.insertCell(1).textContent=age;
+  const actionCell=row.insertCell(2);
+  const delBtn=document.createElement("button");
+  delBtn.textContent="Delete";
+  delBtn.onclick=()=>row.remove();
+  actionCell.appendChild(delBtn);
+  document.getElementById("crudName").value="";
+  document.getElementById("crudAge").value="";
+}
+
+/* ===== TASK 22: Dynamic Dropdown Dependency ===== */
+const states={
+  India:["Maharashtra","Karnataka","Delhi"],
+  USA:["California","Texas","New York"]
+};
+function updateStates(){
+  const country=document.getElementById("countrySelect").value;
+  const stateSel=document.getElementById("stateSelect");
+  stateSel.innerHTML='<option value="">Select</option>';
+  if(states[country]){
+    states[country].forEach(s=>{
+      const opt=document.createElement("option");
+      opt.value=s; opt.textContent=s;
+      stateSel.appendChild(opt);
+    });
+  }
+}
+
+/* ===== TASK 23: Conditional Validation ===== */
+function validateCondForm(){
+  const age=parseInt(document.getElementById("condAge").value);
+  const agree=document.getElementById("agreeTerms").checked;
+  let msg="";
+  if(isNaN(age) || age<18) msg="You must be 18 or older.";
+  else if(!agree) msg="You must agree to terms.";
+  else msg="Form submitted successfully!";
+  document.getElementById("condMsg").textContent=msg;
+}
+
+/* ===== TASK 24: Table Row Edit & Update ===== */
+function editRow(btn){
+  const row=btn.parentElement.parentElement;
+  if(row.classList.contains("editing")) return;
+  row.classList.add("editing");
+  const nameCell=row.cells[0];
+  const ageCell=row.cells[1];
+  const originalName=nameCell.textContent;
+  const originalAge=ageCell.textContent;
+  nameCell.innerHTML=`<input value="${originalName}">`;
+  ageCell.innerHTML=`<input value="${originalAge}" type="number">`;
+  btn.textContent="Update";
+  btn.onclick=function(){
+    nameCell.textContent=nameCell.children[0].value;
+    ageCell.textContent=ageCell.children[0].value;
+    btn.textContent="Edit";
+    row.classList.remove("editing");
+    btn.onclick=function(){ editRow(btn); };
+  };
+}
+
+/* ===== TASK 25: Prevent Duplicate Entry ===== */
+const addedValues=new Set();
+function addUnique(){
+  const val=document.getElementById("dupInput").value.trim();
+  if(!val) return;
+  if(addedValues.has(val)){
+    alert("Duplicate entry!");
+    return;
+  }
+  addedValues.add(val);
+  const li=document.createElement("li");
+  li.textContent=val;
+  document.getElementById("dupList").appendChild(li);
+  document.getElementById("dupInput").value="";
+}
+
+/* ===== TASK 26: Live Search & Highlight ===== */
+function highlightSearch(){
+  const val=document.getElementById("searchHighlight").value.toLowerCase();
+  const items=document.querySelectorAll("#highlightList li");
+  items.forEach(li=>{
+    const text=li.textContent;
+    if(val && text.toLowerCase().includes(val)){
+      const regex=new RegExp(val,"gi");
+      li.innerHTML=text.replace(regex,m=>`<span class="highlight">${m}</span>`);
+    } else {
+      li.innerHTML=li.textContent;
+    }
+  });
+}
+
+/* ===== TASK 27: Tab Switching ===== */
+function switchTab(n){
+  document.querySelectorAll(".tabContent").forEach((t,i)=>{
+    t.style.display=(i+1===n)?"block":"none";
+  });
+}
+
+/* ===== TASK 28: Client-Side Data Store ===== */
+function storeData(){
+  const key=document.getElementById("storeKey").value;
+  const val=document.getElementById("storeValue").value;
+  if(!key) return;
+  localStorage.setItem(key,val);
+  document.getElementById("storeKey").value="";
+  document.getElementById("storeValue").value="";
+}
+function loadData(){
+  const key=document.getElementById("storeKey").value;
+  const val=localStorage.getItem(key)||"";
+  document.getElementById("storeOutput").textContent=val;
+}
+
+/* ===== TASK 29: Dashboard Summary Generator ===== */
+function generateSummary(){
+  const n1=parseFloat(document.getElementById("dashNum1").value)||0;
+  const n2=parseFloat(document.getElementById("dashNum2").value)||0;
+  const sum=n1+n2, diff=n1-n2, prod=n1*n2, div=n2? (n1/n2).toFixed(2):"Infinity";
+  document.getElementById("dashSummary").innerHTML=
+    `Sum: ${sum}, Diff: ${diff}, Prod: ${prod}, Div: ${div}`;
+}
+
+/* ===== TASK 30: Reusable Form Component System ===== */
+function addFormComponent(){
+  const container=document.getElementById("formContainer");
+  const div=document.createElement("div");
+  div.innerHTML='<input placeholder="Enter value"><button onclick="this.parentElement.remove()">Remove</button>';
+  container.appendChild(div);
+}
+</script>
+</body>
+</html>

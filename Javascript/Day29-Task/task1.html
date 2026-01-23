@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice Tasks 1-10</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Inputs and buttons */
+input {
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    width: calc(100% - 30px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Output fields */
+.output {
+    display: block;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    min-height: 20px;
+    font-weight: bold;
+    color: #333;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TASK 1 ================= -->
+<section style="border-left:5px solid #4caf50;">
+<h3>1. Even or Odd Number</h3>
+<input type="number" id="num1" placeholder="Enter a number">
+<button onclick="evenOdd1()">Check</button>
+<span id="out1" class="output"></span>
+</section>
+
+<!-- ================= TASK 2 ================= -->
+<section style="border-left:5px solid #2196F3;">
+<h3>2. Greater of Two Numbers</h3>
+<input type="number" id="num2a" placeholder="First number">
+<input type="number" id="num2b" placeholder="Second number">
+<button onclick="greater2()">Check</button>
+<span id="out2" class="output"></span>
+</section>
+
+<!-- ================= TASK 3 ================= -->
+<section style="border-left:5px solid #FF9800;">
+<h3>3. Highest of Three Marks</h3>
+<input type="number" id="mark3a" placeholder="Mark 1">
+<input type="number" id="mark3b" placeholder="Mark 2">
+<input type="number" id="mark3c" placeholder="Mark 3">
+<button onclick="highest3()">Check</button>
+<span id="out3" class="output"></span>
+</section>
+
+<!-- ================= TASK 4 ================= -->
+<section style="border-left:5px solid #9C27B0;">
+<h3>4. Positive, Negative, or Zero</h3>
+<input type="number" id="num4" placeholder="Enter a number">
+<button onclick="posNegZero4()">Check</button>
+<span id="out4" class="output"></span>
+</section>
+
+<!-- ================= TASK 5 ================= -->
+<section style="border-left:5px solid #f44336;">
+<h3>5. Total from 1 to N</h3>
+<input type="number" id="num5" placeholder="Enter N">
+<button onclick="sumUp5()">Calculate</button>
+<span id="out5" class="output"></span>
+</section>
+
+<!-- ================= TASK 6 ================= -->
+<section style="border-left:5px solid #009688;">
+<h3>6. Reverse a Number</h3>
+<input type="number" id="num6" placeholder="Enter a number">
+<button onclick="reverseNum6()">Reverse</button>
+<span id="out6" class="output"></span>
+</section>
+
+<!-- ================= TASK 7 ================= -->
+<section style="border-left:5px solid #3F51B5;">
+<h3>7. Reverse a Word</h3>
+<input type="text" id="word7" placeholder="Enter a word">
+<button onclick="reverseWord7()">Reverse</button>
+<span id="out7" class="output"></span>
+</section>
+
+<!-- ================= TASK 8 ================= -->
+<section style="border-left:5px solid #795548;">
+<h3>8. Check Palindrome</h3>
+<input type="text" id="word8" placeholder="Enter a word">
+<button onclick="palindrome8()">Check</button>
+<span id="out8" class="output"></span>
+</section>
+
+<!-- ================= TASK 9 ================= -->
+<section style="border-left:5px solid #E91E63;">
+<h3>9. Count Vowels in a Sentence</h3>
+<input type="text" id="sentence9" placeholder="Enter a sentence">
+<button onclick="countVowels9()">Count</button>
+<span id="out9" class="output"></span>
+</section>
+
+<!-- ================= TASK 10 ================= -->
+<section style="border-left:5px solid #607D8B;">
+<h3>10. Factorial of a Number</h3>
+<input type="number" id="num10" placeholder="Enter a number">
+<button onclick="factorial10()">Calculate</button>
+<span id="out10" class="output"></span>
+</section>
+
+<script>
+/* ===== TASK 1 ===== */
+function evenOdd1(){
+    const n = Number(document.getElementById('num1').value);
+    document.getElementById('out1').textContent = isNaN(n) ? "Enter a number!" : (n%2===0 ? "Even" : "Odd");
+}
+
+/* ===== TASK 2 ===== */
+function greater2(){
+    const a = Number(document.getElementById('num2a').value);
+    const b = Number(document.getElementById('num2b').value);
+    if(isNaN(a)||isNaN(b)) document.getElementById('out2').textContent="Enter both numbers!";
+    else document.getElementById('out2').textContent = a===b ? "Both are equal" : (a>b ? a : b) + " is greater";
+}
+
+/* ===== TASK 3 ===== */
+function highest3(){
+    const marks = [Number(document.getElementById('mark3a').value),
+                   Number(document.getElementById('mark3b').value),
+                   Number(document.getElementById('mark3c').value)];
+    if(marks.some(isNaN)) document.getElementById('out3').textContent="Enter all three marks!";
+    else document.getElementById('out3').textContent = "Highest: " + Math.max(...marks);
+}
+
+/* ===== TASK 4 ===== */
+function posNegZero4(){
+    const n = Number(document.getElementById('num4').value);
+    let res = isNaN(n) ? "Enter a number!" : (n>0 ? "Positive" : (n<0 ? "Negative" : "Zero"));
+    document.getElementById('out4').textContent = res;
+}
+
+/* ===== TASK 5 ===== */
+function sumUp5(){
+    const n = Number(document.getElementById('num5').value);
+    if(isNaN(n) || n<1) document.getElementById('out5').textContent="Enter a positive number!";
+    else{
+        let sum=0;
+        for(let i=1;i<=n;i++) sum+=i;
+        document.getElementById('out5').textContent = "Total: " + sum;
+    }
+}
+
+/* ===== TASK 6 ===== */
+function reverseNum6(){
+    const n = document.getElementById('num6').value;
+    document.getElementById('out6').textContent = n.split("").reverse().join("");
+}
+
+/* ===== TASK 7 ===== */
+function reverseWord7(){
+    const word = document.getElementById('word7').value;
+    document.getElementById('out7').textContent = word.split("").reverse().join("");
+}
+
+/* ===== TASK 8 ===== */
+function palindrome8(){
+    const word = document.getElementById('word8').value.toLowerCase();
+    const reversed = word.split("").reverse().join("");
+    document.getElementById('out8').textContent = (word === reversed) ? "Palindrome" : "Not a Palindrome";
+}
+
+/* ===== TASK 9 ===== */
+function countVowels9(){
+    const str = document.getElementById('sentence9').value.toLowerCase();
+    const count = (str.match(/[aeiou]/g) || []).length;
+    document.getElementById('out9').textContent = "Vowel count: " + count;
+}
+
+/* ===== TASK 10 ===== */
+function factorial10(){
+    let n = Number(document.getElementById('num10').value);
+    if(isNaN(n) || n<0) document.getElementById('out10').textContent="Enter a non-negative number!";
+    else{
+        let fact=1;
+        for(let i=1;i<=n;i++) fact*=i;
+        document.getElementById('out10').textContent = "Factorial: " + fact;
+    }
+}
+</script>
+
+</body>
+</html>
